@@ -1240,6 +1240,17 @@ bool8 CheckLeadMonTough(void)
     return TRUE;
 }
 
+bool8 CheckPartyForMon(void)
+{
+    int i;
+    for (i = 0; i < CalculatePlayerPartyCount(); i++)
+    {
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) == VarGet(VAR_TEMP_1))
+            return TRUE;
+    }
+    return FALSE;
+}
+
 void IsGrassTypeInParty(void)
 {
     u8 i;

@@ -610,7 +610,7 @@ $(MID_SUBDIR)/mus_credits.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G101 -V100
 
 $(MID_SUBDIR)/mus_title.s: %.s: %.mid
-	$(MID) $< $@ -E -R$(STD_REVERB) -G059 -V090
+	$(MID) $< $@ -E -R$(STD_REVERB) -G014 -V090
 
 $(MID_SUBDIR)/mus_fallarbor.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G083 -V100
