@@ -1,5 +1,6 @@
 .set LOCALID_BIRCH, 2
 .set LOCALID_ZIGZAGOON, 4
+.set LOCALID_BEETLE, 7
 
 Route101_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Route101_OnTransition
@@ -256,8 +257,34 @@ Route101_EventScript_HideBrendanInBedroom::
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_BEDROOM
 	return
 
+Route101_EventScript_Gatekeeper::
+	msgbox Route101_Text_YouCannotEnter, MSGBOX_NPC
+	end
+
+Route101_EventScript_Gatekeeping::
+	lock
+	applymovement LOCALID_BEETLE, Common_Movement_FaceDown
+	waitmovement 0
+	applymovement LOCALID_BEETLE, Common_Movement_ExclamationMark
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceUp
+	waitmovement 0
+	msgbox Route101_Text_YouCannotEnter, MSGBOX_DEFAULT
+	closemessage
+	applymovement OBJ_EVENT_ID_FOLLOWER, Route101_Movement_WalkLeft
+	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_WalkLeft
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_FOLLOWER, Common_Movement_FaceRight
+	waitmovement 0
+	releaseall
+	end
+
 Route101_Movement_BirchApproachPlayer:
 	walk_right
+	step_end
+
+Route101_Movement_WalkLeft::
+	walk_left
 	step_end
 
 Route101_Text_HelpMe:
@@ -300,3 +327,9 @@ Route101_Text_RouteSign:
 	.string "ROUTE 101\n"
 	.string "{UP_ARROW} OLDALE TOWN$"
 
+Route101_Text_YouCannotEnter::
+	.string "BEETLE: Hey!\p"
+	.string "I've never seen you around here,\n"
+	.string "so who do you think you are coming\l"
+	.string "onto the turf of the Bug Boys?\p"
+	.string "Scram!$"

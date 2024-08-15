@@ -247,11 +247,11 @@ LittlerootTown_EventScript_SetRivalBirchPosForDexUpgradeFemale::
 	end
 
 LittlerootTown_EventScript_FatMan::
-	msgbox LittlerootTown_Text_CanUsePCToStoreItems, MSGBOX_NPC
+	msgbox LittlerootTown_Text_TechnologyIsBoring, MSGBOX_NPC
 	end
 
 LittlerootTown_EventScript_Boy::
-	msgbox LittlerootTown_Text_BirchSpendsDaysInLab, MSGBOX_NPC
+	msgbox LittlerootTown_Text_LittlerootGrove, MSGBOX_NPC
 	end
 
 LittlerootTown_EventScript_Twin::
@@ -936,8 +936,8 @@ LittlerootTown_Text_WearTheseRunningShoes:
 	.string "They'll put a zip in your step!$"
 
 LittlerootTown_Text_SwitchShoesWithRunningShoes:
-	.string "{PLAYER} switched shoes with the\n"
-	.string "RUNNING SHOES.$"
+	.string "{PLAYER} switched into the\n"
+	.string "brand new RUNNING SHOES.$"
 
 LittlerootTown_Text_ExplainRunningShoes:
 	.string "MOM: {PLAYER}, those shoes came with\n"
@@ -957,17 +957,19 @@ LittlerootTown_Text_ComeHomeIfAnythingHappens:
 	.string "If anything happens, you can come home.\p"
 	.string "Go on, go get them, honey!$"
 
-LittlerootTown_Text_CanUsePCToStoreItems:
-	.string "If you use a PC, you can store items\n"
-	.string "and POKéMON.\p"
-	.string "The power of science is staggering!$"
+LittlerootTown_Text_TechnologyIsBoring:
+	.string "The power of technology is incredible!\p"
+	.string "…Well, that's what I used to think.\p"
+	.string "Nowadays, I find myself more entranced\n"
+	.string "by things like magic and witchcraft.\p"
+	.string "Do you think there's any such thing?$"
 
-LittlerootTown_Text_BirchSpendsDaysInLab:
-	.string "PROF. BIRCH spends days in his LAB\n"
-	.string "studying, then he'll suddenly go out in\l"
-	.string "the wild to do more research…\p"
-	.string "When does PROF. BIRCH spend time\n"
-	.string "at home?$"
+LittlerootTown_Text_LittlerootGrove:
+	.string "How's Littleroot treating you? There's\n"
+	.string "not much to do here if you're not\l"
+	.string "checking out Birch's lab…\p"
+	.string "But the grove off of Route 101\n"
+	.string "is quite scenic!$"
 
 LittlerootTown_Text_IfYouGoInGrassPokemonWillJumpOut:
 	.string "Um, um, um!\p"
