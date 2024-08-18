@@ -1703,6 +1703,22 @@
       "y": 4,
       "width": 1,
       "height": 1
+    },
+    {
+      "map_section": "MAPSEC_LITTLEROOT_GROVE",
+      "name": "LITTLEROOT GROVE",
+      "x": 5,
+      "y": 10,
+      "width": 2,
+      "height": 1
+    },
+    {
+      "map_section": "MAPSEC_GLOOMY_GROTTO",
+      "name": "GLOOMY GROTTO",
+      "x": 1,
+      "y": 7,
+      "width": 2,
+      "height": 1
     }
   ]
 }
