@@ -1076,3 +1076,9 @@ EventScript_VsSeekerChargingDone::
 	.include "data/text/birch_speech.inc"
 
 	.include "data/maps/LittlerootGrove/scripts.inc"
+
+	.include "data/maps/UnknownIsland/scripts.inc"
+
+	.include "data/maps/LittlerootTown_PlayersHouse/scripts.inc"
+
+	.include "data/maps/LittlerootTown_PlayersBedroom/scripts.inc"

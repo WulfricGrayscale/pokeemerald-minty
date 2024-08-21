@@ -4421,9 +4421,9 @@ static void DebugAction_Sound_MUS_SelectId(u8 taskId)
     X(MUS_VICTORY_WILD) \
     X(MUS_VICTORY_GYM_LEADER) \
     X(MUS_VICTORY_LEAGUE) \
-    X(MUS_C_COMM_CENTER) \
+    X(MUS_LETTER_FROM_YOU) \
     X(MUS_GSC_PEWTER) \
-    X(MUS_C_VS_LEGEND_BEAST) \
+    X(MUS_A_NEW_FRIEND) \
     X(MUS_ROUTE101) \
     X(MUS_ROUTE110) \
     X(MUS_ROUTE120) \

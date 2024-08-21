@@ -357,9 +357,9 @@ gSongTable::
 	song mus_victory_wild, 0, 0
 	song mus_victory_gym_leader, 0, 0
 	song mus_victory_league, 0, 0
-	song mus_c_comm_center, 0, 0
+	song mus_letter_from_you, 0, 0
 	song mus_gsc_pewter, 0, 0
-	song mus_c_vs_legend_beast, 0, 0
+	song mus_a_new_friend, 2, 2
 	song mus_route101, 0, 0
 	song mus_route110, 0, 0
 	song mus_route120, 0, 0

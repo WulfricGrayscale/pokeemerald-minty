@@ -286,9 +286,9 @@
 #define MUS_VICTORY_WILD            353 // MUS_KACHI2
 #define MUS_VICTORY_GYM_LEADER      354 // MUS_KACHI3           // Also used in Frontier Brain victories.
 #define MUS_VICTORY_LEAGUE          355 // MUS_KACHI5
-#define MUS_C_COMM_CENTER           356 // MUS_PCC              // Unused, likely a test track.
+#define MUS_LETTER_FROM_YOU           356 // MUS_PCC              // REPLACE WITH "Letter From You, My Sweet"
 #define MUS_GSC_PEWTER              357 // MUS_NIBI             // Used in unused Contest Halls.
-#define MUS_C_VS_LEGEND_BEAST       358 // MUS_SUIKUN           // Unused, likely a test track.
+#define MUS_A_NEW_FRIEND            358 // MUS_SUIKUN           // REPLACE WITH "A New Friend"
 #define MUS_ROUTE101                359 // MUS_DOORO1           // Also used in Routes 102 and 103.
 #define MUS_ROUTE110                360 // MUS_DOORO_X1         // Also used in Routes 112, 114, 117, 111's non-desert section and 118's west half.
 #define MUS_ROUTE120                361 // MUS_DOORO_X3         // Also used in Routes 121, 124, 125, 126, 127 and 128.
@@ -343,7 +343,7 @@
 #define MUS_HELP                    410 // MUS_EVENT0
 #define MUS_UNDERWATER              411 // MUS_DEEPDEEP
 #define MUS_VICTORY_TRAINER         412 // MUS_KACHI1
-#define MUS_TITLE                   413 // MUS_TITLE3
+#define MUS_TITLE                   413 // MUS_TITLE3           // Has been replaced with 3rd Gear Acquired from Drill Dozer
 #define MUS_INTRO                   414 // MUS_DEMO1
 #define MUS_ENCOUNTER_MAY           415 // MUS_GIRL_SUP
 #define MUS_ENCOUNTER_INTENSE       416 // MUS_HAGESHII

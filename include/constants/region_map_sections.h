@@ -216,7 +216,13 @@
 #define MAPSEC_TRAINER_HILL                 0xD4
 #define MAPSEC_LITTLEROOT_GROVE             0xD5
 #define MAPSEC_GLOOMY_GROTTO                0xD6
-#define MAPSEC_NONE                         0xD7
+#define MAPSEC_ASHEN_ROAD                   0xD7
+#define MAPSEC_DRAGON_VILLAGE               0xD8
+#define MAPSEC_METEORITE_PARK               0xD9
+#define MAPSEC_PLACEHOLDER_1                0xDA
+#define MAPSEC_PLACEHOLDER_2                0xDB
+#define MAPSEC_UNKNOWN_ISLAND               0xDC
+#define MAPSEC_NONE                         0xDD
 
 #define METLOC_SPECIAL_EGG                  0xFD
 #define METLOC_IN_GAME_TRADE                0xFE

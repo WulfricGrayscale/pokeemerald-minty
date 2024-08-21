@@ -1719,6 +1719,30 @@
       "y": 7,
       "width": 2,
       "height": 1
+    },
+    {
+      "map_section": "MAPSEC_METEORITE_PARK",
+      "name": "METEORITE PARK",
+      "x": 0,
+      "y": 0,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "map_section": "MAPSEC_DRAGON_VILLAGE",
+      "name": "DRAGON VILLAGE",
+      "x": 3,
+      "y": 3,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "map_section": "MAPSEC_UNKNOWN_ISLAND",
+      "name": "UNKNOWN ISLAND",
+      "x": 0,
+      "y": 0,
+      "width": 1,
+      "height": 1
     }
   ]
 }

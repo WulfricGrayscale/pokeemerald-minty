@@ -400,37 +400,16 @@ LittlerootTown_EventScript_BirchsLabSign::
 	msgbox LittlerootTown_Text_ProfBirchsLab, MSGBOX_SIGN
 	end
 
-LittlerootTown_EventScript_BrendansHouseSign::
-	lockall
-	checkplayergender
-	call_if_eq VAR_RESULT, MALE, LittlerootTown_EventScript_PlayersHouseSignMale
-	call_if_eq VAR_RESULT, FEMALE, LittlerootTown_EventScript_BirchsHouseSignFemale
-	releaseall
-	end
-
-LittlerootTown_EventScript_PlayersHouseSignMale::
-	msgbox LittlerootTown_Text_PlayersHouse, MSGBOX_DEFAULT
+LittlerootTown_EventScript_BirchsHouseSign::
+	msgbox LittlerootTown_Text_ProfBirchsHouse, MSGBOX_SIGN
 	return
 
-LittlerootTown_EventScript_BirchsHouseSignFemale::
-	msgbox LittlerootTown_Text_ProfBirchsHouse, MSGBOX_DEFAULT
+LittlerootTown_EventScript_NormansHouseSign::
+	msgbox LittlerootTown_Text_NormansHouse, MSGBOX_SIGN
 	return
 
-LittlerootTown_EventScript_MaysHouseSign::
-	lockall
-	checkplayergender
-	call_if_eq VAR_RESULT, MALE, LittlerootTown_EventScript_BirchsHouseSignMale
-	call_if_eq VAR_RESULT, FEMALE, LittlerootTown_EventScript_PlayersHouseSignFemale
-	releaseall
-	end
-
-LittlerootTown_EventScript_BirchsHouseSignMale::
-	msgbox LittlerootTown_Text_ProfBirchsHouse, MSGBOX_DEFAULT
-	return
-
-LittlerootTown_EventScript_PlayersHouseSignFemale::
-	msgbox LittlerootTown_Text_PlayersHouse, MSGBOX_DEFAULT
-	return
+LittlerootTown_EventScript_PlayersHouseSign::
+	msgbox LittlerootTown_Text_PlayersHouse, MSGBOX_SIGN
 
 LittlerootTown_EventScript_GiveRunningShoesTrigger0::
 	lockall
@@ -1009,6 +988,9 @@ LittlerootTown_Text_PlayersHouse:
 
 LittlerootTown_Text_ProfBirchsHouse:
 	.string "PROF. BIRCH'S HOUSE$"
+
+LittlerootTown_Text_NormansHouse:
+	.string "NORMAN'S HOUSE$"
 
 LittlerootTown_Text_BirchSomethingToShowYouAtLab:
 	.string "PROF. BIRCH: Well, well, {PLAYER}{KUN}!\n"

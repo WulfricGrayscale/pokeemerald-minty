@@ -41,6 +41,37 @@ static const struct SpriteFrameImage sPicTable_BrendanFieldMove[] = {
     overworld_ascending_frames(gObjectEventPic_BrendanFieldMove, 4, 4),
 };
 
+static const struct SpriteFrameImage sPicTable_RivalBrendanNormal[] = {
+    overworld_ascending_frames(gObjectEventPic_RivalBrendanNormalRunning, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_RivalBrendanMachBike[] = {
+    overworld_ascending_frames(gObjectEventPic_RivalBrendanMachBike, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_RivalBrendanAcroBike[] = {
+    overworld_ascending_frames(gObjectEventPic_RivalBrendanAcroBike, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_RivalBrendanSurfing[] = {
+    overworld_frame(gObjectEventPic_RivalBrendanSurfing, 4, 4, 0),
+    overworld_frame(gObjectEventPic_RivalBrendanSurfing, 4, 4, 2),
+    overworld_frame(gObjectEventPic_RivalBrendanSurfing, 4, 4, 4),
+    overworld_frame(gObjectEventPic_RivalBrendanSurfing, 4, 4, 0),
+    overworld_frame(gObjectEventPic_RivalBrendanSurfing, 4, 4, 0),
+    overworld_frame(gObjectEventPic_RivalBrendanSurfing, 4, 4, 2),
+    overworld_frame(gObjectEventPic_RivalBrendanSurfing, 4, 4, 2),
+    overworld_frame(gObjectEventPic_RivalBrendanSurfing, 4, 4, 4),
+    overworld_frame(gObjectEventPic_RivalBrendanSurfing, 4, 4, 4),
+    overworld_frame(gObjectEventPic_RivalBrendanSurfing, 4, 4, 1),
+    overworld_frame(gObjectEventPic_RivalBrendanSurfing, 4, 4, 3),
+    overworld_frame(gObjectEventPic_RivalBrendanSurfing, 4, 4, 5),
+};
+
+static const struct SpriteFrameImage sPicTable_RivalBrendanFieldMove[] = {
+    overworld_ascending_frames(gObjectEventPic_RivalBrendanFieldMove, 4, 4),
+};
+
 static const struct SpriteFrameImage sPicTable_QuintyPlump[] = {
     overworld_ascending_frames(gObjectEventPic_QuintyPlump, 4, 4),
 };
@@ -451,6 +482,37 @@ static const struct SpriteFrameImage sPicTable_MayUnderwater[] = {
 
 static const struct SpriteFrameImage sPicTable_MayFieldMove[] = {
     overworld_ascending_frames(gObjectEventPic_MayFieldMove, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_RivalMayNormal[] = {
+    overworld_ascending_frames(gObjectEventPic_RivalMayNormalRunning, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_RivalMayMachBike[] = {
+    overworld_ascending_frames(gObjectEventPic_RivalMayMachBike, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_RivalMayAcroBike[] = {
+    overworld_ascending_frames(gObjectEventPic_RivalMayAcroBike, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_RivalMaySurfing[] = {
+    overworld_frame(gObjectEventPic_RivalMaySurfing, 4, 4, 0),
+    overworld_frame(gObjectEventPic_RivalMaySurfing, 4, 4, 2),
+    overworld_frame(gObjectEventPic_RivalMaySurfing, 4, 4, 4),
+    overworld_frame(gObjectEventPic_RivalMaySurfing, 4, 4, 0),
+    overworld_frame(gObjectEventPic_RivalMaySurfing, 4, 4, 0),
+    overworld_frame(gObjectEventPic_RivalMaySurfing, 4, 4, 2),
+    overworld_frame(gObjectEventPic_RivalMaySurfing, 4, 4, 2),
+    overworld_frame(gObjectEventPic_RivalMaySurfing, 4, 4, 4),
+    overworld_frame(gObjectEventPic_RivalMaySurfing, 4, 4, 4),
+    overworld_frame(gObjectEventPic_RivalMaySurfing, 4, 4, 1),
+    overworld_frame(gObjectEventPic_RivalMaySurfing, 4, 4, 3),
+    overworld_frame(gObjectEventPic_RivalMaySurfing, 4, 4, 5),
+};
+
+static const struct SpriteFrameImage sPicTable_RivalMayFieldMove[] = {
+    overworld_ascending_frames(gObjectEventPic_RivalMayFieldMove, 4, 4),
 };
 
 static const struct SpriteFrameImage sPicTable_Cameraman[] = {

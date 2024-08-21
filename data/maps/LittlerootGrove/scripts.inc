@@ -329,3 +329,4 @@ LittlerootGrove_Text_WeevilGetItNow::
 	.string "you have what it takes to go all the way!\p"
 	.string "Say, how about you take one of them along?\n"
 	.string "They're pretty rare here in Hoenn, y'know!$"
+	

@@ -318,8 +318,8 @@ $(MID_SUBDIR)/mus_abnormal_weather.s: %.s: %.mid
 $(MID_SUBDIR)/mus_school.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G081 -V100
 
-$(MID_SUBDIR)/mus_c_comm_center.s: %.s: %.mid
-	$(MID) $< $@ -E -R$(STD_REVERB) -V080
+$(MID_SUBDIR)/mus_letter_from_you.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G192 -V127
 
 $(MID_SUBDIR)/mus_poke_center.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G046 -V092
@@ -576,8 +576,8 @@ $(MID_SUBDIR)/mus_evolution.s: %.s: %.mid
 $(MID_SUBDIR)/mus_encounter_elite_four.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G096 -V078
 
-$(MID_SUBDIR)/mus_c_vs_legend_beast.s: %.s: %.mid
-	$(MID) $< $@ -E -R$(STD_REVERB) -V080
+$(MID_SUBDIR)/mus_a_new_friend.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G192 -V127
 
 $(MID_SUBDIR)/mus_encounter_swimmer.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G036 -V080

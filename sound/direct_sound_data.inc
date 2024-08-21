@@ -6395,3 +6395,27 @@ DirectSoundWaveData_sd90_enhanced_delay_shaku::
 	.align 2
 DirectSoundWaveData_orchestra_hit::
 	.incbin "sound/direct_sound_samples/orchestra_hit.bin"
+
+	.align 2
+DirectSoundWaveData_Mother3_glockenspiel::
+	.incbin "sound/direct_sound_samples/Mother3_glockenspiel.bin"
+
+	.align 2
+DirectSoundWaveData_Mother3_Inst30::
+	.incbin "sound/direct_sound_samples/Mother3_Inst30.bin"
+
+	.align 2
+DirectSoundWaveData_Mother3_Inst31::
+	.incbin "sound/direct_sound_samples/Mother3_Inst31.bin"
+
+	.align 2
+DirectSoundWaveData_Mother3_Inst38::
+	.incbin "sound/direct_sound_samples/Mother3_Inst38.bin"
+
+	.align 2
+DirectSoundWaveData_Mother3_Inst39::
+	.incbin "sound/direct_sound_samples/Mother3_Inst39.bin"
+
+	.align 2
+DirectSoundWaveData_Mother3_Inst40::
+	.incbin "sound/direct_sound_samples/Mother3_Inst40.bin"
