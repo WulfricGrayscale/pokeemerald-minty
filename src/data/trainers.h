@@ -42183,48 +42183,48 @@ F_TRAINER_FEMALE |
             },
         },
     },
-#line 16812
+#line 16877
     [TRAINER_WEEVIL] =
     {
-#line 16813
+#line 16878
         .trainerName = _("Weevil"),
-#line 16814
+#line 16879
         .trainerClass = TRAINER_CLASS_BUG_CATCHER,
-#line 16815
+#line 16880
         .trainerPic = TRAINER_PIC_BUG_CATCHER,
         .encounterMusic_gender = 
-#line 16817
+#line 16882
             TRAINER_ENCOUNTER_MUSIC_MALE,
-#line 16818
+#line 16883
         .doubleBattle = FALSE,
-#line 16819
+#line 16884
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
         .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
-#line 16821
+#line 16886
             .species = SPECIES_SCYTHER,
-#line 16821
+#line 16886
             .gender = TRAINER_MON_MALE,
-#line 16824
+#line 16889
             .iv = TRAINER_PARTY_IVS(5, 5, 5, 5, 5, 5),
-#line 16822
+#line 16887
             .lvl = 5,
-#line 16823
+#line 16888
             .nature = NATURE_JOLLY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
             {
-#line 16826
+#line 16891
             .species = SPECIES_HERACROSS,
-#line 16826
+#line 16891
             .gender = TRAINER_MON_MALE,
-#line 16829
+#line 16894
             .iv = TRAINER_PARTY_IVS(5, 5, 5, 5, 5, 5),
-#line 16827
+#line 16892
             .lvl = 5,
-#line 16828
+#line 16893
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },

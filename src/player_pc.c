@@ -34,7 +34,6 @@
 enum {
     MENU_ITEMSTORAGE,
     MENU_MAILBOX,
-    MENU_DECORATION,
     MENU_TURNOFF
 };
 
@@ -112,7 +111,6 @@ static void Mailbox_MailOptionsProcessInput(u8);
 
 static void PlayerPC_ItemStorage(u8);
 static void PlayerPC_Mailbox(u8);
-static void PlayerPC_Decoration(u8);
 static void PlayerPC_TurnOff(u8);
 
 static void Mailbox_DoMailMoveToBag(u8);
@@ -193,7 +191,6 @@ static const struct MenuAction sPlayerPCMenuActions[] =
 {
     [MENU_ITEMSTORAGE] = { gText_ItemStorage, {PlayerPC_ItemStorage} },
     [MENU_MAILBOX]     = { gText_Mailbox,     {PlayerPC_Mailbox} },
-    [MENU_DECORATION]  = { gText_Decoration,  {PlayerPC_Decoration} },
     [MENU_TURNOFF]     = { gText_TurnOff,     {PlayerPC_TurnOff} }
 };
 
@@ -201,7 +198,6 @@ static const u8 sBedroomPC_OptionOrder[] =
 {
     MENU_ITEMSTORAGE,
     MENU_MAILBOX,
-    MENU_DECORATION,
     MENU_TURNOFF
 };
 #define NUM_BEDROOM_PC_OPTIONS ARRAY_COUNT(sBedroomPC_OptionOrder)
@@ -483,11 +479,6 @@ static void PlayerPC_Mailbox(u8 taskId)
             DisplayItemMessageOnField(taskId, gText_NoMailHere, ReshowPlayerPC);
         }
     }
-}
-
-static void PlayerPC_Decoration(u8 taskId)
-{
-    DoPlayerRoomDecorationMenu(taskId);
 }
 
 static void PlayerPC_TurnOff(u8 taskId)

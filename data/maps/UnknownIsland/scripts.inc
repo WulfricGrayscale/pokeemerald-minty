@@ -8,18 +8,15 @@ UnknownIsland_OnFrame::
 
 UnknownIsland_EventScript_IntroFlags::
 	setrespawn HEAL_LOCATION_LITTLEROOT_TOWN_PLAYERS_BEDROOM
-	setvar VAR_TEMP_3, 1
+	setvar VAR_TEMP_2, 1
 	end
 
 UnknownIsland_EventScript_NoStarter::
-	msgbox UnknownIsland_Text_Cutscene, MSGBOX_DEFAULT
+	lock
+	msgbox UnknownIsland_Text_ForgettingSomething, MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, UnknownIsland_Movement_WalkDown
-	end
-
-UnknownIsland_EventScript_WakeUp::
-	msgbox UnknownIsland_Text_Cutscene, MSGBOX_DEFAULT
-	closemessage
+	release
 	end
 
 UnknownIsland_EventScript_OceansideCutscene::
@@ -29,7 +26,10 @@ UnknownIsland_EventScript_OceansideCutscene::
 	special SpawnCameraObject
 	applymovement OBJ_EVENT_ID_CAMERA, UnknownIsland_Movement_CutsceneStart
 	fadenewbgm MUS_LETTER_FROM_YOU
-	msgbox UnknownIsland_Text_Cutscene, MSGBOX_DEFAULT
+	msgbox UnknownIsland_Text_CutscenePart1, MSGBOX_DEFAULT
+	closemessage
+	delay 48
+	msgbox UnknownIsland_Text_CutscenePart2, MSGBOX_DEFAULT
 	closemessage
 	delay 48
 	applymovement OBJ_EVENT_ID_CAMERA, UnknownIsland_Movement_CutsceneEnd
@@ -38,6 +38,16 @@ UnknownIsland_EventScript_OceansideCutscene::
 	special RemoveCameraObject
 	setvar VAR_TEMP_4, 1
 	releaseall
+	end
+
+UnknownIsland_EventScript_WarpHome::
+	fadescreen FADE_TO_BLACK
+	fadeoutbgm 0
+	setweather clear
+	doweather
+	msgbox UnknownIsland_Text_WarpHome, MSGBOX_DEFAULT
+	setflag FLAG_SYS_B_DASH
+	warp MAP_LITTLEROOT_TOWN_PLAYERS_BEDROOM, 1, 6
 	end
 
 UnknownIsland_EventScript_FellowFragmentLong::
@@ -279,6 +289,9 @@ UnknownIsland_EventScript_NicknameMon::
 	waitfanfare
 	setvar VAR_TEMP_5, 1
 	closemessage
+	delay 16
+	msgbox UnknownIsland_Text_FragmentAwaken, MSGBOX_DEFAULT
+	closemessage
 	return
 
 UnknownIsland_Movement_CutsceneStart::
@@ -354,8 +367,32 @@ UnknownIsland_Text_FragmentAwaken:
 UnknownIsland_Text_YouRemembered:
 	.string "You remembered {STR_VAR_1}!$"
 
-UnknownIsland_Text_Cutscene:
-	.string "{PLAYER}: … … …$"
+UnknownIsland_Text_CutscenePart1:
+	.string "{PLAYER}: … … …\p"
+	.string "Restless dreamer… fellow fragment…\n"
+	.string "What does any of that mean?\p"
+	.string "I wish I could have asked earlier,\n"
+	.string "but answers don't come as freely as\l"
+	.string "questions.$"
+
+UnknownIsland_Text_CutscenePart2:
+	.string "Where was I before I got here? Was I\n"
+	.string "awake? Am I awake now?\p"
+	.string "If I am dreaming, when will I wake up…?\p"
+	.string "This stormy weather is so cold and\n"
+	.string "miserable. My thoughts are slow and heavy.\l"
+	.string "I hope I can get home soon.$"
+
+UnknownIsland_Text_ForgettingSomething:
+	.string "You feel as though you are\n"
+	.string "forgetting something.\p"
+	.string "Perhaps you should take another\n"
+	.string "look around.$"
+
+UnknownIsland_Text_WarpHome:
+	.string "Carry this island in your heart…\p"
+	.string "Remember.\p"
+	.string "It's time to wake up.$"
 
 UnknownIsland_Text_DynamicOption1:
 	.string "{STR_VAR_1}$"
