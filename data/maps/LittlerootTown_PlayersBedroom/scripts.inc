@@ -1,5 +1,15 @@
 LittlerootTown_PlayersBedroom_MapScripts::
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, LittlerootTown_PlayersBedroom_OnWarp
 	.byte 0
+
+LittlerootTown_PlayersBedroom_OnWarp:
+	map_script_2 VAR_TEMP_1, 0, LittlerootTown_PlayersBedroom_EventScript_RunningShoes
+	.2byte 0
+
+LittlerootTown_PlayersBedroom_EventScript_RunningShoes::
+	setflag FLAG_SYS_B_DASH
+	addvar VAR_TEMP_1, 1
+	end
 
 LittlerootTown_PlayersBedroom_EventScript_BedHeal::
 	lockall
@@ -91,7 +101,8 @@ LittlerootTown_PlayersBedroom_Text_Storage1:
 LittlerootTown_PlayersBedroom_Text_Storage2:
 	.string "In the drawers you find a strategy\n"
 	.string "guide for Pokémon Emerald!\p"
-	.string "Unfortunately, it's not in mint condition.\p"
+	.string "Unfortunately, it's not in\n"
+	.string "mint condition.\p"
 	.string "Better put it back.$"
 
 LittlerootTown_PlayersBedroom_Text_Storage3:

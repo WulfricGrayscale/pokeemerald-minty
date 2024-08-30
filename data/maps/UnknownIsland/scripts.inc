@@ -3,11 +3,13 @@ UnknownIsland_MapScripts::
 	.byte 0
 
 UnknownIsland_OnFrame::
-	setflag FLAG_HIDE_MAP_NAME_POPUP
-	end
+	map_script_2 VAR_TEMP_2, 0, UnknownIsland_EventScript_IntroFlags
+	.2byte 0
 
 UnknownIsland_EventScript_IntroFlags::
 	setrespawn HEAL_LOCATION_LITTLEROOT_TOWN_PLAYERS_BEDROOM
+	setflag FLAG_HIDE_MAP_NAME_POPUP
+	setflag FLAG_REMOVE_WARP_FADE
 	setvar VAR_TEMP_2, 1
 	end
 
@@ -28,7 +30,7 @@ UnknownIsland_EventScript_OceansideCutscene::
 	fadenewbgm MUS_LETTER_FROM_YOU
 	msgbox UnknownIsland_Text_CutscenePart1, MSGBOX_DEFAULT
 	closemessage
-	delay 48
+	delay 60
 	msgbox UnknownIsland_Text_CutscenePart2, MSGBOX_DEFAULT
 	closemessage
 	delay 48
@@ -42,11 +44,9 @@ UnknownIsland_EventScript_OceansideCutscene::
 
 UnknownIsland_EventScript_WarpHome::
 	fadescreen FADE_TO_BLACK
-	fadeoutbgm 0
-	setweather clear
+	setweather WEATHER_SUNNY
 	doweather
-	msgbox UnknownIsland_Text_WarpHome, MSGBOX_DEFAULT
-	setflag FLAG_SYS_B_DASH
+	msgbox UnknownIsland_Text_WarpHome, MSGBOX_AUTOCLOSE
 	warp MAP_LITTLEROOT_TOWN_PLAYERS_BEDROOM, 1, 6
 	end
 
@@ -361,7 +361,7 @@ UnknownIsland_Text_InThatCase:
 UnknownIsland_Text_FragmentAwaken:
 	.string "Restless dreamer, your time to\n"
 	.string "awaken is upon us.\p"
-	.string "Carry this island with you, in\n"
+	.string "Carry this island with you in\n"
 	.string "your heart, lest you let it fade.$"
 
 UnknownIsland_Text_YouRemembered:
@@ -380,7 +380,8 @@ UnknownIsland_Text_CutscenePart2:
 	.string "awake? Am I awake now?\p"
 	.string "If I am dreaming, when will I wake up…?\p"
 	.string "This stormy weather is so cold and\n"
-	.string "miserable. My thoughts are slow and heavy.\l"
+	.string "miserable. My thoughts are slow and\l"
+	.string "heavy.\p"
 	.string "I hope I can get home soon.$"
 
 UnknownIsland_Text_ForgettingSomething:

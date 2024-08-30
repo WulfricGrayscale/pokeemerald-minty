@@ -28,7 +28,8 @@ LittlerootTown_MaysHouse_1F_Text_MaysMom:
 
 LittlerootTown_MaysHouse_1F_Text_MaysSibling:
 	.string "I can't believe May got her own\n"
-	.string "Pokémon! I hope I get a Pokémon\l"
+	.string "Pokémon!\p"
+	.string "I hope I get a Pokémon\n"
 	.string "someday too.$"
 
 LittlerootTown_MaysHouse_1F_Text_MaysFather:

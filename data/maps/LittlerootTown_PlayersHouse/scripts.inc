@@ -3,7 +3,6 @@ LittlerootTown_PlayersHouse_MapScripts::
 
 LittlerootTown_PlayersHouse_EventScript_WallClock::
 	goto PlayersHouse_2F_EventScript_WallClock
-	addvar VAR_PLAYER_HOUSE_STATE, 1
 	end
 
 LittlerootTown_PlayersHouse_EventScript_Fridge::
@@ -11,10 +10,47 @@ LittlerootTown_PlayersHouse_EventScript_Fridge::
 	end
 
 LittlerootTown_PlayersHouse_EventScript_ClockNotSet::
+	lockall
 	msgbox LittlerootTown_PlayersHouse_Text_ClockNotSet, MSGBOX_DEFAULT
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
+	switch VAR_FACING
+	case DIR_SOUTH, LittlerootTown_PlayersHouse_EventScript_WalkUpSouth
+	case DIR_EAST, LittlerootTown_PlayersHouse_EventScript_WalkUpEast
+	case DIR_WEST, LittlerootTown_PlayersHouse_EventScript_WalkUpWest
 	end
+
+LittlerootTown_PlayersHouse_EventScript_WalkUpWest:
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
+	applymovement OBJ_EVENT_ID_FOLLOWER, LittlerootTown_PlayersHouse_Movement_FollowerClockWest
+	releaseall
+	end
+
+LittlerootTown_PlayersHouse_EventScript_WalkUpEast:
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
+	applymovement OBJ_EVENT_ID_FOLLOWER, LittlerootTown_PlayersHouse_Movement_FollowerClockEast
+	releaseall
+	end
+
+LittlerootTown_PlayersHouse_EventScript_WalkUpSouth:
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
+	applymovement OBJ_EVENT_ID_FOLLOWER, LittlerootTown_PlayersHouse_Movement_FollowerClockSouth
+	releaseall
+	end
+
+LittlerootTown_PlayersHouse_Movement_FollowerClockWest:
+	walk_left
+	face_player
+	step_end
+
+LittlerootTown_PlayersHouse_Movement_FollowerClockEast:
+	walk_right
+	face_player
+	step_end
+
+LittlerootTown_PlayersHouse_Movement_FollowerClockSouth:
+	walk_right
+	face_player
+	step_end
 
 LittlerootTown_PlayersHouse_Text_LeftoverPizza:
 	.string "Looking through the fridge, you find\n"

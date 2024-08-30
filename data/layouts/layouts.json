@@ -4450,6 +4450,26 @@
       "secondary_tileset": "gTileset_BrendansMaysHouse",
       "border_filepath": "data/layouts/LittlerootTown_PlayersBedroom/border.bin",
       "blockdata_filepath": "data/layouts/LittlerootTown_PlayersBedroom/map.bin"
+    },
+    {
+      "id": "LAYOUT_ASHEN_ROAD",
+      "name": "AshenRoad_Layout",
+      "width": 20,
+      "height": 40,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Fallarbor",
+      "border_filepath": "data/layouts/AshenRoad/border.bin",
+      "blockdata_filepath": "data/layouts/AshenRoad/map.bin"
+    },
+    {
+      "id": "LAYOUT_DRAGON_VILLAGE",
+      "name": "DragonVillage_Layout",
+      "width": 30,
+      "height": 30,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Fallarbor",
+      "border_filepath": "data/layouts/DragonVillage/border.bin",
+      "blockdata_filepath": "data/layouts/DragonVillage/map.bin"
     }
   ]
 }

@@ -1082,3 +1082,7 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/LittlerootTown_PlayersHouse/scripts.inc"
 
 	.include "data/maps/LittlerootTown_PlayersBedroom/scripts.inc"
+
+	.include "data/maps/AshenRoad/scripts.inc"
+
+	.include "data/maps/DragonVillage/scripts.inc"

@@ -65,6 +65,8 @@
 #define MAP_UNDERWATER_ROUTE125 (56 | (0 << 8))
 #define MAP_LITTLEROOT_GROVE    (57 | (0 << 8))
 #define MAP_UNKNOWN_ISLAND      (58 | (0 << 8))
+#define MAP_ASHEN_ROAD          (59 | (0 << 8))
+#define MAP_DRAGON_VILLAGE      (60 | (0 << 8))
 
 // gMapGroup_IndoorLittleroot
 #define MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F    (0 | (1 << 8))

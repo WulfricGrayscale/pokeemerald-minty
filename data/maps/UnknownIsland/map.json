@@ -43,24 +43,6 @@
     },
     {
       "type": "trigger",
-      "x": 15,
-      "y": 41,
-      "elevation": 0,
-      "var": "VAR_TEMP_3",
-      "var_value": "0",
-      "script": "UnknownIsland_EventScript_IntroFlags"
-    },
-    {
-      "type": "trigger",
-      "x": 16,
-      "y": 41,
-      "elevation": 0,
-      "var": "VAR_TEMP_3",
-      "var_value": "0",
-      "script": "UnknownIsland_EventScript_IntroFlags"
-    },
-    {
-      "type": "trigger",
       "x": 17,
       "y": 21,
       "elevation": 0,

@@ -144,6 +144,7 @@ Debug_EventScript_Script_1::
 	end
 
 Debug_EventScript_Script_2::
+	warp MAP_LITTLEROOT_TOWN_PLAYERS_BEDROOM, 1, 6,
 	release
 	end
 
