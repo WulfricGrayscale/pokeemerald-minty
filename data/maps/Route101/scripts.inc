@@ -1,211 +1,9 @@
 .set LOCALID_BIRCH, 2
-.set LOCALID_ZIGZAGOON, 4
-.set LOCALID_BEETLE, 7
+.set LOCALID_SENTRET, 5
+.set LOCALID_BEETLE, 4
 
 Route101_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, Route101_OnTransition
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route101_OnFrame
 	.byte 0
-
-Route101_OnTransition:
-	call ProfBirch_EventScript_UpdateLocation
-	end
-
-Route101_OnFrame:
-	map_script_2 VAR_ROUTE101_STATE, 0, Route101_EventScript_HideMapNamePopup
-	.2byte 0
-
-Route101_EventScript_HideMapNamePopup::
-	setflag FLAG_HIDE_MAP_NAME_POPUP
-	setvar VAR_ROUTE101_STATE, 1
-	end
-
-Route101_EventScript_StartBirchRescue::
-	lockall
-	playbgm MUS_HELP, TRUE
-	msgbox Route101_Text_HelpMe, MSGBOX_DEFAULT
-	closemessage
-	setobjectxy LOCALID_BIRCH, 0, 15
-	setobjectxy LOCALID_ZIGZAGOON, 0, 16
-	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_EnterScene
-	applymovement LOCALID_BIRCH, Route101_Movement_BirchRunAway1
-	applymovement LOCALID_ZIGZAGOON, Route101_Movement_ZigzagoonChase1
-	waitmovement 0
-	applymovement LOCALID_ZIGZAGOON, Route101_Movement_ZigzagoonChaseInCircles
-	applymovement LOCALID_BIRCH, Route101_Movement_BirchRunInCircles
-	waitmovement 0
-	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceFasterRight
-	waitmovement 0
-	applymovement LOCALID_ZIGZAGOON, Route101_Movement_ZigzagoonFaceBirch
-	applymovement LOCALID_BIRCH, Route101_Movement_BirchFaceZigzagoon
-	waitmovement 0
-	msgbox Route101_Text_PleaseHelp, MSGBOX_DEFAULT
-	closemessage
-	setvar VAR_ROUTE101_STATE, 2
-	releaseall
-	end
-
-Route101_EventScript_PreventExitSouth::
-	lockall
-	msgbox Route101_Text_DontLeaveMe, MSGBOX_DEFAULT
-	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_PreventExitSouth
-	waitmovement 0
-	releaseall
-	end
-
-Route101_EventScript_PreventExitWest::
-	lockall
-	msgbox Route101_Text_DontLeaveMe, MSGBOX_DEFAULT
-	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_PreventExitWest
-	waitmovement 0
-	releaseall
-	end
-
-Route101_EventScript_PreventExitNorth::
-	lockall
-	msgbox Route101_Text_DontLeaveMe, MSGBOX_DEFAULT
-	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_PreventExitNorth
-	waitmovement 0
-	releaseall
-	end
-
-Route101_Movement_PreventExitSouth:
-	walk_up
-	step_end
-
-Route101_Movement_PreventExitWest:
-	walk_right
-	step_end
-
-Route101_Movement_PreventExitNorth:
-	walk_down
-	step_end
-
-Route101_Movement_ZigzagoonChaseInCircles:
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_down
-	walk_fast_down
-	walk_fast_left
-	walk_fast_left
-	walk_fast_left
-	walk_fast_up
-	walk_fast_up
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_down
-	walk_fast_down
-	walk_fast_left
-	walk_fast_left
-	walk_fast_left
-	walk_fast_up
-	walk_fast_up
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_down
-	walk_fast_down
-	walk_fast_left
-	walk_fast_left
-	step_end
-
-Route101_Movement_ZigzagoonChase1:
-	walk_fast_up
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_up
-	step_end
-
-@ Leftover data? This command is unused.
-	step_end
-
-Route101_Movement_ZigzagoonFaceBirch:
-	walk_in_place_fast_left
-	walk_in_place_fast_left
-	walk_in_place_fast_left
-	walk_in_place_fast_left
-	step_end
-
-Route101_Movement_EnterScene:
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_in_place_faster_left
-	step_end
-
-Route101_Movement_BirchRunInCircles:
-	walk_fast_up
-	walk_fast_up
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_down
-	walk_fast_down
-	walk_fast_left
-	walk_fast_left
-	walk_fast_left
-	walk_fast_up
-	walk_fast_up
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_down
-	walk_fast_down
-	walk_fast_left
-	walk_fast_left
-	walk_fast_left
-	walk_fast_up
-	walk_fast_up
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_down
-	walk_fast_down
-	walk_fast_left
-	walk_fast_left
-	walk_fast_left
-	step_end
-
-Route101_Movement_BirchRunAway1:
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_right
-	walk_fast_up
-	walk_fast_up
-	step_end
-
-@ Leftover data? This command is unused.
-	step_end
-
-Route101_Movement_BirchFaceZigzagoon:
-	walk_in_place_fast_right
-	walk_in_place_fast_right
-	walk_in_place_fast_right
-	walk_in_place_fast_right
-	step_end
-
-Route101_Movement_Unused1:
-	walk_up
-	walk_up
-	step_end
-
-Route101_Movement_Unused2:
-	walk_up
-	walk_left
-	walk_up
-	step_end
 
 Route101_EventScript_Youngster::
 	msgbox Route101_Text_TakeTiredPokemonToPokeCenter, MSGBOX_NPC
@@ -219,46 +17,12 @@ Route101_EventScript_RouteSign::
 	msgbox Route101_Text_RouteSign, MSGBOX_SIGN
 	end
 
-Route101_EventScript_BirchsBag::
-	lock
-	faceplayer
-	setflag FLAG_SYS_POKEMON_GET
-	setflag FLAG_RESCUED_BIRCH
-	fadescreen FADE_TO_BLACK
-	removeobject LOCALID_ZIGZAGOON
-	setobjectxy OBJ_EVENT_ID_PLAYER, 6, 13
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
-	waitmovement 0
-	special ChooseStarter
-	waitstate
-	applymovement LOCALID_BIRCH, Route101_Movement_BirchApproachPlayer
-	waitmovement 0
-	msgbox Route101_Text_YouSavedMe, MSGBOX_DEFAULT
-	special HealPlayerParty
-	setflag FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE
-	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH
-	setflag FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG
-	setvar VAR_BIRCH_LAB_STATE, 2
-	setvar VAR_ROUTE101_STATE, 3
-	clearflag FLAG_HIDE_MAP_NAME_POPUP
-	checkplayergender
-	call_if_eq VAR_RESULT, MALE, Route101_EventScript_HideMayInBedroom
-	call_if_eq VAR_RESULT, FEMALE, Route101_EventScript_HideBrendanInBedroom
-	warp MAP_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB, 6, 5
-	waitstate
-	release
-	end
-
-Route101_EventScript_HideMayInBedroom::
-	setflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM
-	return
-
-Route101_EventScript_HideBrendanInBedroom::
-	setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_BEDROOM
-	return
-
 Route101_EventScript_Gatekeeper::
 	msgbox Route101_Text_YouCannotEnter, MSGBOX_NPC
+	end
+
+Route101_EventScript_Birch::
+	goto Route101_EventScript_Error
 	end
 
 Route101_EventScript_Gatekeeping::
@@ -279,37 +43,157 @@ Route101_EventScript_Gatekeeping::
 	releaseall
 	end
 
-Route101_Movement_BirchApproachPlayer:
-	walk_right
-	step_end
+Route101_EventScript_BirchTrigger1::
+	lockall
+	setflag FLAG_SAFE_FOLLOWER_MOVEMENT
+	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_ApproachBirchTrigger1
+	applymovement OBJ_EVENT_ID_FOLLOWER, Route101_Movement_WalkLeft
+	applymovement OBJ_EVENT_ID_FOLLOWER, Route101_Movement_ApproachBirchTrigger1
+	waitmovement 0
+	goto Route101_EventScript_BirchTriggerAll
+	end
 
-Route101_Movement_WalkLeft::
+Route101_EventScript_BirchTrigger2::
+	lockall
+	setflag FLAG_SAFE_FOLLOWER_MOVEMENT
+	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_ApproachBirchTrigger2
+	applymovement OBJ_EVENT_ID_FOLLOWER, Route101_Movement_ApproachBirchTrigger2
+	waitmovement 0
+	goto Route101_EventScript_BirchTriggerAll
+	end
+
+Route101_EventScript_BirchTrigger3::
+	lockall
+	setflag FLAG_SAFE_FOLLOWER_MOVEMENT
+	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_ApproachBirchTrigger3
+	applymovement OBJ_EVENT_ID_FOLLOWER, Route101_Movement_ApproachBirchTrigger3
+	waitmovement 0
+	goto Route101_EventScript_BirchTriggerAll
+	end
+
+Route101_EventScript_BirchTrigger4::
+	lockall
+	setflag FLAG_SAFE_FOLLOWER_MOVEMENT
+	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_ApproachBirchTrigger4
+	applymovement OBJ_EVENT_ID_FOLLOWER, Route101_Movement_ApproachBirchTrigger4
+	waitmovement 0
+	goto Route101_EventScript_BirchTriggerAll
+	end
+
+Route101_EventScript_BirchTriggerAll::
+	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_ApproachBirchTriggerAll
+	applymovement OBJ_EVENT_ID_FOLLOWER, Route101_Movement_ApproachBirchFollowerAll
+	applymovement LOCALID_SENTRET, Route101_Movement_SurpriseByPlayer
+	playse SE_PIN
+	waitmovement 0
+	delay 16
+	applymovement LOCALID_BIRCH, Route101_Movement_SurpriseByPlayer
+	playse SE_PIN
+	applymovement LOCALID_SENTRET, Route101_Movement_RunAway
+	waitmovement 0
+	removeobject LOCALID_SENTRET
+	setflag FLAG_HIDE_ROUTE_101_SENTRET
+	goto Route101_EventScript_BirchSpeech
+	end
+
+Route101_EventScript_BirchSpeech::
+	msgbox Route101_Text_ProfBirchMyAssistant, MSGBOX_DEFAULT
+	waitmessage
+	applymovement LOCALID_BIRCH, Common_Movement_FaceRight
+	msgbox Route101_Text_ProfBirchNewSpecies, MSGBOX_DEFAULT
+	waitmessage
+	applymovement LOCALID_BIRCH, Common_Movement_FaceDown
+	msgbox Route101_Text_ProfBirchPackage, MSGBOX_DEFAULT
+	waitmessage
+	applymovement LOCALID_BIRCH, Common_Movement_FaceUp
+	bufferlivemonnickname 0
+	msgbox Route101_Text_ProfBirchDirectionsToOldale, MSGBOX_DEFAULT
+	waitmessage
+	applymovement LOCALID_BIRCH, Common_Movement_FaceDown
+	msgbox Route101_Text_ProfBirchWillBeWaiting, MSGBOX_DEFAULT
+	waitmessage
+	closemessage
+	applymovement LOCALID_BIRCH, Route101_Movement_BirchLeave
+	waitmovement 0
+	clearflag FLAG_SAFE_FOLLOWER_MOVEMENT
+	setvar VAR_BIRCH_LAB_STATE, 1
+	removeobject LOCALID_BIRCH
+	setflag FLAG_HIDE_ROUTE_101_BIRCH
+	releaseall
+	end
+
+Route101_EventScript_Error::
+	msgbox Route101_Text_WhatAreYouDoing, MSGBOX_NPC
+	end
+
+Route101_Movement_WalkLeft:
 	walk_left
 	step_end
 
-Route101_Text_HelpMe:
-	.string "H-help me!$"
+Route101_Movement_SurpriseByPlayer:
+	face_down
+	emote_exclamation_mark
+	step_end
 
-Route101_Text_PleaseHelp:
-	.string "Hello! You over there!\n"
-	.string "Please! Help!\p"
-	.string "In my BAG!\n"
-	.string "There's a POKé BALL!$"
+Route101_Movement_RunAway:
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	step_end
 
-Route101_Text_DontLeaveMe:
-	.string "Wh-Where are you going?!\n"
-	.string "Don't leave me like this!$"
+Route101_Movement_ApproachBirchTrigger1:
+	walk_left
+	step_end
 
-Route101_Text_YouSavedMe:
-	.string "PROF. BIRCH: Whew…\p"
-	.string "I was in the tall grass studying wild\n"
-	.string "POKéMON when I was jumped.\p"
-	.string "You saved me.\n"
-	.string "Thanks a lot!\p"
-	.string "Oh?\p"
-	.string "Hi, you're {PLAYER}{KUN}!\p"
-	.string "This is not the place to chat, so come\n"
-	.string "by my POKéMON LAB later, okay?$"
+Route101_Movement_ApproachBirchTrigger2:
+	walk_left
+	walk_up
+	step_end
+
+Route101_Movement_ApproachBirchTrigger3:
+	walk_left
+	walk_up
+	walk_up
+	step_end
+
+Route101_Movement_ApproachBirchTrigger4:
+	walk_left
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+Route101_Movement_ApproachBirchTriggerAll:
+	walk_up
+	walk_left
+	walk_up
+	step_end
+
+Route101_Movement_ApproachBirchFollowerAll:
+	walk_up
+	walk_left
+	walk_in_place_up
+	step_end
+
+Route101_Movement_BirchLeave:
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	step_end
 
 Route101_Text_TakeTiredPokemonToPokeCenter:
 	.string "If POKéMON get tired, take them to\n"
@@ -327,10 +211,48 @@ Route101_Text_RouteSign:
 	.string "ROUTE 101\n"
 	.string "{UP_ARROW} OLDALE TOWN$"
 
-Route101_Text_YouCannotEnter::
+Route101_Text_YouCannotEnter:
 	.string "BEETLE: Hey!\p"
 	.string "I've never seen you around here,\n"
 	.string "so who do you think you are coming\l"
 	.string "onto the turf of the Bug Boys?\p"
 	.string "Scram!$"
-	
+
+Route101_Text_WhatAreYouDoing:
+	.string "Hunh?\p"
+	.string "If you're reading this, something is\n"
+	.string "not going right. Report this!$"	
+
+Route101_Text_ProfBirchMyAssistant:
+	.string "Prof. Birch: Ah, there's my assistant!\p"
+	.string "Brendan's still in the lab right now,\n"
+	.string "but I wanted to take the opportunity\l"
+	.string "to study some more of the wild Pokémon\l"
+	.string "living in the area.$"
+
+Route101_Text_ProfBirchNewSpecies:
+	.string "Not too long ago, I had a basic\n"
+	.string "understanding of the species\l"
+	.string "distribution in Hoenn.\p"
+	.string "But it seems that plenty of Pokémon\n"
+	.string "never before seen in the region\l"
+	.string "have been showing up and filling in\l"
+	.string "ecological niches previously left\l"
+	.string "unfilled!$"
+
+Route101_Text_ProfBirchPackage:
+	.string "I know most of your time as my\n"
+	.string "assistant has been processing\l"
+	.string "data in Littleroot, but could I\l"
+	.string "trouble you to pick up an important\l"
+	.string "package for me from the mart in\l"
+	.string "Oldale Town?$"
+
+Route101_Text_ProfBirchDirectionsToOldale:
+	.string "It's just to the north, and {STR_VAR_1}\n"
+	.string "should be able to protect you from any\l"
+	.string "wild Pokémon who might jump out at you.$"
+
+Route101_Text_ProfBirchWillBeWaiting:
+	.string "I'll be waiting in the lab.\p"
+	.string "Good luck!$"

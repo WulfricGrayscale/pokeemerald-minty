@@ -1,5 +1,29 @@
+.set LOCALID_CLERK, 1
+
 OldaleTown_Mart_MapScripts::
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, OldaleTown_Mart_OnFrame
 	.byte 0
+
+OldaleTown_Mart_OnFrame::
+map_script_2 VAR_BIRCH_LAB_STATE, 1, OldaleTown_Mart_EventScript_Parcel
+	.2byte 0
+
+OldaleTown_Mart_EventScript_Parcel::
+	lockall
+	setflag FLAG_SAFE_FOLLOWER_MOVEMENT
+	applymovement LOCALID_CLERK, Common_Movement_WalkInPlaceDown
+	msgbox OldaleTown_Mart_Text_AreYouProfAssist, MSGBOX_AUTOCLOSE
+	waitmessage
+	applymovement OBJ_EVENT_ID_PLAYER, OldaleTown_Mart_Movement_Parcel
+	applymovement OBJ_EVENT_ID_FOLLOWER, OldaleTown_Mart_Movement_Parcel
+	waitmovement 0
+	applymovement LOCALID_CLERK, Common_Movement_WalkInPlaceRight
+	msgbox OldaleTown_Mart_Text_TakeThisParcel, MSGBOX_AUTOCLOSE
+	waitmessage
+	giveitem ITEM_PARCEL
+	addvar VAR_BIRCH_LAB_STATE, 1
+	releaseall
+	end
 
 OldaleTown_Mart_EventScript_Clerk::
 	lock
@@ -56,6 +80,14 @@ OldaleTown_Mart_EventScript_Boy::
 	msgbox OldaleTown_Mart_Text_RestoreHPWithPotion, MSGBOX_NPC
 	end
 
+OldaleTown_Mart_Movement_Parcel:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	face_left
+	step_end
+
 OldaleTown_Mart_Text_PokeBallsAreSoldOut:
 	.string "The clerk says they're all sold out.\n"
 	.string "I can't buy any POKé BALLS.$"
@@ -69,4 +101,13 @@ OldaleTown_Mart_Text_RestoreHPWithPotion:
 	.string "and faints, it won't be able to battle.\p"
 	.string "To prevent your POKéMON from fainting,\n"
 	.string "restore its HP with a POTION.$"
+
+OldaleTown_Mart_Text_AreYouProfAssist:
+	.string "Oh, hey, are you the professor's\n"
+	.string "assistant? From Littleroot Town?$"
+
+OldaleTown_Mart_Text_TakeThisParcel:
+	.string "Here, you should take this package.\p"
+	.string "It was delivered here for Professor\n"
+	.string "Birch the other day.$"
 

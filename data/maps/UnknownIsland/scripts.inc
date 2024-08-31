@@ -23,6 +23,7 @@ UnknownIsland_EventScript_NoStarter::
 
 UnknownIsland_EventScript_OceansideCutscene::
 	lockall
+	setflag FLAG_SAFE_FOLLOWER_MOVEMENT
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 	waitmovement 0
 	special SpawnCameraObject
@@ -39,6 +40,7 @@ UnknownIsland_EventScript_OceansideCutscene::
 	fadenewbgm MUS_SEALED_CHAMBER
 	special RemoveCameraObject
 	setvar VAR_TEMP_4, 1
+	clearflag FLAG_SAFE_FOLLOWER_MOVEMENT
 	releaseall
 	end
 

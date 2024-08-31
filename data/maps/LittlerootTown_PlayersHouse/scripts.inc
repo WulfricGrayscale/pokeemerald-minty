@@ -13,27 +13,36 @@ LittlerootTown_PlayersHouse_EventScript_ClockNotSet::
 	lockall
 	msgbox LittlerootTown_PlayersHouse_Text_ClockNotSet, MSGBOX_DEFAULT
 	closemessage
-	switch VAR_FACING
-	case DIR_SOUTH, LittlerootTown_PlayersHouse_EventScript_WalkUpSouth
-	case DIR_EAST, LittlerootTown_PlayersHouse_EventScript_WalkUpEast
-	case DIR_WEST, LittlerootTown_PlayersHouse_EventScript_WalkUpWest
+	setflag FLAG_SAFE_FOLLOWER_MOVEMENT
+	goto_if_eq VAR_FACING, DIR_SOUTH, LittlerootTown_PlayersHouse_EventScript_WalkUpSouth
+	goto_if_eq VAR_FACING, DIR_EAST, LittlerootTown_PlayersHouse_EventScript_WalkUpEast
+	goto_if_eq VAR_FACING, DIR_WEST, LittlerootTown_PlayersHouse_EventScript_WalkUpWest
 	end
 
 LittlerootTown_PlayersHouse_EventScript_WalkUpWest:
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
+	waitmovement 0
 	applymovement OBJ_EVENT_ID_FOLLOWER, LittlerootTown_PlayersHouse_Movement_FollowerClockWest
+	waitmovement 0
+	clearflag FLAG_SAFE_FOLLOWER_MOVEMENT
 	releaseall
 	end
 
 LittlerootTown_PlayersHouse_EventScript_WalkUpEast:
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
+	waitmovement 0
 	applymovement OBJ_EVENT_ID_FOLLOWER, LittlerootTown_PlayersHouse_Movement_FollowerClockEast
+	waitmovement 0
+	clearflag FLAG_SAFE_FOLLOWER_MOVEMENT
 	releaseall
 	end
 
 LittlerootTown_PlayersHouse_EventScript_WalkUpSouth:
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
+	waitmovement 0
 	applymovement OBJ_EVENT_ID_FOLLOWER, LittlerootTown_PlayersHouse_Movement_FollowerClockSouth
+	waitmovement 0
+	clearflag FLAG_SAFE_FOLLOWER_MOVEMENT
 	releaseall
 	end
 
