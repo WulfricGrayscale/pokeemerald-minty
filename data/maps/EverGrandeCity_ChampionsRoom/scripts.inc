@@ -294,7 +294,7 @@ EverGrandeCity_ChampionsRoom_Text_BrendanYouveWon:
 
 EverGrandeCity_ChampionsRoom_Text_BirchArriveRatePokedex:
 	.string "PROF. BIRCH: See?\n"
-	.string "What did I tell you, {RIVAL}?\p"
+	.string "What did I tell you, Brendan?\p"
 	.string "Didn't I tell you that you don't need\n"
 	.string "to worry about {PLAYER}{KUN}?\p"
 	.string "… … … … … … … …\n"

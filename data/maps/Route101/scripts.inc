@@ -1,6 +1,7 @@
 .set LOCALID_BIRCH, 2
 .set LOCALID_SENTRET, 5
 .set LOCALID_BEETLE, 4
+.set LOCALID_RIVAL, 6
 
 Route101_MapScripts::
 	.byte 0
@@ -47,8 +48,7 @@ Route101_EventScript_BirchTrigger1::
 	lockall
 	setflag FLAG_SAFE_FOLLOWER_MOVEMENT
 	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_ApproachBirchTrigger1
-	applymovement OBJ_EVENT_ID_FOLLOWER, Route101_Movement_WalkLeft
-	applymovement OBJ_EVENT_ID_FOLLOWER, Route101_Movement_ApproachBirchTrigger1
+	applymovement OBJ_EVENT_ID_FOLLOWER, Route101_Movement_ApproachBirchFollower1
 	waitmovement 0
 	goto Route101_EventScript_BirchTriggerAll
 	end
@@ -57,7 +57,7 @@ Route101_EventScript_BirchTrigger2::
 	lockall
 	setflag FLAG_SAFE_FOLLOWER_MOVEMENT
 	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_ApproachBirchTrigger2
-	applymovement OBJ_EVENT_ID_FOLLOWER, Route101_Movement_ApproachBirchTrigger2
+	applymovement OBJ_EVENT_ID_FOLLOWER, Route101_Movement_ApproachBirchFollower2
 	waitmovement 0
 	goto Route101_EventScript_BirchTriggerAll
 	end
@@ -66,7 +66,7 @@ Route101_EventScript_BirchTrigger3::
 	lockall
 	setflag FLAG_SAFE_FOLLOWER_MOVEMENT
 	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_ApproachBirchTrigger3
-	applymovement OBJ_EVENT_ID_FOLLOWER, Route101_Movement_ApproachBirchTrigger3
+	applymovement OBJ_EVENT_ID_FOLLOWER, Route101_Movement_ApproachBirchFollower3
 	waitmovement 0
 	goto Route101_EventScript_BirchTriggerAll
 	end
@@ -75,7 +75,7 @@ Route101_EventScript_BirchTrigger4::
 	lockall
 	setflag FLAG_SAFE_FOLLOWER_MOVEMENT
 	applymovement OBJ_EVENT_ID_PLAYER, Route101_Movement_ApproachBirchTrigger4
-	applymovement OBJ_EVENT_ID_FOLLOWER, Route101_Movement_ApproachBirchTrigger4
+	applymovement OBJ_EVENT_ID_FOLLOWER, Route101_Movement_ApproachBirchFollower4
 	waitmovement 0
 	goto Route101_EventScript_BirchTriggerAll
 	end
@@ -126,6 +126,101 @@ Route101_EventScript_Error::
 	msgbox Route101_Text_WhatAreYouDoing, MSGBOX_NPC
 	end
 
+Route101_EventScript_BrendanTrigger1::
+	setvar VAR_TEMP_5, 1
+	goto Route101_EventScript_BrendanEncounter
+
+Route101_EventScript_BrendanTrigger2::
+	setvar VAR_TEMP_5, 2
+	goto Route101_EventScript_BrendanEncounter
+
+Route101_EventScript_BrendanTrigger3::
+	setvar VAR_TEMP_5, 3
+	goto Route101_EventScript_BrendanEncounter
+
+Route101_EventScript_BrendanTrigger4::
+	setvar VAR_TEMP_5, 4
+	goto Route101_EventScript_BrendanEncounter
+
+Route101_EventScript_BrendanEncounter::
+	lockall
+	setflag FLAG_SAFE_FOLLOWER_MOVEMENT
+	playbgm MUS_ENCOUNTER_BRENDAN, TRUE
+	msgbox Route101_Text_BrendanStop, MSGBOX_DEFAULT
+	closemessage
+	addobject LOCALID_RIVAL
+	setobjectxy LOCALID_RIVAL, 16, 10
+	call_if_eq VAR_TEMP_5, 1, Route101_EventScript_BrendanEncounterMove1
+	call_if_eq VAR_TEMP_5, 2, Route101_EventScript_BrendanEncounterMove2
+	call_if_eq VAR_TEMP_5, 3, Route101_EventScript_BrendanEncounterMove3
+	call_if_eq VAR_TEMP_5, 4, Route101_EventScript_BrendanEncounterMove4
+	msgbox Route101_Text_BrendanCatchAnyMon, MSGBOX_DEFAULT
+	getpartysize
+	call_if_gt VAR_RESULT, 1, Route101_EventScript_BrendanHaventCaughtAny
+	call_if_eq VAR_RESULT, 1, Route101_EventScript_BrendanHaventCaughtAny
+	closemessage
+	delay 30
+	bufferleadmonspeciesname 0
+	special HealPlayerParty
+	msgbox Route101_Text_BrendanLetsBattle, MSGBOX_DEFAULT
+	closemessage
+	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_101, Route101_Text_BrendanDefeat
+	msgbox Route101_Text_BrendanGoodJob, MSGBOX_DEFAULT
+	closemessage
+	addvar VAR_BIRCH_LAB_STATE, 1
+	call_if_eq VAR_TEMP_5, 4, Route101_EventScript_BrendanLeaveRight
+	call_if_lt VAR_TEMP_5, 4, Route101_EventScript_BrendanLeaveLeft
+	fadedefaultbgm
+	setflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL
+	clearflag FLAG_SAFE_FOLLOWER_MOVEMENT
+	releaseall
+	end
+
+Route101_EventScript_BrendanCaughtMon::
+	msgbox Route101_Text_BrendanMultipleMon, MSGBOX_DEFAULT
+	return
+
+Route101_EventScript_BrendanHaventCaughtAny::
+	msgbox Route101_Text_BrendanHaventCaughtAny, MSGBOX_DEFAULT
+
+Route101_EventScript_BrendanEncounterMove1::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown
+	applymovement OBJ_EVENT_ID_FOLLOWER, Route101_Movement_BrendanFollowerLeft
+	applymovement LOCALID_RIVAL, Route101_Movement_BrendanMove1
+	waitmovement 0
+	return
+
+Route101_EventScript_BrendanEncounterMove2::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown
+	applymovement OBJ_EVENT_ID_FOLLOWER, Route101_Movement_BrendanFollowerLeft
+	applymovement LOCALID_RIVAL, Route101_Movement_BrendanMove2
+	waitmovement 0
+	return
+
+Route101_EventScript_BrendanEncounterMove3::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown
+	applymovement OBJ_EVENT_ID_FOLLOWER, Route101_Movement_BrendanFollowerLeft
+	applymovement LOCALID_RIVAL, Route101_Movement_BrendanMove3
+	waitmovement 0
+	return
+
+Route101_EventScript_BrendanEncounterMove4::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown
+	applymovement OBJ_EVENT_ID_FOLLOWER, Route101_Movement_BrendanFollowerRight
+	applymovement LOCALID_RIVAL, Route101_Movement_BrendanMove4
+	waitmovement 0
+	return
+
+Route101_EventScript_BrendanLeaveRight::
+	applymovement LOCALID_RIVAL, Route101_Movement_BrendanLeaveRight
+	waitmovement 0
+	return
+
+Route101_EventScript_BrendanLeaveLeft::
+	applymovement LOCALID_RIVAL, Route101_Movement_BrendanLeaveLeft
+	waitmovement 0
+	return
+
 Route101_Movement_WalkLeft:
 	walk_left
 	step_end
@@ -148,15 +243,18 @@ Route101_Movement_RunAway:
 
 Route101_Movement_ApproachBirchTrigger1:
 	walk_left
+	walk_up
 	step_end
 
 Route101_Movement_ApproachBirchTrigger2:
 	walk_left
 	walk_up
+	walk_up
 	step_end
 
 Route101_Movement_ApproachBirchTrigger3:
 	walk_left
+	walk_up
 	walk_up
 	walk_up
 	step_end
@@ -166,10 +264,36 @@ Route101_Movement_ApproachBirchTrigger4:
 	walk_up
 	walk_up
 	walk_up
+	walk_up
+	step_end
+
+Route101_Movement_ApproachBirchFollower1:
+	walk_left
+	walk_left
+	step_end
+
+Route101_Movement_ApproachBirchFollower2:
+	walk_left
+	walk_left
+	walk_up
+	step_end
+
+Route101_Movement_ApproachBirchFollower3:
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	step_end
+
+Route101_Movement_ApproachBirchFollower4:
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	walk_up
 	step_end
 
 Route101_Movement_ApproachBirchTriggerAll:
-	walk_up
 	walk_left
 	walk_up
 	step_end
@@ -193,6 +317,106 @@ Route101_Movement_BirchLeave:
 	walk_down
 	walk_down
 	walk_down
+	step_end
+
+Route101_Movement_BrendanFollowerLeft:
+	walk_left
+	walk_up
+	walk_up
+	walk_right
+	walk_in_place_down
+	step_end
+
+Route101_Movement_BrendanFollowerRight:
+	walk_right
+	walk_up
+	walk_up
+	walk_left
+	walk_in_place_down
+	step_end
+
+Route101_Movement_BrendanMove1:
+	walk_up
+	walk_up
+	walk_up
+	walk_left
+	walk_left
+	walk_up
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	step_end
+
+Route101_Movement_BrendanMove2:
+	walk_up
+	walk_up
+	walk_up
+	walk_left
+	walk_left
+	walk_up
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	step_end
+
+Route101_Movement_BrendanMove3:
+	walk_up
+	walk_up
+	walk_up
+	walk_left
+	walk_left
+	walk_up
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	step_end
+
+Route101_Movement_BrendanMove4:
+	walk_up
+	walk_up
+	walk_up
+	walk_left
+	walk_left
+	walk_up
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	step_end
+
+Route101_Movement_BrendanLeaveLeft:
+	walk_left
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+Route101_Movement_BrendanLeaveRight:
+	walk_right
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
 	step_end
 
 Route101_Text_TakeTiredPokemonToPokeCenter:
@@ -256,3 +480,39 @@ Route101_Text_ProfBirchDirectionsToOldale:
 Route101_Text_ProfBirchWillBeWaiting:
 	.string "I'll be waiting in the lab.\p"
 	.string "Good luck!$"
+
+Route101_Text_BrendanStop:
+	.string "Hey, wait up!$"
+
+Route101_Text_BrendanCatchAnyMon:
+	.string "Brendan: I know you only just left the\n"
+	.string "lab, but have you got any new\n"
+	.string "Pokémon?$"
+
+Route101_Text_BrendanHaventCaughtAny:
+	.string "Huhn? You haven't caught a single one?\p"
+	.string "Well, that's no big deal. But I think\n"
+	.string "you should check out Littleroot Grove\l"
+	.string "and see if anything there catches your\l"
+	.string "eye.$"
+
+Route101_Text_BrendanMultipleMon:
+	.string "Oh, you have!\p"
+	.string "I'm sure you don't need me to remind you,\n"
+	.string "but the mark of a good trainer is raising\l"
+	.string "each one with care.$"
+
+Route101_Text_BrendanLetsBattle:
+	.string "Brendan: Either way, I'd like to see what\n"
+	.string "you and your {STR_VAR_1} can do.\p"
+	.string "Get ready, because it's time for a battle!$"
+
+Route101_Text_BrendanDefeat:
+	.string "Are you sure you're just a beginner?$"
+
+Route101_Text_BrendanGoodJob:
+	.string "Brendan:… … …\p"
+	.string "Haha! Wow, that was a good match!\p"
+	.string "I'm gonna go on ahead. You should\n"
+	.string "probably be on the road to Petalburg.\p"
+	.string "Be seeing you!$"

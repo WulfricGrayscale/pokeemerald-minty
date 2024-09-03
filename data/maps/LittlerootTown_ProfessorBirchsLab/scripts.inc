@@ -7,9 +7,12 @@ LittlerootTown_ProfessorBirchsLab_MapScripts::
 	.byte 0
 
 	@ State descriptions for VAR_BIRCH_LAB_STATE
+	@ 0: Birch is on Route 101
 	@ 1: Met Birch on Route 101
 	@ 2: Obtained Parcel
 	@ 3: Obtained Pokedex
+	@ 4: Beat Brendan on Route 101
+	@ 5: Brendan is home again
 
 LittlerootTown_ProfessorBirchsLab_OnFrame:
 	map_script_2 VAR_BIRCH_LAB_STATE, 2, LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedexEvent
@@ -71,6 +74,10 @@ EventScript_RegisterProfBirch::
 LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedex::
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_MyParcel, MSGBOX_DEFAULT
 	closemessage
+	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceDown
+	waitmovement 0
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_HereYouGo, MSGBOX_DEFAULT
+	closemessage
 	call LittlerootTown_ProfessorBirchsLab_EventScript_ReceivePokedex
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex, MSGBOX_DEFAULT
 	closemessage
@@ -87,7 +94,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedex::
 
 LittlerootTown_ProfessorBirchsLab_EventScript_BrendanGivePokeBalls::
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_BrendanGotPokedexTooTakeThese, MSGBOX_DEFAULT
-	giveitem ITEM_POKE_BALL, 5
+	giveitem ITEM_POKE_BALL, 10
 	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanNoRoomForPokeBalls
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_CatchCoolPokemonWithPokeBalls, MSGBOX_DEFAULT
 	setvar VAR_RESULT, 1
@@ -124,8 +131,20 @@ LittlerootTown_ProfessorBirchsLab_EventScript_Machine::
 LittlerootTown_ProfessorBirchsLab_EventScript_Rival::
 	lock
 	faceplayer
-
+	goto_if_eq VAR_BIRCH_LAB_STATE, 0, LittlerootTown_ProfessorBirchsLab_EventScript_DadsNotHere
+	goto_if_eq VAR_BIRCH_LAB_STATE, 1, LittlerootTown_ProfessorBirchsLab_EventScript_HowsYourMon
 	release
+	end
+
+LittlerootTown_ProfessorBirchsLab_EventScript_DadsNotHere:
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_DadsNotHere, MSGBOX_NPC
+	end
+
+LittlerootTown_ProfessorBirchsLab_EventScript_HowsYourMon:
+	bufferlivemonnickname 0
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_HowsYourMon, MSGBOX_AUTOCLOSE
+	waitmessage
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_CantGetDistracted, MSGBOX_NPC
 	end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_BrendanWhereShouldIGoNext::
@@ -165,41 +184,52 @@ LittlerootTown_ProfessorBirchsLab_EventScript_ScottAboardSSTidalCall::
 	end
 
 LittlerootTown_ProfessorBirchsLab_Text_BirchIsntOneForDeskWork:
-	.string "The PROF isn't one for doing desk work.\n"
+	.string "The prof isn't one for doing desk work.\n"
 	.string "He's the type of person who would\l"
 	.string "rather go outside and experience\l"
 	.string "things than read about them here.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BirchEnjoysRivalsHelpToo:
-	.string "PROF. BIRCH is studying the habitats\n"
-	.string "and distribution of POKéMON.\p"
-	.string "The PROF enjoys {RIVAL}'s help, too.\n"
+	.string "Prof. Birch is studying the habitats\n"
+	.string "and distribution of Pokémon.\p"
+	.string "The prof enjoys Brendan's help, too.\n"
 	.string "There's a lot of love there.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BirchRivalGoneHome:
-	.string "PROF. BIRCH: {RIVAL}?\n"
+	.string "Prof. Birch: Brendan?\n"
 	.string "Gone home, I think.\p"
 	.string "Or maybe that kid's scrabbling around\n"
 	.string "in tall grass again somewhere…\p"
-	.string "If you or your POKéMON get tired,\n"
+	.string "If you or your Pokémon get tired,\n"
 	.string "you should get some rest at home.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_MyParcel:
-	.string "Ah! My parcel! Thank you.$"
+	.string "Prof. Birch: Ah, {PLAYER}, there you\n"
+	.string "are. Welcome back to the lab.\p"
+	.string "Are you finished with that errand?\p"
+	.string "Oh! Thank you, I really appreciate it.\p"
+	.string "… … …\p"
+	.string "Actually, hold on one second\n"
+	.string "while I open this up.$"
+
+LittlerootTown_ProfessorBirchsLab_Text_HereYouGo:
+	.string "Prof. Birch: Here you are!\p"
+	.string "I ordered this a while ago, it's a brand\n"
+	.string "new, state-of-the-art Pokédex!\p"
 
 LittlerootTown_ProfessorBirchsLab_Text_ReceivedPokedex:
-	.string "{PLAYER} received the POKéDEX!$"
+	.string "{PLAYER} received the Pokédex!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex:
-	.string "PROF. BIRCH: The POKéDEX is a high-tech\n"
-	.string "tool that automatically makes a record\l"
-	.string "of any POKéMON you meet or catch.\p"
-	.string "My kid, {RIVAL}, goes everywhere\n"
-	.string "with it.\p"
-	.string "Whenever my kid catches a rare POKéMON\n"
-	.string "and records its data in the POKéDEX,\l"
-	.string "why, {RIVAL} looks for me while I'm out\l"
-	.string "doing fieldwork, and shows me.$"
+	.string "Prof. Birch: This Pokédex is of a far\n"
+	.string "more recent model than the ones I've\l"
+	.string "had lying about the lab.\p"
+	.string "The data you can automatically record\n"
+	.string "with this is far more in-depth and\l"
+	.string "useful as a trainer.\p"
+	.string "Try it out and see for yourself by\n"
+	.string "catching any new Pokémon you come\l"
+	.string "across in the wild!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_CountlessPokemonAwait:
 	.string "PROF. BIRCH: Countless POKéMON\n"
@@ -208,21 +238,24 @@ LittlerootTown_ProfessorBirchsLab_Text_CountlessPokemonAwait:
 	.string "and do fieldwork again!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BrendanGotPokedexTooTakeThese:
-	.string "BRENDAN: Huh…\n"
-	.string "So you got a POKéDEX, too.\p"
-	.string "Well then, here.\n"
-	.string "I'll give you these.$"
+	.string "Brendan: Huh…\n"
+	.string "So you've got a Pokédex too now.\p"
+	.string "Brand new and shiny to boot!\n"
+	.string "I wouldn't trade mine for the world, but\l"
+	.string "I'll admit, I'm a bit jealous at all the\l"
+	.string "features your Pokédex has.\p"
+	.string "Here, these should help you get started.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_CatchCoolPokemonWithPokeBalls:
-	.string "BRENDAN: You know it's more fun to\n"
-	.string "have a whole bunch of POKéMON.\p"
-	.string "I'm going to explore all over the place\n"
-	.string "to find different POKéMON.\p"
-	.string "If I find any cool POKéMON, you bet\n"
-	.string "I'll try to get them with POKé BALLS.$"
+	.string "Brendan: You know, it's more fun to\n"
+	.string "explore when you have plenty of\n"
+	.string "Pokémon by your side.\p"
+	.string "Try catching and raising as many as you\n"
+	.string "can to find your favorites!\p"
+	.string "That's what I do, anyway.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_HeyYourBagsFull:
-	.string "Hey, your BAG's full.$"
+	.string "Hey, your bag's full.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BrendanWhereShouldIGoNext:
 	.string "BRENDAN: Where should I look for\n"
@@ -248,11 +281,6 @@ LittlerootTown_ProfessorBirchsLab_Text_BrendanTakeBreakFromFieldwork:
 	.string "I'm taking a break from fieldwork.\p"
 	.string "I'll be helping out the PROF here\n"
 	.string "for a while.$"
-
-@ Unused
-LittlerootTown_ProfessorBirchsLab_Text_DontHaveAnyRoomForPokemon:
-	.string "Oh, you don't have any room for\n"
-	.string "this POKéMON.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BrendanPreferCollectingSlowly:
 	.string "BRENDAN: Rather than collecting\n"
@@ -280,3 +308,21 @@ LittlerootTown_ProfessorBirchsLab_Text_ScottAboardSSTidalCall:
 	.string "we meet. I'll be waiting!\p"
 	.string "… … … … … …\n"
 	.string "… … … … … Click!$"
+
+LittlerootTown_ProfessorBirchsLab_Text_DadsNotHere:
+	.string "Brendan: Hey, {PLAYER}. Dad's not here\n"
+	.string "right now.\p"
+	.string "I think he might be waiting for you on\n"
+	.string "Route 101. As for me, I'm stuck doing\l"
+	.string "secretary work temporarily.\p"
+	.string "Tough job, learning how to be a Pokémon\n"
+	.string "professor.$"
+
+LittlerootTown_ProfessorBirchsLab_Text_HowsYourMon:
+	.string "Brendan: Welcome back, {PLAYER}. How's\n"
+	.string "{STR_VAR_1} doing? Ready for a battle?$"
+
+LittlerootTown_ProfessorBirchsLab_Text_CantGetDistracted:
+	.string "Huh? The professor asked you to run an\n"
+	.string "errand?\p"
+	.string "Better not get distracted, then.$"

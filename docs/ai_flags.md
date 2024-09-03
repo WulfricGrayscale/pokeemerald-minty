@@ -93,7 +93,7 @@ With respect to the player’s mons:
 AI prioritizes setting up field effects (Trick Room, Rain Dance, etc.) and side statuses (Tailwind, Spikes, etc.), even if it could faint the target.
 
 ## `AI_FLAG_NEGATE_UNAWARE`
-AI does not understand ability suppression (Mold Breaker etc., weather suppression (Air Lock etc.), redirection abilities (Lightningrod etc.) being temporarily removed due to move effects (Sky Drop etc.), or item suppression (Magic Room etc.) and will ignore them. This is a handicap flag.
+AI does not understand ability suppression (Mold Breaker etc.), weather suppression (Air Lock etc.), redirection abilities (Lightningrod etc.) being temporarily removed due to move effects (Sky Drop etc.), or item suppression (Magic Room etc.) and will ignore them. This is a handicap flag.
 
 ## `AI_FLAG_WILL_SUICIDE`
 AI prioritizes self destruction moves (Explosion, Memento).

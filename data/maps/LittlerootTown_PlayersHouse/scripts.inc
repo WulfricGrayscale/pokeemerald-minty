@@ -20,7 +20,7 @@ LittlerootTown_PlayersHouse_EventScript_ClockNotSet::
 	end
 
 LittlerootTown_PlayersHouse_EventScript_WalkUpWest:
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
+	applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_PlayersHouse_Movement_ClockNotSet
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_FOLLOWER, LittlerootTown_PlayersHouse_Movement_FollowerClockWest
 	waitmovement 0
@@ -29,7 +29,7 @@ LittlerootTown_PlayersHouse_EventScript_WalkUpWest:
 	end
 
 LittlerootTown_PlayersHouse_EventScript_WalkUpEast:
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
+	applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_PlayersHouse_Movement_ClockNotSet
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_FOLLOWER, LittlerootTown_PlayersHouse_Movement_FollowerClockEast
 	waitmovement 0
@@ -38,13 +38,18 @@ LittlerootTown_PlayersHouse_EventScript_WalkUpEast:
 	end
 
 LittlerootTown_PlayersHouse_EventScript_WalkUpSouth:
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
-	waitmovement 0
 	applymovement OBJ_EVENT_ID_FOLLOWER, LittlerootTown_PlayersHouse_Movement_FollowerClockSouth
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, LittlerootTown_PlayersHouse_Movement_ClockNotSet
 	waitmovement 0
 	clearflag FLAG_SAFE_FOLLOWER_MOVEMENT
 	releaseall
 	end
+
+
+LittlerootTown_PlayersHouse_Movement_ClockNotSet:
+	walk_up
+	step_end
 
 LittlerootTown_PlayersHouse_Movement_FollowerClockWest:
 	walk_left
