@@ -119,6 +119,7 @@ Route101_EventScript_BirchSpeech::
 	setvar VAR_BIRCH_LAB_STATE, 1
 	removeobject LOCALID_BIRCH
 	setflag FLAG_HIDE_ROUTE_101_BIRCH
+	clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH
 	releaseall
 	end
 
@@ -150,13 +151,10 @@ Route101_EventScript_BrendanEncounter::
 	closemessage
 	addobject LOCALID_RIVAL
 	setobjectxy LOCALID_RIVAL, 16, 10
-	call_if_eq VAR_TEMP_5, 1, Route101_EventScript_BrendanEncounterMove1
-	call_if_eq VAR_TEMP_5, 2, Route101_EventScript_BrendanEncounterMove2
-	call_if_eq VAR_TEMP_5, 3, Route101_EventScript_BrendanEncounterMove3
-	call_if_eq VAR_TEMP_5, 4, Route101_EventScript_BrendanEncounterMove4
+	call_if_eq VAR_TEMP_4, 0, Route101_EventScript_BrendanMoveAll
 	msgbox Route101_Text_BrendanCatchAnyMon, MSGBOX_DEFAULT
 	getpartysize
-	call_if_gt VAR_RESULT, 1, Route101_EventScript_BrendanHaventCaughtAny
+	call_if_gt VAR_RESULT, 1, Route101_EventScript_BrendanCaughtMon
 	call_if_eq VAR_RESULT, 1, Route101_EventScript_BrendanHaventCaughtAny
 	closemessage
 	delay 30
@@ -176,12 +174,21 @@ Route101_EventScript_BrendanEncounter::
 	releaseall
 	end
 
+Route101_EventScript_BrendanMoveAll::
+	call_if_eq VAR_TEMP_5, 1, Route101_EventScript_BrendanEncounterMove1
+	call_if_eq VAR_TEMP_5, 2, Route101_EventScript_BrendanEncounterMove2
+	call_if_eq VAR_TEMP_5, 3, Route101_EventScript_BrendanEncounterMove3
+	call_if_eq VAR_TEMP_5, 4, Route101_EventScript_BrendanEncounterMove4
+	addvar VAR_TEMP_4, 1
+	return
+
 Route101_EventScript_BrendanCaughtMon::
 	msgbox Route101_Text_BrendanMultipleMon, MSGBOX_DEFAULT
 	return
 
 Route101_EventScript_BrendanHaventCaughtAny::
 	msgbox Route101_Text_BrendanHaventCaughtAny, MSGBOX_DEFAULT
+	return
 
 Route101_EventScript_BrendanEncounterMove1::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown
@@ -486,7 +493,7 @@ Route101_Text_BrendanStop:
 
 Route101_Text_BrendanCatchAnyMon:
 	.string "Brendan: I know you only just left the\n"
-	.string "lab, but have you got any new\n"
+	.string "lab, but have you got any new\l"
 	.string "Pokémon?$"
 
 Route101_Text_BrendanHaventCaughtAny:

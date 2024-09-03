@@ -89,6 +89,7 @@ LittlerootGrove_EventScript_Scyther::
 	end
 
 LittlerootGrove_EventScript_Weevil::
+	goto_if_defeated TRAINER_WEEVIL, LittlerootGrove_EventScript_WeevilNextTime
 	msgbox LittlerootGrove_Text_WeevilGoScyther, MSGBOX_DEFAULT
 	closemessage
 	delay 48
@@ -114,6 +115,10 @@ LittlerootGrove_EventScript_Weevil::
 	case DIR_EAST, LittlerootGrove_EventScript_WeevilChallengeFacingEast
 	case DIR_WEST, LittlerootGrove_EventScript_WeevilChallengeFacingWest
 	case DIR_SOUTH, LittlerootGrove_EventScript_WeevilChallengeFacingSouth
+	end
+
+LittlerootGrove_EventScript_WeevilNextTime::
+	msgbox LittlerootGrove_Text_BetterGetStrong, MSGBOX_NPC
 	end
 
 LittlerootGrove_EventScript_NotRightNow::
@@ -149,19 +154,20 @@ LittlerootGrove_EventScript_WeevilChallengeFacingWest::
 	special SpawnCameraObject
 	applymovement OBJ_EVENT_ID_CAMERA, LittlerootGrove_Movement_CameraMoveUp
 	waitmovement 0
+	special RemoveCameraObject
 	delay 20
 	trainerbattle_no_intro TRAINER_WEEVIL, LittlerootGrove_Text_WeevilDefeated
 	goto LittlerootGrove_EventScript_WeevilLost
 	end
 
 LittlerootGrove_EventScript_WeevilLost::
-	special SpawnCameraObject
-	removeobject LOCALID_LOSER
 	delay 60
+	special SpawnCameraObject
 	applymovement LOCALID_WEEVIL, LittlerootGrove_Movement_ChangeSign
 	waitmovement 0
 	msgbox LittlerootGrove_Text_WhatWasYourName, MSGBOX_DEFAULT
 	closemessage
+	delay 30
 	applymovement LOCALID_WEEVIL, Common_Movement_FaceDown
 	msgbox LittlerootGrove_Text_ChangedTheSign, MSGBOX_DEFAULT
 	closemessage
@@ -177,7 +183,7 @@ LittlerootGrove_EventScript_WeevilLost::
 	end
 
 LittlerootGrove_EventScript_WeevilMonOut::
-	setobjectxyperm LOCALID_SCYTHER, 22, 5
+	setobjectxy LOCALID_SCYTHER, 22, 5
 	addobject LOCALID_SCYTHER
 	applymovement LOCALID_SCYTHER, LittlerootGrove_Movement_ExitPokeball
 	waitmovement 0
@@ -198,7 +204,8 @@ LittlerootGrove_EventScript_WeevilMonOut::
 LittlerootGrove_EventScript_WeevilGetItNow::
 	msgbox LittlerootGrove_Text_WeevilGetItNow, MSGBOX_DEFAULT
 	closemessage
-	setflag FLAG_DEFEATED_WEEVIL
+	removeobject LOCALID_LOSER
+	removeobject LOCALID_CATERPIE
 	return
 
 LittlerootGrove_EventScript_HeracrossScytherWordless::
@@ -216,24 +223,52 @@ LittlerootGrove_EventScript_GivemonChoice::
 	switch VAR_RESULT
 	case 0, LittlerootGrove_EventScript_GiveScyther
 	case 1, LittlerootGrove_EventScript_GiveHeracross
+	end
 
 LittlerootGrove_EventScript_GiveScyther::
 	bufferspeciesname 0, SPECIES_SCYTHER
 	msgbox LittlerootGrove_Text_PickThisMon, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, 0, LittlerootGrove_EventScript_GivemonChoice
-	givemon SPECIES_SCYTHER, 4, nature=NATURE_JOLLY
 	bufferspeciesname 0, SPECIES_SCYTHER
-	call_if_eq VAR_RESULT, 1, Common_EventScript_NameReceivedPartyMon
+	playfanfare MUS_OBTAIN_ITEM
+	msgbox LittlerootGrove_Text_MonGet, MSGBOX_DEFAULT
+	waitfanfare
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+	givemon SPECIES_SCYTHER, 3, nature=NATURE_JOLLY, gender=MALE
+	call_if_eq VAR_RESULT, 1, LittlerootGrove_EventScript_NicknameMonFanfare
+	applymovement LOCALID_SCYTHER, LittlerootGrove_Movement_EnterPokeball
+	msgbox LittlerootGrove_Text_TakeGoodCare, MSGBOX_AUTOCLOSE
+	waitmessage
+	delay 30
+	applymovement LOCALID_HERACROSS, LittlerootGrove_Movement_EnterPokeball
+	removeobject LOCALID_HERACROSS
+	removeobject LOCALID_SCYTHER
 	end
 
 LittlerootGrove_EventScript_GiveHeracross::
 	bufferspeciesname 0, SPECIES_HERACROSS
 	msgbox LittlerootGrove_Text_PickThisMon, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, 0, LittlerootGrove_EventScript_GivemonChoice
-	givemon SPECIES_HERACROSS, 4, nature=NATURE_ADAMANT
 	bufferspeciesname 0, SPECIES_HERACROSS
-	call_if_eq VAR_RESULT, 1, Common_EventScript_NameReceivedPartyMon
+	playfanfare MUS_OBTAIN_ITEM
+	msgbox LittlerootGrove_Text_MonGet, MSGBOX_DEFAULT
+	waitfanfare
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+	givemon SPECIES_HERACROSS, 3, nature=NATURE_ADAMANT, gender=MALE
+	call_if_eq VAR_RESULT, 1, LittlerootGrove_EventScript_NicknameMonFanfare
+	applymovement LOCALID_HERACROSS, LittlerootGrove_Movement_EnterPokeball
+	msgbox LittlerootGrove_Text_TakeGoodCare, MSGBOX_AUTOCLOSE
+	waitmessage
+	delay 30
+	applymovement LOCALID_SCYTHER, LittlerootGrove_Movement_EnterPokeball
+	removeobject LOCALID_SCYTHER
+	removeobject LOCALID_HERACROSS
 	end
+
+LittlerootGrove_EventScript_NicknameMonFanfare::
+	call Common_EventScript_GetGiftMonPartySlot
+	call Common_EventScript_NameReceivedPartyMon
+	return
 
 LittlerootGrove_Movement_EnterPokeball:
 	enter_pokeball
@@ -241,6 +276,7 @@ LittlerootGrove_Movement_EnterPokeball:
 
 LittlerootGrove_Movement_ExitPokeball:
 	exit_pokeball
+	walk_in_place_down
 	step_end
 
 LittlerootGrove_Movement_LeaveBattlefield:
@@ -429,16 +465,18 @@ LittlerootGrove_Text_WeevilAdmittingDefeat:
 	.string "trainers just starting out!$"
 
 LittlerootGrove_Text_BugsNeitherTalk:
-	.string "Neither Scyther nor Heracross say a word,\n"
+	.string "Neither Scyther or Heracross say a word,\n"
 	.string "but you can tell what they're thinking.$"
 
 LittlerootGrove_Text_WeevilGetItNow:
 	.string "Weevil: Oh, I get it!\p"
-	.string "Scyther and Heracross were both impressed\n"
-	.string "by your battling skills. I bet they think\l"
-	.string "you have what it takes to go all the way!\p"
-	.string "Say, how about you take one of them along?\n"
-	.string "They're pretty rare here in Hoenn, y'know!$"
+	.string "Scyther and Heracross were both\n"
+	.string "impressed by your battling skills. I bet\l"
+	.string "they think you have what it takes to go\l"
+	.string "all the way!\p"
+	.string "Say, how about you take one of them\n"
+	.string "along? They're pretty rare here in\l"
+	.string "Hoenn, y'know!$"
 
 LittlerootGrove_Text_Scyther:
 	.string "Scyther$"
@@ -453,10 +491,14 @@ LittlerootGrove_Text_PickThisMon:
 LittlerootGrove_Text_MonGet:
 	.string "{STR_VAR_1} joined your party!$"
 
-LittlerootGrove_Text_GiveNick:
-	.string "Would you like to give a nickname to\n"
-	.string "{STR_VAR_1}?$"
-
 LittlerootGrove_Text_PartyFull:
 	.string "Oh, it seems like your party is full.\n"
 	.string "Go make some room!$"
+
+LittlerootGrove_Text_TakeGoodCare:
+	.string "Weevil: Take good care of {STR_VAR_1}!$"
+
+LittlerootGrove_Text_BetterGetStrong:
+	.string "Weevil: You better get training,\n"
+	.string "{PLAYER}, because next time, I'll be\l"
+	.string "even stronger!$"

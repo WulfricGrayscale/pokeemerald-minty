@@ -21,6 +21,7 @@ PlayersHouse_2F_EventScript_WallClock::
 	call PlayersHouse_2F_EventScript_SetWallClock
 	delay 30
 	addvar VAR_PLAYER_HOUSE_STATE, 1
+	setflag FLAG_SET_WALL_CLOCK
 	releaseall
 	end
 

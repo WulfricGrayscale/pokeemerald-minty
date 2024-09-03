@@ -80,14 +80,15 @@ LittlerootTown_EventScript_BirchsLabSign::
 
 LittlerootTown_EventScript_BirchsHouseSign::
 	msgbox LittlerootTown_Text_ProfBirchsHouse, MSGBOX_SIGN
-	return
+	end
 
 LittlerootTown_EventScript_NormansHouseSign::
 	msgbox LittlerootTown_Text_NormansHouse, MSGBOX_SIGN
-	return
+	end
 
 LittlerootTown_EventScript_PlayersHouseSign::
 	msgbox LittlerootTown_Text_PlayersHouse, MSGBOX_SIGN
+	end
 
 LittlerootTown_Text_TechnologyIsBoring:
 	.string "The power of technology is incredible!\p"
@@ -106,7 +107,7 @@ LittlerootTown_Text_LittlerootGrove:
 LittlerootTown_Text_IfYouGoInGrassPokemonWillJumpOut:
 	.string "Um, um, um!\p"
 	.string "If you go outside and go in the grass,\n"
-	.string "wild POKéMON will jump out!$"
+	.string "wild Pokémon will jump out!$"
 
 LittlerootTown_Text_DangerousIfYouDontHavePokemon:
 	.string "It's dangerous if you don't have\n"
@@ -126,24 +127,24 @@ LittlerootTown_Text_YouSavedBirch:
 	.string "I'm so glad!$"
 
 LittlerootTown_Text_GoodLuckCatchingPokemon:
-	.string "Are you going to catch POKéMON?\n"
+	.string "Are you going to catch Pokémon?\n"
 	.string "Good luck!$"
 
 LittlerootTown_Text_TownSign:
-	.string "LITTLEROOT TOWN\n"
+	.string "Littleroot Town\n"
 	.string "“A town that can't be shaded any hue.”$"
 
 LittlerootTown_Text_ProfBirchsLab:
-	.string "PROF. BIRCH'S POKéMON LAB$"
+	.string "Prof. Birch's Pokémon Lab$"
 
 LittlerootTown_Text_PlayersHouse:
-	.string "{PLAYER}'s HOUSE$"
+	.string "{PLAYER}'s house$"
 
 LittlerootTown_Text_ProfBirchsHouse:
-	.string "PROF. BIRCH'S HOUSE$"
+	.string "Prof. Birch's house$"
 
 LittlerootTown_Text_NormansHouse:
-	.string "NORMAN'S HOUSE$"
+	.string "Leader Norman's house$"
 
 LittlerootTown_Text_ForSaleSign:
 	.string "A sign that once said FOR SALE now only\n"

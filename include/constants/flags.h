@@ -653,7 +653,7 @@
 #define FLAG_HIDDEN_ITEM_ROUTE_105_BIG_PEARL                 (FLAG_HIDDEN_ITEMS_START + 0x6F)
 
 #define FLAG_ENCOUNTERS_DISABLED  0x264 // Disables Encounters
-#define FLAG_UNUSED_0x265  0x265 // Unused Flag
+#define FLAG_CATCHING_DISABLED    0x265 // Unused Flag
 #define FLAG_UNUSED_0x266  0x266 // Unused Flag
 #define FLAG_UNUSED_0x267  0x267 // Unused Flag
 #define FLAG_UNUSED_0x268  0x268 // Unused Flag
@@ -1311,7 +1311,7 @@
 #define FLAG_UNUSED_0x4EC                                           0x4EC // Unused Flag
 #define FLAG_UNUSED_0x4ED                                           0x4ED // Unused Flag
 #define FLAG_UNUSED_0x4EE                                           0x4EE // Unused Flag
-#define FLAG_DEBUG_NOCLIP                                           0x4EF // Unused Flag
+#define FLAG_DEBUG_NOCLIP                                           0x4EF // Used to disable collision in the debug menu
 
 #define FLAG_DEFEATED_RUSTBORO_GYM                                  0x4F0
 #define FLAG_DEFEATED_DEWFORD_GYM                                   0x4F1

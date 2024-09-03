@@ -220,6 +220,12 @@ const u32 gTrainerPalette_Brendan[] = INCBIN_U32("graphics/trainers/palettes/bre
 const u32 gTrainerFrontPic_May[] = INCBIN_U32("graphics/trainers/front_pics/may.4bpp.lz");
 const u32 gTrainerPalette_May[] = INCBIN_U32("graphics/trainers/palettes/may.gbapal.lz");
 
+const u32 gTrainerFrontPic_RivalBrendan[] = INCBIN_U32("graphics/trainers/front_pics/rival_brendan.4bpp.lz");
+const u32 gTrainerPalette_RivalBrendan[] = INCBIN_U32("graphics/trainers/palettes/rival_brendan.gbapal.lz");
+
+const u32 gTrainerFrontPic_RivalMay[] = INCBIN_U32("graphics/trainers/front_pics/rival_may.4bpp.lz");
+const u32 gTrainerPalette_RivalMay[] = INCBIN_U32("graphics/trainers/palettes/rival_may.gbapal.lz");
+
 const u32 gTrainerFrontPic_BugCatcher[] = INCBIN_U32("graphics/trainers/front_pics/bug_catcher.4bpp.lz");
 const u32 gTrainerPalette_BugCatcher[] = INCBIN_U32("graphics/trainers/front_pics/bug_catcher.gbapal.lz");
 
@@ -401,6 +407,8 @@ const struct TrainerSprite gTrainerSprites[] =
     TRAINER_SPRITE(LEAF, Leaf),
     TRAINER_SPRITE(RS_BRENDAN, RubySapphireBrendan),
     TRAINER_SPRITE(RS_MAY, RubySapphireMay),
+    TRAINER_SPRITE(RIVAL_BRENDAN, RivalBrendan),
+    TRAINER_SPRITE(RIVAL_MAY, RivalMay),
 };
 
 static const union AnimCmd sAnimCmd_Hoenn[] =

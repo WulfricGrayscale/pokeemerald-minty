@@ -72,8 +72,11 @@ EventScript_RegisterProfBirch::
 	end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedex::
+	addvar VAR_BIRCH_LAB_STATE, 1
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_MyParcel, MSGBOX_DEFAULT
 	closemessage
+	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceDown
+	waitmovement 0
 	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceDown
 	waitmovement 0
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_HereYouGo, MSGBOX_DEFAULT
@@ -87,8 +90,8 @@ LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedex::
 	waitmovement 0
 	call LittlerootTown_ProfessorBirchsLab_EventScript_BrendanGivePokeBalls
 	setflag FLAG_ADVENTURE_STARTED
+	addvar VAR_BEETLE_ROUTE101_STATE, 1
 	setvar VAR_OLDALE_TOWN_STATE, 1
-	addvar VAR_BIRCH_LAB_STATE, 1
 	releaseall
 	end
 
@@ -133,18 +136,23 @@ LittlerootTown_ProfessorBirchsLab_EventScript_Rival::
 	faceplayer
 	goto_if_eq VAR_BIRCH_LAB_STATE, 0, LittlerootTown_ProfessorBirchsLab_EventScript_DadsNotHere
 	goto_if_eq VAR_BIRCH_LAB_STATE, 1, LittlerootTown_ProfessorBirchsLab_EventScript_HowsYourMon
+	goto_if_eq VAR_BIRCH_LAB_STATE, 2, LittlerootTown_ProfessorBirchsLab_EventScript_GoodLuck
 	release
 	end
 
-LittlerootTown_ProfessorBirchsLab_EventScript_DadsNotHere:
+LittlerootTown_ProfessorBirchsLab_EventScript_DadsNotHere::
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_DadsNotHere, MSGBOX_NPC
 	end
 
-LittlerootTown_ProfessorBirchsLab_EventScript_HowsYourMon:
+LittlerootTown_ProfessorBirchsLab_EventScript_HowsYourMon::
 	bufferlivemonnickname 0
-	msgbox LittlerootTown_ProfessorBirchsLab_Text_HowsYourMon, MSGBOX_AUTOCLOSE
-	waitmessage
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_HowsYourMon, MSGBOX_DEFAULT
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_CantGetDistracted, MSGBOX_NPC
+	closemessage
+	end
+
+LittlerootTown_ProfessorBirchsLab_EventScript_GoodLuck::
+	msgbox LittlerootTown_Text_GoodLuckCatchingPokemon, MSGBOX_NPC
 	end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_BrendanWhereShouldIGoNext::
@@ -184,7 +192,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_ScottAboardSSTidalCall::
 	end
 
 LittlerootTown_ProfessorBirchsLab_Text_BirchIsntOneForDeskWork:
-	.string "The prof isn't one for doing desk work.\n"
+	.string "The Prof isn't one for doing desk work.\n"
 	.string "He's the type of person who would\l"
 	.string "rather go outside and experience\l"
 	.string "things than read about them here.$"
@@ -226,7 +234,7 @@ LittlerootTown_ProfessorBirchsLab_Text_ExplainPokedex:
 	.string "had lying about the lab.\p"
 	.string "The data you can automatically record\n"
 	.string "with this is far more in-depth and\l"
-	.string "useful as a trainer.\p"
+	.string "should prove useful to you as a trainer.\p"
 	.string "Try it out and see for yourself by\n"
 	.string "catching any new Pokémon you come\l"
 	.string "across in the wild!$"
@@ -248,7 +256,7 @@ LittlerootTown_ProfessorBirchsLab_Text_BrendanGotPokedexTooTakeThese:
 
 LittlerootTown_ProfessorBirchsLab_Text_CatchCoolPokemonWithPokeBalls:
 	.string "Brendan: You know, it's more fun to\n"
-	.string "explore when you have plenty of\n"
+	.string "explore when you have plenty of\l"
 	.string "Pokémon by your side.\p"
 	.string "Try catching and raising as many as you\n"
 	.string "can to find your favorites!\p"
@@ -263,7 +271,7 @@ LittlerootTown_ProfessorBirchsLab_Text_BrendanWhereShouldIGoNext:
 
 LittlerootTown_ProfessorBirchsLab_Text_SeriousLookingMachine:
 	.string "It's a serious-looking machine.\n"
-	.string "The prof must use this for research.$"
+	.string "The Prof must use this for research.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_PCUsedForResearch:
 	.string "It's a PC used for research.\n"
@@ -326,3 +334,6 @@ LittlerootTown_ProfessorBirchsLab_Text_CantGetDistracted:
 	.string "Huh? The professor asked you to run an\n"
 	.string "errand?\p"
 	.string "Better not get distracted, then.$"
+
+LittlerootTown_ProfessorBirchsLab_Text_GoodLuck:
+	.string "Brendan: Good luck catching Pokémon!$"

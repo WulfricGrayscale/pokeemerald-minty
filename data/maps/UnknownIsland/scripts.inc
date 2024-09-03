@@ -189,7 +189,7 @@ UnknownIsland_EventScript_StarterNormalKanto::
 	bufferspeciesname 0, SPECIES_PORYGON
 	msgbox UnknownIsland_Text_StarterConfirm, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, 0, UnknownIsland_EventScript_StarterChoiceReturn
-	givemon SPECIES_PORYGON, 5
+	givemon SPECIES_PORYGON, 5, move3=MOVE_PECK, move4=MOVE_SPARK
 	call UnknownIsland_EventScript_NicknameMon
 	end
 
@@ -197,7 +197,7 @@ UnknownIsland_EventScript_StarterGroundKanto::
 	bufferspeciesname 0, SPECIES_CUBONE
 	msgbox UnknownIsland_Text_StarterConfirm, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, 0, UnknownIsland_EventScript_StarterChoiceReturn
-	givemon SPECIES_CUBONE, 5
+	givemon SPECIES_CUBONE, 5, move4=MOVE_ANCIENT_POWER
 	call UnknownIsland_EventScript_NicknameMon
 	end
 
@@ -229,7 +229,7 @@ UnknownIsland_EventScript_StarterNormalJohto::
 	bufferspeciesname 0, SPECIES_TEDDIURSA
 	msgbox UnknownIsland_Text_StarterConfirm, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, 0, UnknownIsland_EventScript_StarterChoiceReturn
-	givemon SPECIES_TEDDIURSA, 5
+	givemon SPECIES_TEDDIURSA, 5, move4=MOVE_CRUNCH
 	call UnknownIsland_EventScript_NicknameMon
 	end
 
@@ -237,7 +237,7 @@ UnknownIsland_EventScript_StarterGroundJohto::
 	bufferspeciesname 0, SPECIES_GLIGAR
 	msgbox UnknownIsland_Text_StarterConfirm, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, 0, UnknownIsland_EventScript_StarterChoiceReturn
-	givemon SPECIES_GLIGAR, 5
+	givemon SPECIES_GLIGAR, 5, move4=MOVE_WING_ATTACK
 	call UnknownIsland_EventScript_NicknameMon
 	end
 
@@ -269,7 +269,7 @@ UnknownIsland_EventScript_StarterNormalHoenn::
 	bufferspeciesname 0, SPECIES_ZANGOOSE
 	msgbox UnknownIsland_Text_StarterConfirm, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, 0, UnknownIsland_EventScript_StarterChoiceReturn
-	givemon SPECIES_ZANGOOSE, 5
+	givemon SPECIES_ZANGOOSE, 5, move3=MOVE_DOUBLE_HIT
 	call UnknownIsland_EventScript_NicknameMon
 	end
 
@@ -277,7 +277,7 @@ UnknownIsland_EventScript_StarterGroundHoenn::
 	bufferspeciesname 0, SPECIES_TRAPINCH
 	msgbox UnknownIsland_Text_StarterConfirm, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, 0, UnknownIsland_EventScript_StarterChoiceReturn
-	givemon SPECIES_TRAPINCH, 5
+	givemon SPECIES_TRAPINCH, 5, move3=MOVE_GUST, move4=MOVE_QUICK_ATTACK
 	call UnknownIsland_EventScript_NicknameMon
 	end
 
