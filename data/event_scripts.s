@@ -1085,3 +1085,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/AshenRoad/scripts.inc"
 
 	.include "data/maps/DragonVillage/scripts.inc"
+
+	.include "data/maps/GloomyGrotto_Outside/scripts.inc"

@@ -2687,7 +2687,7 @@ static void DebugAction_FlagsVars_PokedexFlags_Reset(u8 taskId)
     int boxId, boxPosition, partyId;
     u16 species;
 
-    // Reset Pokedex to emtpy
+    // Reset Pokedex to empty
     memset(&gSaveBlock1Ptr->dexCaught, 0, sizeof(gSaveBlock1Ptr->dexCaught));
     memset(&gSaveBlock1Ptr->dexSeen, 0, sizeof(gSaveBlock1Ptr->dexSeen));
 

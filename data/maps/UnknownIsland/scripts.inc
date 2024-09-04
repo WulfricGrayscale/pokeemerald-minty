@@ -18,6 +18,7 @@ UnknownIsland_EventScript_NoStarter::
 	msgbox UnknownIsland_Text_ForgettingSomething, MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, UnknownIsland_Movement_WalkDown
+	waitmovement 0
 	release
 	end
 

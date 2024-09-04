@@ -4460,6 +4460,16 @@
       "secondary_tileset": "gTileset_Fallarbor",
       "border_filepath": "data/layouts/DragonVillage/border.bin",
       "blockdata_filepath": "data/layouts/DragonVillage/map.bin"
+    },
+    {
+      "id": "LAYOUT_GLOOMY_GROTTO_OUTSIDE",
+      "name": "GloomyGrotto_Outside_Layout",
+      "width": 40,
+      "height": 30,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Rustboro",
+      "border_filepath": "data/layouts/GloomyGrotto_Outside/border.bin",
+      "blockdata_filepath": "data/layouts/GloomyGrotto_Outside/map.bin"
     }
   ]
 }
