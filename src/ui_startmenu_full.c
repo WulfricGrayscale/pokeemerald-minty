@@ -60,7 +60,7 @@
 // 12-hours clock.
 // User need to set this toggle with an unused scripting flag such as
 // FLAG_UNUSED_0x020 replacing the 0 to be able to use the clock modes.
-#define FLAG_CLOCK_MODE 0
+#define FLAG_CLOCK_MODE FLAG_SWITCH_CLOCK
 
 struct StartMenuResources
 {
@@ -1221,22 +1221,22 @@ static void PrintSaveConfirmToWindow()
 //
 //  Print Time, Location, Day of Week and Time Indicator
 //
+static const u8 sText_Friday[] = _("Fri.");
+static const u8 sText_Saturday[] = _("Sat.");
 static const u8 sText_Sunday[] = _("Sun.");
 static const u8 sText_Monday[] = _("Mon.");
 static const u8 sText_Tuesday[] = _("Tues.");
 static const u8 sText_Wednesday[] = _("Wed.");
 static const u8 sText_Thursday[] = _("Thurs.");
-static const u8 sText_Friday[] = _("Fri.");
-static const u8 sText_Saturday[] = _("Sat.");
 static const u8 * const sDayOfWeekStrings[7] =
 {
+    sText_Friday,
+    sText_Saturday,
     sText_Sunday,
     sText_Monday,
     sText_Tuesday,
     sText_Wednesday,
     sText_Thursday,
-    sText_Friday,
-    sText_Saturday,
 };
 
 static const u8 sText_AM[] = _("AM");

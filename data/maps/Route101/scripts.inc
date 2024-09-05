@@ -170,6 +170,7 @@ Route101_EventScript_BrendanEncounter::
 	call_if_lt VAR_TEMP_5, 4, Route101_EventScript_BrendanLeaveLeft
 	fadedefaultbgm
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL
+	removeobject LOCALID_RIVAL
 	clearflag FLAG_SAFE_FOLLOWER_MOVEMENT
 	releaseall
 	end
@@ -506,8 +507,8 @@ Route101_Text_BrendanHaventCaughtAny:
 Route101_Text_BrendanMultipleMon:
 	.string "Oh, you have!\p"
 	.string "I'm sure you don't need me to remind you,\n"
-	.string "but the mark of a good trainer is raising\l"
-	.string "each one with care.$"
+	.string "but the mark of a good trainer is\l"
+	.string "raising each one with care.$"
 
 Route101_Text_BrendanLetsBattle:
 	.string "Brendan: Either way, I'd like to see what\n"
@@ -518,7 +519,7 @@ Route101_Text_BrendanDefeat:
 	.string "Are you sure you're just a beginner?$"
 
 Route101_Text_BrendanGoodJob:
-	.string "Brendan:… … …\p"
+	.string "Brendan: … … …\p"
 	.string "Haha! Wow, that was a good match!\p"
 	.string "I'm gonna go on ahead. You should\n"
 	.string "probably be on the road to Petalburg.\p"

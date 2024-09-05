@@ -40,24 +40,7 @@
     }
   ],
   "coord_events": [
-    {
-      "type": "trigger",
-      "x": 3,
-      "y": 8,
-      "elevation": 0,
-      "var": "VAR_PLAYER_HOUSE_STATE",
-      "var_value": "0",
-      "script": "LittlerootTown_PlayersHouse_EventScript_ClockNotSet"
-    },
-    {
-      "type": "trigger",
-      "x": 4,
-      "y": 8,
-      "elevation": 0,
-      "var": "VAR_PLAYER_HOUSE_STATE",
-      "var_value": "0",
-      "script": "LittlerootTown_PlayersHouse_EventScript_ClockNotSet"
-    }
+
   ],
   "bg_events": [
     {

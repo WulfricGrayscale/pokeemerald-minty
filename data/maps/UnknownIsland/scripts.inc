@@ -10,6 +10,7 @@ UnknownIsland_EventScript_IntroFlags::
 	setrespawn HEAL_LOCATION_LITTLEROOT_TOWN_PLAYERS_BEDROOM
 	setflag FLAG_HIDE_MAP_NAME_POPUP
 	setflag FLAG_REMOVE_WARP_FADE
+	setflag FLAG_SET_WALL_CLOCK
 	setvar VAR_TEMP_2, 1
 	end
 
@@ -190,7 +191,7 @@ UnknownIsland_EventScript_StarterNormalKanto::
 	bufferspeciesname 0, SPECIES_PORYGON
 	msgbox UnknownIsland_Text_StarterConfirm, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, 0, UnknownIsland_EventScript_StarterChoiceReturn
-	givemon SPECIES_PORYGON, 5, move3=MOVE_PECK, move4=MOVE_SPARK
+	givemon SPECIES_PORYGON, 5, move1=MOVE_TACKLE, move2=MOVE_CONVERSION, move3=MOVE_PECK, move4=MOVE_SPARK
 	call UnknownIsland_EventScript_NicknameMon
 	end
 

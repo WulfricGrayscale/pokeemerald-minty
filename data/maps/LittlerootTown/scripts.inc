@@ -32,12 +32,12 @@ LittlerootTown_MapScripts::
 
 LittlerootTown_OnTransition:
 	setflag FLAG_VISITED_LITTLEROOT_TOWN
-	call_if_eq VAR_LITTLEROOT_HOUSES_STATE_MAY, 4, LittlerootTown_EventScript_SetExitedHouseAfterLatiSSTicketEvent
-	call_if_eq VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 4, LittlerootTown_EventScript_SetExitedHouseAfterLatiSSTicketEvent
+	call_if_eq VAR_TEMP_0, LittlerootTown_EventScript_UnhideMapNamePopup
 	end
 
-LittlerootTown_EventScript_HideMapNamePopup::
-	setflag FLAG_HIDE_MAP_NAME_POPUP
+LittlerootTown_EventScript_UnhideMapNamePopup::
+	clearflag FLAG_HIDE_MAP_NAME_POPUP
+	addvar VAR_TEMP_0, 1
 	return
 
 LittlerootTown_EventScript_SetExitedHouseAfterLatiSSTicketEvent::
@@ -138,13 +138,13 @@ LittlerootTown_Text_ProfBirchsLab:
 	.string "Prof. Birch's Pokémon Lab$"
 
 LittlerootTown_Text_PlayersHouse:
-	.string "{PLAYER}'s house$"
+	.string "{PLAYER}'s House$"
 
 LittlerootTown_Text_ProfBirchsHouse:
-	.string "Prof. Birch's house$"
+	.string "Prof. Birch's House$"
 
 LittlerootTown_Text_NormansHouse:
-	.string "Leader Norman's house$"
+	.string "Leader Norman's House$"
 
 LittlerootTown_Text_ForSaleSign:
 	.string "A sign that once said FOR SALE now only\n"

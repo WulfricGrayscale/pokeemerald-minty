@@ -4464,8 +4464,8 @@
     {
       "id": "LAYOUT_GLOOMY_GROTTO_OUTSIDE",
       "name": "GloomyGrotto_Outside_Layout",
-      "width": 40,
-      "height": 30,
+      "width": 44,
+      "height": 20,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Rustboro",
       "border_filepath": "data/layouts/GloomyGrotto_Outside/border.bin",

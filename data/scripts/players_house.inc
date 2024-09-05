@@ -20,8 +20,6 @@ PlayersHouse_2F_EventScript_WallClock::
 	msgbox PlayersHouse_2F_Text_ClockIsStopped, MSGBOX_DEFAULT
 	call PlayersHouse_2F_EventScript_SetWallClock
 	delay 30
-	addvar VAR_PLAYER_HOUSE_STATE, 1
-	setflag FLAG_SET_WALL_CLOCK
 	releaseall
 	end
 
@@ -55,3 +53,6 @@ PlayersHouse_1F_Text_TheresAMovieOnTV:
 	.string "learning how to be less pathetic.\p"
 	.string "…Time to go!$"
 
+PlayersHouse_2F_Text_ClockIsStopped:
+	.string "The clock is stopped…\p"
+	.string "Better set it and start it!$"
