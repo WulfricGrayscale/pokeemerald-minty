@@ -79,6 +79,7 @@
 
 enum {
     MENU_SUMMARY,
+    MENU_DEPOSIT,
     MENU_NICKNAME,
     MENU_SWITCH,
     MENU_CANCEL1,
@@ -127,6 +128,7 @@ enum {
     ACTIONS_TAKEITEM_TOSS,
     ACTIONS_ROTOM_CATALOG,
     ACTIONS_ZYGARDE_CUBE,
+    ACTIONS_DEPOSIT,
 };
 
 // In CursorCb_FieldMove, field moves <= FIELD_MOVE_WATERFALL are assumed to line up with the badge flags.
@@ -474,6 +476,7 @@ static void ShiftMoveSlot(struct Pokemon *, u8, u8);
 static void BlitBitmapToPartyWindow_LeftColumn(u8, u8, u8, u8, u8, bool8);
 static void BlitBitmapToPartyWindow_RightColumn(u8, u8, u8, u8, u8, bool8);
 static void CursorCb_Summary(u8);
+static void CursorCb_Deposit(u8);
 static void CursorCb_Nickname(u8);
 static void CursorCb_Switch(u8);
 static void CursorCb_Cancel1(u8);
@@ -2903,6 +2906,9 @@ static u8 GetPartyMenuActionsType(struct Pokemon *mon)
     case PARTY_MENU_TYPE_STORE_PYRAMID_HELD_ITEMS:
         actionType = ACTIONS_TAKEITEM_TOSS;
         break;
+    case PARTY_MENU_TYPE_DEPOSIT:
+        actionType = ACTIONS_DEPOSIT;
+        break;
     // The following have no selection actions (i.e. they exit immediately upon selection)
     // PARTY_MENU_TYPE_CONTEST
     // PARTY_MENU_TYPE_CHOOSE_MON
@@ -3041,6 +3047,41 @@ static void CB2_ReturnToPartyMenuFromSummaryScreen(void)
 {
     gPaletteFade.bufferTransferDisabled = TRUE;
     InitPartyMenu(gPartyMenu.menuType, KEEP_PARTY_LAYOUT, gPartyMenu.action, TRUE, PARTY_MSG_DO_WHAT_WITH_MON, Task_TryCreateSelectionWindow, gPartyMenu.exitCallback);
+}
+
+static void Task_ChooseMonDeposit(u8 taskId)
+{
+	if (!gPaletteFade.active)
+	{
+		CleanupOverworldWindowsAndTilemaps();
+		InitPartyMenu(PARTY_MENU_TYPE_DEPOSIT, PARTY_LAYOUT_SINGLE, PARTY_ACTION_CHOOSE_MON, FALSE, PARTY_MSG_CHOOSE_MON_OR_CANCEL, Task_HandleChooseMonInput, BufferMonSelection);
+	}
+}
+
+static void SendMonToPCFromParty(void)
+{
+    CopyMonToPC(&gPlayerParty[gSpecialVar_0x8004]);
+    ZeroMonData(&gPlayerParty[gSpecialVar_0x8004]);
+    CompactPartySlots();
+    CalculatePlayerPartyCount();
+    CB2_ReturnToField();
+}
+
+void ChooseMonDepositPartyFull(void)
+{
+if (gPlayerPartyCount <= PARTY_SIZE - 1)
+	return;
+else
+	FadeScreen(FADE_TO_BLACK, 0);
+	CreateTask(Task_ChooseMonDeposit, 10);
+}
+
+static void CursorCb_Deposit(u8 taskId)
+{
+	PlaySE(SE_SELECT);
+	gSpecialVar_0x8004 = gPartyMenu.slotId;
+	sPartyMenuInternal->exitCallback = SendMonToPCFromParty;
+	Task_ClosePartyMenu(taskId);
 }
 
 static void CursorCb_Switch(u8 taskId)
