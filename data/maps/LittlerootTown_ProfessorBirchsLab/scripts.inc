@@ -75,6 +75,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedex::
 	addvar VAR_BIRCH_LAB_STATE, 1
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_MyParcel, MSGBOX_DEFAULT
 	closemessage
+	removeitem ITEM_PARCEL
 	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceDown
 	waitmovement 0
 	applymovement LOCALID_BIRCH, Common_Movement_WalkInPlaceDown
@@ -105,8 +106,9 @@ LittlerootTown_ProfessorBirchsLab_EventScript_BrendanGivePokeBalls::
 
 LittlerootTown_ProfessorBirchsLab_EventScript_ReceivePokedex::
 	playfanfare MUS_OBTAIN_ITEM
-	message LittlerootTown_ProfessorBirchsLab_Text_ReceivedPokedex, MSGBOX_AUTOCLOSE
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_ReceivedPokedex, MSGBOX_DEFAULT
 	waitfanfare
+	closemessage
 	setflag FLAG_SYS_POKEDEX_GET
 	special SetUnlockedPokedexFlags
 	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
