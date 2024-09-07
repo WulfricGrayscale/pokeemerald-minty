@@ -6941,3 +6941,9 @@ void UpdateDaysPassedSinceFormChange(u16 days)
         }
     }
 }
+
+void AssignPokemonName(void)
+{
+	CalculatePlayerPartyCount();
+	SetMonData(&gPlayerParty[gPlayerPartyCount - 1], MON_DATA_NICKNAME, gStringVar2);
+}

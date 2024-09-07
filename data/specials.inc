@@ -556,3 +556,4 @@ gSpecials::
 	def_special Script_GetChosenMonDefensiveIVs
 	def_special CheckPartyForMon
 	def_special ChooseMonDepositPartyFull
+	def_special AssignPokemonName

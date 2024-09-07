@@ -136,6 +136,9 @@ Debug_EventScript_Script_1::
 	end
 
 Debug_EventScript_Script_2::
+	givemon SPECIES_PIKACHU, 5
+	bufferstring STR_VAR_2, gText_MonNameTest
+	special AssignPokemonName
 	release
 	end
 

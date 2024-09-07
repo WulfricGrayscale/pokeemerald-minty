@@ -396,6 +396,9 @@ extern const u8 gText_DefaultNameHalie[];
 extern const u8 gText_BirchInTrouble[];
 extern const u8 gText_ConfirmStarterChoice[];
 
+// names to assign to mons
+extern const u8 gText_MonNameTest[];
+
 // mystery event menu text
 extern const u8 gText_EventSafelyLoaded[];
 extern const u8 gText_LoadErrorEndingSession[];
