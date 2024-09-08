@@ -1838,7 +1838,7 @@ const u8 gText_AM[] = _("AM");
 const u8 gText_PM[] = _("PM");
 
 //nicknames
-const u8 gText_MonNameTest[] = _("Test Name");
+const u8 gText_MonNameTest[] = _("Cock&Balls");
 
 //// side quest data
 //generic strings

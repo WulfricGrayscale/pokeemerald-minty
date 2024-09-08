@@ -209,9 +209,9 @@ static const u32 sQuestMenuTilemap[] =
 
 //Strings used for the Quest Menu
 static const u8 sText_Empty[] = _("");
-static const u8 sText_AllHeader[] = _("All Missions");
-static const u8 sText_InactiveHeader[] = _("Inactive Missions");
-static const u8 sText_ActiveHeader[] = _("Active Missions");
+static const u8 sText_AllHeader[] = _("All Quests");
+static const u8 sText_InactiveHeader[] = _("Inactive Quests");
+static const u8 sText_ActiveHeader[] = _("Active Quests");
 static const u8 sText_RewardHeader[] = _("Reward Available");
 static const u8 sText_CompletedHeader[] =
       _("Completed Missions");
@@ -2786,7 +2786,18 @@ void Task_QuestMenu_OpenFromStartMenu(u8 taskId)
 	if (!gPaletteFade.active)
 	{
 		CleanupOverworldWindowsAndTilemaps();
-		QuestMenu_Init(tItemPcParam, CB2_ReturnToFieldWithOpenMenu);
+		QuestMenu_Init(tItemPcParam, CB2_ReturnToField);
+		DestroyTask(taskId);
+	}
+}
+
+void Task_QuestMenu_OpenFromBagMenu(u8 taskId) // causes occasional artifacting in the form of an off-colored bag sprite when loading menu
+{
+	s16 *data = gTasks[taskId].data;
+	if (!gPaletteFade.active)
+	{
+		CleanupOverworldWindowsAndTilemaps();
+		QuestMenu_Init(tItemPcParam, CB2_ReturnToField); // used to be CB2_ReturnToBagMenuPocket but this caused crashing, may fix
 		DestroyTask(taskId);
 	}
 }

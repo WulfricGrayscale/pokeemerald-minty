@@ -2096,3 +2096,6 @@ const u32 gItemIconPalette_SwapSnack[] = INCBIN_U32("graphics/items/icon_palette
 
 const u32 gItemIcon_TwiceSpicedRadish[] = INCBIN_U32("graphics/items/icons/twice_spiced_radish.4bpp.lz");
 const u32 gItemIconPalette_TwiceSpicedRadish[] = INCBIN_U32("graphics/items/icon_palettes/twice_spiced_radish.gbapal.lz");
+
+const u32 gItemIcon_QuestLog[] = INCBIN_U32("graphics/items/icons/quest_log.4bpp.lz");
+const u32 gItemIconPalette_QuestLog[] = INCBIN_U32("graphics/items/icon_palettes/quest_log.gbapal.lz");

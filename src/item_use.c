@@ -39,6 +39,7 @@
 #include "task.h"
 #include "text.h"
 #include "vs_seeker.h"
+#include "quests.h"
 #include "constants/event_bg.h"
 #include "constants/event_objects.h"
 #include "constants/item_effects.h"
@@ -1071,6 +1072,26 @@ void ItemUseOutOfBattle_EvolutionStone(u8 taskId)
 {
     gItemUseCB = ItemUseCB_EvolutionStone;
     SetUpItemUseCallback(taskId);
+}
+
+void ItemUseOutOfBattle_QuestLog(u8 taskId)
+{
+    if (MenuHelpers_IsLinkActive() == TRUE)
+    {
+        DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);
+    }
+    else if (gTasks[taskId].tUsingRegisteredKeyItem != TRUE)
+    {
+        FadeScreen(FADE_TO_BLACK, 0);
+	    gTasks[taskId].func = Task_QuestMenu_OpenFromBagMenu;
+    }
+    else
+    {
+        gFieldCallback = FieldCB_ReturnToFieldNoScript;
+        PlaySE(SE_SELECT);
+        FadeScreen(FADE_TO_BLACK, 0);
+        gTasks[taskId].func = Task_QuestMenu_OpenFromStartMenu;
+    }
 }
 
 static u32 GetBallThrowableState(void)

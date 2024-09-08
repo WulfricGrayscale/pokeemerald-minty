@@ -58,6 +58,7 @@
 #include "constants/trainers.h"
 #include "constants/union_room.h"
 #include "constants/weather.h"
+#include "constants/region_map_sections.h"
 #include "wild_encounter.h"
 
 #define FRIENDSHIP_EVO_THRESHOLD ((P_FRIENDSHIP_EVO_THRESHOLD >= GEN_9) ? 160 : 220)
@@ -6944,6 +6945,11 @@ void UpdateDaysPassedSinceFormChange(u16 days)
 
 void AssignPokemonName(void)
 {
+    u16 fatefulMet = METLOC_FATEFUL_ENCOUNTER;
+    bool32 isModernFatefulEncounter = TRUE;
+
 	CalculatePlayerPartyCount();
 	SetMonData(&gPlayerParty[gPlayerPartyCount - 1], MON_DATA_NICKNAME, gStringVar2);
+    SetMonData(&gPlayerParty[gPlayerPartyCount - 1], MON_DATA_MET_LOCATION, &fatefulMet);
+    SetMonData(&gPlayerParty[gPlayerPartyCount - 1], MON_DATA_MODERN_FATEFUL_ENCOUNTER, &isModernFatefulEncounter);
 }

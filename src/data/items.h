@@ -14097,4 +14097,20 @@ const struct Item gItemsInfo[] =
         .iconPic = gItemIcon_PokeshiDoll,
         .iconPalette = gItemIconPalette_PokeshiDoll,
     },
+
+    [ITEM_QUEST_LOG] =
+    {
+    	.name = _("Quest Log"),
+    	.price = 0,
+	    .description = COMPOUND_STRING(
+            "A handy journal\n"
+            "to track the tasks\n"
+            "you need to do."),
+    	.importance = 1,
+    	.pocket = POCKET_KEY_ITEMS,
+    	.type = ITEM_USE_FIELD,
+    	.fieldUseFunc = ItemUseOutOfBattle_QuestLog,
+	    .iconPic = gItemIcon_QuestLog,
+	    .iconPalette = gItemIconPalette_QuestLog,
+    },
 };
