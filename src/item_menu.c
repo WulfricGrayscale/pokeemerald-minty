@@ -306,9 +306,9 @@ static const struct MenuAction sItemMenuActions[] = {
     [ACTION_SHOW]              = {gMenuText_Show,     {ItemMenu_Show}},
     [ACTION_GIVE_FAVOR_LADY]   = {gMenuText_Give2,    {ItemMenu_GiveFavorLady}},
     [ACTION_CONFIRM_QUIZ_LADY] = {gMenuText_Confirm,  {ItemMenu_ConfirmQuizLady}},
-    [ACTION_BY_NAME]           = {sMenuText_ByName,   ItemMenu_SortByName},
-    [ACTION_BY_TYPE]           = {sMenuText_ByType,   ItemMenu_SortByType},
-    [ACTION_BY_AMOUNT]         = {sMenuText_ByAmount, ItemMenu_SortByAmount},
+    [ACTION_BY_NAME]           = {sMenuText_ByName,   {ItemMenu_SortByName}},
+    [ACTION_BY_TYPE]           = {sMenuText_ByType,   {ItemMenu_SortByType}},
+    [ACTION_BY_AMOUNT]         = {sMenuText_ByAmount, {ItemMenu_SortByAmount}},
     [ACTION_DUMMY]             = {gText_EmptyString2, {NULL}}
 };
 
