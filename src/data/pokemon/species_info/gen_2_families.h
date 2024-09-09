@@ -5062,7 +5062,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .levelUpLearnset = sUrsaringLevelUpLearnset,
         .teachableLearnset = sUrsaringTeachableLearnset,
         .evolutions = EVOLUTION({EVO_ITEM_NIGHT, ITEM_PEAT_BLOCK, SPECIES_URSALUNA},
-                                {EVO_NONE, 0, SPECIES_URSALUNA_BLOODMOON}),
+                                {EVO_ITEM_NIGHT, ITEM_CRIMSON_PEAT_BLOCK, SPECIES_URSALUNA_BLOODMOON}),
     },
 
 #if P_GEN_8_CROSS_EVOS
@@ -5148,14 +5148,14 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .speciesName = _("Ursaluna"),
         .cryId = CRY_URSALUNA,
         .natDexNum = NATIONAL_DEX_URSALUNA,
-        .categoryName = _("Peat"),
+        .categoryName = _("Crimson Peat"),
         .height = 27,
         .weight = 3330,
         .description = COMPOUND_STRING(
-            "It crossed the sea and drifted\n"
-            "ashore in a new land. Surviving in this\n"
-            "place led it to take on a unique\n"
-            "appearance and gain special powers."),
+            "Once thought to be a unique individual\n"
+            "of its species, more Bloodmoon Ursaluna\n"
+            "have been discovered where red peat\n"
+            "moss can be found."),
         .pokemonScale = 256,
         .pokemonOffset = 3,
         .trainerScale = 369,

@@ -14113,4 +14113,21 @@ const struct Item gItemsInfo[] =
 	    .iconPic = gItemIcon_QuestLog,
 	    .iconPalette = gItemIconPalette_QuestLog,
     },
+
+    [ITEM_CRIMSON_PEAT_BLOCK] =
+    {
+        .name = _("Crimson Peat Block"),
+        .price = 12500,
+        .description = COMPOUND_STRING(
+            "A block of material\n"
+            "that makes some\n"
+            "Pokémon evolve."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_EvolutionStone,
+        .effect = gItemEffect_EvoItem,
+        .flingPower = 45,
+        .iconPic = gItemIcon_CrimsonPeatBlock,
+        .iconPalette = gItemIconPalette_CrimsonPeatBlock,
+    },
 };

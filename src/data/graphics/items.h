@@ -2099,3 +2099,6 @@ const u32 gItemIconPalette_TwiceSpicedRadish[] = INCBIN_U32("graphics/items/icon
 
 const u32 gItemIcon_QuestLog[] = INCBIN_U32("graphics/items/icons/quest_log.4bpp.lz");
 const u32 gItemIconPalette_QuestLog[] = INCBIN_U32("graphics/items/icon_palettes/quest_log.gbapal.lz");
+
+const u32 gItemIcon_CrimsonPeatBlock[] = INCBIN_U32("graphics/items/icons/crimson_peat_block.4bpp.lz");
+const u32 gItemIconPalette_CrimsonPeatBlock[] = INCBIN_U32("graphics/items/icon_palettes/crimson_peat_block.gbapal.lz");

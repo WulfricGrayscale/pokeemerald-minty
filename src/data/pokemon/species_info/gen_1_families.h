@@ -11605,9 +11605,9 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
     {
         .baseHP        = 50,
         .baseAttack    = 50,
-        .baseDefense   = 95,
+        .baseDefense   = 80,
         .baseSpeed     = 35,
-        .baseSpAttack  = 40,
+        .baseSpAttack  = 60,
         .baseSpDefense = 50,
         .types = MON_TYPES(TYPE_GROUND),
         .catchRate = 190,
@@ -11669,12 +11669,12 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
 
     [SPECIES_MAROWAK] =
     {
-        .baseHP        = 60,
+        .baseHP        = 75,
         .baseAttack    = 80,
-        .baseDefense   = 110,
+        .baseDefense   = 120,
         .baseSpeed     = 45,
-        .baseSpAttack  = 50,
-        .baseSpDefense = 80,
+        .baseSpAttack  = 85,
+        .baseSpDefense = 100,
         .types = MON_TYPES(TYPE_GROUND),
         .catchRate = 75,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 149 : 124,
@@ -11732,12 +11732,12 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
 #if P_ALOLAN_FORMS
     [SPECIES_MAROWAK_ALOLAN] =
     {
-        .baseHP        = 60,
+        .baseHP        = 75,
         .baseAttack    = 80,
-        .baseDefense   = 110,
+        .baseDefense   = 120,
         .baseSpeed     = 45,
-        .baseSpAttack  = 50,
-        .baseSpDefense = 80,
+        .baseSpAttack  = 85,
+        .baseSpDefense = 100,
         .types = MON_TYPES(TYPE_FIRE, TYPE_GHOST),
         .catchRate = 75,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 149 : 124,
@@ -11791,12 +11791,12 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
 
     [SPECIES_MAROWAK_ALOLAN_TOTEM] =
     {
-        .baseHP        = 60,
+        .baseHP        = 75,
         .baseAttack    = 80,
-        .baseDefense   = 110,
+        .baseDefense   = 120,
         .baseSpeed     = 45,
-        .baseSpAttack  = 50,
-        .baseSpDefense = 80,
+        .baseSpAttack  = 85,
+        .baseSpDefense = 100,
         .types = MON_TYPES(TYPE_FIRE, TYPE_GHOST),
         .catchRate = 75,
         .expYield = 149,

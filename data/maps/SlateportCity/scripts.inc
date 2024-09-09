@@ -499,61 +499,6 @@ SlateportCity_EventScript_AquaGrunt11::
 	release
 	end
 
-SlateportCity_EventScript_DollClerk::
-	lock
-	faceplayer
-	message gText_HowMayIServeYou
-	waitmessage
-	pokemartdecoration SlateportCity_PokemartDecor_Dolls
-	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
-	release
-	end
-
-	.align 2
-SlateportCity_PokemartDecor_Dolls:
-	.2byte DECOR_AZURILL_DOLL
-	.2byte DECOR_MARILL_DOLL
-	.2byte DECOR_SKITTY_DOLL
-	.2byte DECOR_NONE
-	release
-	end
-
-SlateportCity_EventScript_ComeBackWithSecretPower::
-	msgbox gText_ComeBackWithSecretPower, MSGBOX_DEFAULT
-	release
-	end
-
-SlateportCity_EventScript_DecorClerk::
-	lock
-	faceplayer
-	goto_if_unset FLAG_RECEIVED_SECRET_POWER, SlateportCity_EventScript_ComeBackWithSecretPower
-	message gText_HowMayIServeYou
-	waitmessage
-	pokemartdecoration SlateportCity_PokemartDecor
-	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
-	release
-	end
-
-	.align 2
-SlateportCity_PokemartDecor:
-	.2byte DECOR_RED_BRICK
-	.2byte DECOR_BLUE_BRICK
-	.2byte DECOR_YELLOW_BRICK
-	.2byte DECOR_RED_BALLOON
-	.2byte DECOR_BLUE_BALLOON
-	.2byte DECOR_YELLOW_BALLOON
-	.2byte DECOR_C_LOW_NOTE_MAT
-	.2byte DECOR_D_NOTE_MAT
-	.2byte DECOR_E_NOTE_MAT
-	.2byte DECOR_F_NOTE_MAT
-	.2byte DECOR_G_NOTE_MAT
-	.2byte DECOR_A_NOTE_MAT
-	.2byte DECOR_B_NOTE_MAT
-	.2byte DECOR_C_HIGH_NOTE_MAT
-	.2byte DECOR_NONE
-	release
-	end
-
 SlateportCity_EventScript_PowerTMClerk::
 	lock
 	faceplayer

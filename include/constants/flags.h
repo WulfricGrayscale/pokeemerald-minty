@@ -652,8 +652,8 @@
 #define FLAG_HIDDEN_ITEM_ROUTE_123_RARE_CANDY                (FLAG_HIDDEN_ITEMS_START + 0x6E)
 #define FLAG_HIDDEN_ITEM_ROUTE_105_BIG_PEARL                 (FLAG_HIDDEN_ITEMS_START + 0x6F)
 
-#define FLAG_ENCOUNTERS_DISABLED  0x264 // Disables Encounters
-#define FLAG_CATCHING_DISABLED    0x265 // Unused Flag
+#define FLAG_UNUSED_0x264  0x264 // Unused Flag
+#define FLAG_UNUSED_0x265  0x265 // Unused Flag
 #define FLAG_UNUSED_0x266  0x266 // Unused Flag
 #define FLAG_UNUSED_0x267  0x267 // Unused Flag
 #define FLAG_UNUSED_0x268  0x268 // Unused Flag
@@ -1311,7 +1311,7 @@
 #define FLAG_UNUSED_0x4EC                                           0x4EC // Unused Flag
 #define FLAG_UNUSED_0x4ED                                           0x4ED // Unused Flag
 #define FLAG_UNUSED_0x4EE                                           0x4EE // Unused Flag
-#define FLAG_DEBUG_NOCLIP                                           0x4EF // Used to disable collision in the debug menu
+#define FLAG_UNUSED_0x4EF                                           0x4EF // U
 
 #define FLAG_DEFEATED_RUSTBORO_GYM                                  0x4F0
 #define FLAG_DEFEATED_DEWFORD_GYM                                   0x4F1
@@ -1499,7 +1499,7 @@
 #define FLAG_ARRIVED_AT_NAVEL_ROCK                  (SYSTEM_FLAGS + 0x81)
 #define FLAG_LANDMARK_TRAINER_HILL                  (SYSTEM_FLAGS + 0x82)
 
-#define FLAG_UNUSED_0x8E3                           (SYSTEM_FLAGS + 0x83) // Unused Flag
+#define FLAG_PARTY_MOVES                            (SYSTEM_FLAGS + 0x83) // Used for move relearner in party menu
 
 #define FLAG_RECEIVED_POKEDEX_FROM_BIRCH            (SYSTEM_FLAGS + 0x84)
 
@@ -1558,9 +1558,9 @@
 #define FLAG_UNUSED_0x919                           (SYSTEM_FLAGS + 0xB9) // Unused Flag
 #define FLAG_UNUSED_0x91A                           (SYSTEM_FLAGS + 0xBA) // Unused Flag
 #define FLAG_UNUSED_0x91B                           (SYSTEM_FLAGS + 0xBB) // Unused Flag
-#define FLAG_UNUSED_0x91C                           (SYSTEM_FLAGS + 0xBC) // Unused Flag
-#define FLAG_UNUSED_0x91D                           (SYSTEM_FLAGS + 0xBD) // Unused Flag
-#define FLAG_UNUSED_0x91E                           (SYSTEM_FLAGS + 0xBE) // Unused Flag
+#define FLAG_ENCOUNTERS_DISABLED                    (SYSTEM_FLAGS + 0xBC) // Used to disable encounters
+#define FLAG_DEBUG_NOCLIP                           (SYSTEM_FLAGS + 0xBD) // Used to disable collision in the debug menu
+#define FLAG_CATCHING_DISABLED                      (SYSTEM_FLAGS + 0xBE) // Used to disable catching
 #define FLAG_SYS_VS_SEEKER                          (SYSTEM_FLAGS + 0xBF) // Used for FireRed VS Seeker functionality
 
 // Daily Flags

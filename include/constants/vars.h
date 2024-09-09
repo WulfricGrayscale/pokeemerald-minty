@@ -50,7 +50,7 @@
 #define VAR_RECYCLE_GOODS                                0x4020
 #define VAR_REPEL_STEP_COUNT                             0x4021
 #define VAR_ICE_STEP_COUNT                               0x4022
-#define VAR_STARTER_MON                                  0x4023 // 0=Treecko, 1=Torchic, 2=Mudkip
+#define VAR_STARTER_MON                                  0x4023 // 0=Grass, 1=Fire, 2=Water, 3=Normal, 4=Ground
 #define VAR_MIRAGE_RND_H                                 0x4024
 #define VAR_MIRAGE_RND_L                                 0x4025
 #define VAR_SECRET_BASE_MAP                              0x4026
@@ -147,23 +147,23 @@
 #define VAR_ROUTE132_STATE                               0x407F // Unused Var
 #define VAR_ROUTE133_STATE                               0x4080 // Unused Var
 #define VAR_ROUTE134_STATE                               0x4081 // Unused Var
-#define VAR_LITTLEROOT_HOUSES_STATE_MAY                  0x4082
+#define VAR_UNUSED_0x4082                                0x4082 // Unused Var
 #define VAR_PLAYER_HOUSE_STATE                           0x4083 // Used for the custom player house
 #define VAR_BIRCH_LAB_STATE                              0x4084
 #define VAR_PETALBURG_GYM_STATE                          0x4085 // 0-1: Wally tutorial, 2-6: 0-4 badges, 7: Defeated Norman, 8: Rematch Norman
 #define VAR_CONTEST_HALL_STATE                           0x4086
 #define VAR_CABLE_CLUB_STATE                             0x4087
 #define VAR_CONTEST_TYPE                                 0x4088
-#define VAR_SECRET_BASE_INITIALIZED                      0x4089 // Unused Var
+#define VAR_UNUSED_0x4089                                0x4089 // Unused Var
 #define VAR_CONTEST_PRIZE_PICKUP                         0x408A
 #define VAR_UNUSED_0x408B                                0x408B // Unused Var
-#define VAR_LITTLEROOT_HOUSES_STATE_BRENDAN              0x408C
-#define VAR_LITTLEROOT_RIVAL_STATE                       0x408D
+#define VAR_UNUSED_0x408C                                0x408C // Unused Var
+#define VAR_UNUSED_0x408D                                0x408D // Unused Var
 #define VAR_BOARD_BRINEY_BOAT_STATE                      0x408E
 #define VAR_DEVON_CORP_3F_STATE                          0x408F
 #define VAR_BRINEY_HOUSE_STATE                           0x4090
 #define VAR_UNUSED_0x4091                                0x4091 // Unused Var
-#define VAR_LITTLEROOT_INTRO_STATE                       0x4092
+#define VAR_UNUSED_0x4092                                0x4092 // Unused Var
 #define VAR_MAUVILLE_GYM_STATE                           0x4093
 #define VAR_LILYCOVE_MUSEUM_2F_STATE                     0x4094
 #define VAR_LILYCOVE_FAN_CLUB_STATE                      0x4095

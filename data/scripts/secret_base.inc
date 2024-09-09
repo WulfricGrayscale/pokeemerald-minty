@@ -139,7 +139,6 @@ SecretBase_EventScript_InitSecretBase::
 	setvar VAR_0x8004, 0
 	setvar VAR_0x8005, 0
 	special InitSecretBaseDecorationSprites
-	setvar VAR_SECRET_BASE_INITIALIZED, 1
 	waitstate
 	end
 
@@ -174,14 +173,12 @@ SecretBase_EventScript_Enter::
 	goto_if_eq VAR_RESULT, FALSE, SecretBase_EventScript_EnterPlayersBase
 	clearflag FLAG_HIDE_SECRET_BASE_TRAINER
 	special EnterSecretBase
-	setvar VAR_SECRET_BASE_INITIALIZED, 0
 	waitstate
 	end
 
 SecretBase_EventScript_EnterPlayersBase::
 	setflag FLAG_HIDE_SECRET_BASE_TRAINER
 	special EnterSecretBase
-	setvar VAR_SECRET_BASE_INITIALIZED, 0
 	waitstate
 	end
 
@@ -252,7 +249,6 @@ SecretBase_EventScript_InitDecorations::
 	setvar VAR_0x8004, 0
 	setvar VAR_0x8005, 0
 	special InitSecretBaseDecorationSprites
-	setvar VAR_SECRET_BASE_INITIALIZED, 1
 	end
 
 SecretBase_EventScript_SetDecoration::

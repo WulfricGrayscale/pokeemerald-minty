@@ -694,6 +694,7 @@ struct
 {
     [MENU_SUMMARY] = {gText_Summary5, CursorCb_Summary},
     [MENU_DEPOSIT] = {gText_Deposit, CursorCb_Deposit},
+    [MENU_MOVES] = {gText_Moves_Menu, CursorCb_Moves},
     [MENU_NICKNAME] = {gText_Nickname, CursorCb_Nickname},
     [MENU_SWITCH] = {gText_Switch2, CursorCb_Switch},
     [MENU_CANCEL1] = {gText_Cancel2, CursorCb_Cancel1},

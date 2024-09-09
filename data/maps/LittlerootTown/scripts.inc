@@ -13,23 +13,6 @@ LittlerootTown_MapScripts::
 	@ 3: Received Pokedex
 	@ 4: Received Running Shoes
 
-	@ State descriptions for VAR_LITTLEROOT_INTRO_STATE
-	@ 1: In truck male
-	@ 2: In truck female
-	@ 3: Entered house
-	@ 4: Told to go set clock
-	@ 5: Entered 2F to set clock
-	@ 6: Set clock
-	@ 7: Told to go meet rival
-
-	@ State descriptions for VAR_LITTLEROOT_HOUSES_STATE_MAY
-	@                    and VAR_LITTLEROOT_HOUSES_STATE_BRENDAN
-	@ 1: On Truck (and is corresponding gender)
-	@ 2: Met Rival's Mom (and is corresponding gender)
-	@ 3: Entered Hall of Fame
-	@ 4: Completed Lati TV / SS Ticket event
-	@ 5: Exited house after above event
-
 LittlerootTown_OnTransition:
 	setflag FLAG_VISITED_LITTLEROOT_TOWN
 	call_if_eq VAR_TEMP_0, LittlerootTown_EventScript_UnhideMapNamePopup
@@ -41,8 +24,6 @@ LittlerootTown_EventScript_UnhideMapNamePopup::
 	return
 
 LittlerootTown_EventScript_SetExitedHouseAfterLatiSSTicketEvent::
-	setvar VAR_LITTLEROOT_HOUSES_STATE_MAY, 5
-	setvar VAR_LITTLEROOT_HOUSES_STATE_BRENDAN, 5
 	return
 
 LittlerootTown_EventScript_FatMan::

@@ -540,7 +540,7 @@ void InitSecretBaseAppearance(bool8 hidePC)
             FindMetatileIdMapCoords(&x, &y, METATILE_SecretBase_PC);
             MapGridSetMetatileIdAt(x + MAP_OFFSET, y + MAP_OFFSET, METATILE_SecretBase_RegisterPC | MAPGRID_COLLISION_MASK);
         }
-        else if (hidePC == TRUE && VarGet(VAR_SECRET_BASE_INITIALIZED) == 1)
+        else if (hidePC == TRUE)
         {
             // Change PC to regular ground tile.
             FindMetatileIdMapCoords(&x, &y, METATILE_SecretBase_PC);
