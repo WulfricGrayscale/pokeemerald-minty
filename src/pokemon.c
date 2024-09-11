@@ -1149,7 +1149,7 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
         {
             isShiny = FALSE;
         }
-        else if (P_NO_SHINIES_WITHOUT_POKEBALLS && !HasAtLeastOnePokeBall())
+        else if (P_NO_SHINIES_WITHOUT_POKEBALLS && !HasAtLeastOnePokeBall() && !FlagGet(FLAG_QUALIFYING_GIFT))
         {
             isShiny = FALSE;
         }
@@ -1162,7 +1162,14 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
                 totalRerolls += 1;
             if (I_FISHING_CHAIN && gIsFishingEncounter)
                 totalRerolls += CalculateChainFishingShinyRolls();
-
+            if (!FlagGet(FLAG_CLASSIC_SHINY_ODDS))
+                {
+                totalRerolls += 1;
+                if (FlagGet(FLAG_GIFT_REROLL) && FlagGet(FLAG_QUALIFYING_GIFT))
+                    totalRerolls += 8;
+                }
+            if (FlagGet(FLAG_GIFT_REROLL) && FlagGet(FLAG_QUALIFYING_GIFT))
+                totalRerolls += 47000;
             while (GET_SHINY_VALUE(value, personality) >= SHINY_ODDS && totalRerolls > 0)
             {
                 personality = Random32();

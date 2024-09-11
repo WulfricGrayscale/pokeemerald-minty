@@ -1737,13 +1737,29 @@ static void DrawMonTextEntryBox(void)
     PutWindowTilemap(sNamingScreen->windows[WIN_TEXT_ENTRY_BOX]);
 }
 
+static void DrawShinyMonTextEntryBox(void)
+{
+    u8 buffer[64];
+
+    u8 *start = StringCopy(buffer, gText_ShinyNameFormatting);
+    u8 *end = StringAppend(start, GetSpeciesName(sNamingScreen->monSpecies));
+    WrapFontIdToFit(buffer, end, FONT_NORMAL, 128 - 64);
+    StringAppendN(end, sNamingScreen->template->title, 25);
+    FillWindowPixelBuffer(sNamingScreen->windows[WIN_TEXT_ENTRY_BOX], PIXEL_FILL(1));
+    AddTextPrinterParameterized(sNamingScreen->windows[WIN_TEXT_ENTRY_BOX], FONT_NORMAL, buffer, 8, 1, 0, 0);
+    PutWindowTilemap(sNamingScreen->windows[WIN_TEXT_ENTRY_BOX]);
+    PlaySE(SE_SHINY);
+}
+
 static void (*const sDrawTextEntryBoxFuncs[])(void) =
 {
-    [NAMING_SCREEN_PLAYER]     = DrawNormalTextEntryBox,
-    [NAMING_SCREEN_BOX]        = DrawNormalTextEntryBox,
-    [NAMING_SCREEN_CAUGHT_MON] = DrawMonTextEntryBox,
-    [NAMING_SCREEN_NICKNAME]   = DrawMonTextEntryBox,
-    [NAMING_SCREEN_WALDA]      = DrawNormalTextEntryBox,
+    [NAMING_SCREEN_PLAYER]           = DrawNormalTextEntryBox,
+    [NAMING_SCREEN_BOX]              = DrawNormalTextEntryBox,
+    [NAMING_SCREEN_CAUGHT_MON]       = DrawMonTextEntryBox,
+    [NAMING_SCREEN_NICKNAME]         = DrawMonTextEntryBox,
+    [NAMING_SCREEN_SHINY_CAUGHT_MON] = DrawShinyMonTextEntryBox,
+    [NAMING_SCREEN_SHINY_NICKNAME]   = DrawShinyMonTextEntryBox,
+    [NAMING_SCREEN_WALDA]            = DrawNormalTextEntryBox,
 };
 
 static void DrawTextEntryBox(void)
@@ -2135,6 +2151,17 @@ static const struct NamingScreenTemplate sMonNamingScreenTemplate =
     .title = gText_PkmnsNickname,
 };
 
+static const struct NamingScreenTemplate sShinyMonNamingScreenTemplate =
+{
+    .copyExistingString = FALSE,
+    .maxChars = POKEMON_NAME_LENGTH,
+    .iconFunction = 3,
+    .addGenderIcon = TRUE,
+    .initialPage = KBPAGE_LETTERS_UPPER,
+    .unused = 35,
+    .title = gText_ShinyPkmnsNickname,
+};
+
 static const struct NamingScreenTemplate sWaldaWordsScreenTemplate =
 {
     .copyExistingString = TRUE,
@@ -2148,11 +2175,13 @@ static const struct NamingScreenTemplate sWaldaWordsScreenTemplate =
 
 static const struct NamingScreenTemplate *const sNamingScreenTemplates[] =
 {
-    [NAMING_SCREEN_PLAYER]     = &sPlayerNamingScreenTemplate,
-    [NAMING_SCREEN_BOX]        = &sPCBoxNamingTemplate,
-    [NAMING_SCREEN_CAUGHT_MON] = &sMonNamingScreenTemplate,
-    [NAMING_SCREEN_NICKNAME]   = &sMonNamingScreenTemplate,
-    [NAMING_SCREEN_WALDA]      = &sWaldaWordsScreenTemplate,
+    [NAMING_SCREEN_PLAYER]           = &sPlayerNamingScreenTemplate,
+    [NAMING_SCREEN_BOX]              = &sPCBoxNamingTemplate,
+    [NAMING_SCREEN_CAUGHT_MON]       = &sMonNamingScreenTemplate,
+    [NAMING_SCREEN_NICKNAME]         = &sMonNamingScreenTemplate,
+    [NAMING_SCREEN_SHINY_CAUGHT_MON] = &sShinyMonNamingScreenTemplate,
+    [NAMING_SCREEN_SHINY_NICKNAME]   = &sShinyMonNamingScreenTemplate,
+    [NAMING_SCREEN_WALDA]            = &sWaldaWordsScreenTemplate,
 };
 
 static const struct OamData sOam_8x8 =

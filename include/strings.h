@@ -277,6 +277,7 @@ extern const u8 gText_MenuOptionExit[];
 
 // save menu texts
 extern const u8 gText_ConfirmSave[];
+extern const u8 gText_ConfirmSaveSR[];
 extern const u8 gText_DifferentSaveFile[];
 extern const u8 gText_AlreadySavedFile[];
 extern const u8 gText_SavingDontTurnOff[];
@@ -307,8 +308,15 @@ extern const u8 gText_FrameType[];
 extern const u8 gText_ButtonTypeNormal[];
 extern const u8 gText_ButtonTypeLR[];
 extern const u8 gText_ButtonTypeLEqualsA[];
+extern const u8 gText_ModernOdds[];
+extern const u8 gText_ClassicOdds[];
+extern const u8 gText_NoRerolls[];
+extern const u8 gText_GiftRerolls[];
 extern const u8 gText_Option[];
 extern const u8 gText_OptionMenu[];
+extern const u8 gText_SmallDot[];
+extern const u8 gText_LargeDot[];
+extern const u8 gText_PageNav[];
 extern const u8 gText_TextSpeed[];
 extern const u8 gText_BattleScene[];
 extern const u8 gText_BattleStyle[];
@@ -316,6 +324,8 @@ extern const u8 gText_Sound[];
 extern const u8 gText_Frame[];
 extern const u8 gText_OptionMenuCancel[];
 extern const u8 gText_ButtonMode[];
+extern const u8 gText_BaseOdds[];
+extern const u8 gText_ExtraRerolls[];
 
 extern const u8 gText_MaleSymbol[];
 extern const u8 gText_FemaleSymbol[];
@@ -3236,6 +3246,8 @@ extern const u8 gText_MoveOkBack[];
 extern const u8 gText_YourName[];
 extern const u8 gText_BoxName[];
 extern const u8 gText_PkmnsNickname[];
+extern const u8 gText_ShinyPkmnsNickname[];
+extern const u8 gText_ShinyNameFormatting[];
 extern const u8 gText_TellHimTheWords[];
 
 // Exp. Share

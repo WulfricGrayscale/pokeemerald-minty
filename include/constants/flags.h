@@ -1555,9 +1555,9 @@
 #define FLAG_UNUSED_0x916                           (SYSTEM_FLAGS + 0xB6) // Unused Flag
 #define FLAG_UNUSED_0x917                           (SYSTEM_FLAGS + 0xB7) // Unused Flag
 #define FLAG_UNUSED_0x918                           (SYSTEM_FLAGS + 0xB8) // Unused Flag
-#define FLAG_UNUSED_0x919                           (SYSTEM_FLAGS + 0xB9) // Unused Flag
-#define FLAG_UNUSED_0x91A                           (SYSTEM_FLAGS + 0xBA) // Unused Flag
-#define FLAG_UNUSED_0x91B                           (SYSTEM_FLAGS + 0xBB) // Unused Flag
+#define FLAG_QUALIFYING_GIFT                        (SYSTEM_FLAGS + 0xB9) // Used with GIFT_REROLL to enable gift rerolls 
+#define FLAG_CLASSIC_SHINY_ODDS                     (SYSTEM_FLAGS + 0xBA) // Used to toggle modern shiny odds, set is no
+#define FLAG_GIFT_REROLL                            (SYSTEM_FLAGS + 0xBB) // Used to let the player toggle gift rerolls
 #define FLAG_ENCOUNTERS_DISABLED                    (SYSTEM_FLAGS + 0xBC) // Used to disable encounters
 #define FLAG_DEBUG_NOCLIP                           (SYSTEM_FLAGS + 0xBD) // Used to disable collision in the debug menu
 #define FLAG_CATCHING_DISABLED                      (SYSTEM_FLAGS + 0xBE) // Used to disable catching

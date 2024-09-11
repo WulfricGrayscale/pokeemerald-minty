@@ -2,6 +2,9 @@
 gText_ConfirmSave::
 	.string "Would you like to save the game?$"
 
+gText_ConfirmSaveSR::
+	.string "Save for soft resetting?$"
+
 gText_AlreadySavedFile::
 	.string "There is already a saved file.\n"
 	.string "Is it okay to overwrite it?$"

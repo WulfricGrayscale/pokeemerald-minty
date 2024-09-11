@@ -122,6 +122,7 @@ static bool8 HandleStartMenuInput(void);
 
 // Save dialog callbacks
 static u8 SaveConfirmSaveCallback(void);
+static u8 SaveConfirmSaveSRCallback(void);
 static u8 SaveYesNoCallback(void);
 static u8 SaveConfirmInputCallback(void);
 static u8 SaveFileExistsCallback(void);
@@ -264,6 +265,7 @@ static bool32 InitStartMenuStep(void);
 static void InitStartMenu(void);
 static void CreateStartMenuTask(TaskFunc followupFunc);
 static void InitSave(void);
+static void InitSaveSR(void);
 static u8 RunSaveCallback(void);
 static void ShowSaveMessage(const u8 *message, u8 (*saveCallback)(void));
 static void HideSaveMessageWindow(void);
@@ -993,6 +995,13 @@ static void InitSave(void)
     sSavingComplete = FALSE;
 }
 
+static void InitSaveSR(void)
+{
+    SaveMapView();
+    sSaveDialogCallback = SaveConfirmSaveSRCallback;
+    sSavingComplete = FALSE;
+}
+
 static u8 RunSaveCallback(void)
 {
     // True if text is still printing
@@ -1008,6 +1017,12 @@ static u8 RunSaveCallback(void)
 void SaveGame(void)
 {
     InitSave();
+    CreateTask(SaveGameTask, 0x50);
+}
+
+void SaveGameSR(void)
+{
+    InitSaveSR();
     CreateTask(SaveGameTask, 0x50);
 }
 
@@ -1085,6 +1100,17 @@ static bool8 SaveErrorTimer(void)
     }
 
     return FALSE;
+}
+
+static u8 SaveConfirmSaveSRCallback(void)
+{
+    ClearStdWindowAndFrame(GetStartMenuWindowId(), FALSE);
+    RemoveStartMenuWindow();
+    ShowSaveInfoWindow();
+
+    ShowSaveMessage(gText_ConfirmSaveSR, SaveYesNoCallback);
+    
+    return SAVE_IN_PROGRESS;
 }
 
 static u8 SaveConfirmSaveCallback(void)

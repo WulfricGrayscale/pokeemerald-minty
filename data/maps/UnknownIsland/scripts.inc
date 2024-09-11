@@ -4,6 +4,7 @@ UnknownIsland_MapScripts::
 
 UnknownIsland_OnFrame::
 	map_script_2 VAR_TEMP_2, 0, UnknownIsland_EventScript_IntroFlags
+	map_script_2 VAR_TEMP_9, 1, UnknownIsland_EventScript_StarterAfterSR
 	.2byte 0
 
 UnknownIsland_EventScript_IntroFlags::
@@ -11,7 +12,38 @@ UnknownIsland_EventScript_IntroFlags::
 	setflag FLAG_HIDE_MAP_NAME_POPUP
 	setflag FLAG_REMOVE_WARP_FADE
 	setflag FLAG_SET_WALL_CLOCK
+	setflag FLAG_QUALIFYING_GIFT
 	setvar VAR_TEMP_2, 1
+	end
+
+UnknownIsland_EventScript_StarterAfterSR::
+	goto_if_eq VAR_TEMP_2, 1, UnknownIsland_EventScript_KantoAfterSR
+	goto_if_eq VAR_TEMP_2, 2, UnknownIsland_EventScript_JohtoAfterSR
+	goto_if_eq VAR_TEMP_2, 3, UnknownIsland_EventScript_HoennAfterSR
+	end
+
+UnknownIsland_EventScript_KantoAfterSR::
+	goto_if_eq VAR_STARTER_MON, 0, UnknownIsland_EventScript_GiveBulbasaur
+	goto_if_eq VAR_STARTER_MON, 1, UnknownIsland_EventScript_GiveCharmander
+	goto_if_eq VAR_STARTER_MON, 2, UnknownIsland_EventScript_GiveSquirtle
+	goto_if_eq VAR_STARTER_MON, 3, UnknownIsland_EventScript_GivePorygon
+	goto_if_eq VAR_STARTER_MON, 4, UnknownIsland_EventScript_GiveCubone
+	end
+
+UnknownIsland_EventScript_JohtoAfterSR::
+	goto_if_eq VAR_STARTER_MON, 0, UnknownIsland_EventScript_GiveChikorita
+	goto_if_eq VAR_STARTER_MON, 1, UnknownIsland_EventScript_GiveCyndaquil
+	goto_if_eq VAR_STARTER_MON, 2, UnknownIsland_EventScript_GiveTotodile
+	goto_if_eq VAR_STARTER_MON, 3, UnknownIsland_EventScript_GiveTeddiursa
+	goto_if_eq VAR_STARTER_MON, 4, UnknownIsland_EventScript_GiveGligar
+	end
+
+UnknownIsland_EventScript_HoennAfterSR::
+	goto_if_eq VAR_STARTER_MON, 0, UnknownIsland_EventScript_GiveTreecko
+	goto_if_eq VAR_STARTER_MON, 1, UnknownIsland_EventScript_GiveTorchic
+	goto_if_eq VAR_STARTER_MON, 2, UnknownIsland_EventScript_GiveMudkip
+	goto_if_eq VAR_STARTER_MON, 3, UnknownIsland_EventScript_GiveZangoose
+	goto_if_eq VAR_STARTER_MON, 4, UnknownIsland_EventScript_GiveTrapinch
 	end
 
 UnknownIsland_EventScript_NoStarter::
@@ -144,8 +176,14 @@ UnknownIsland_EventScript_StarterFireKanto::
 	bufferspeciesname 0, SPECIES_CHARMANDER
 	msgbox UnknownIsland_Text_StarterConfirm, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, 0, UnknownIsland_EventScript_StarterChoiceReturn
-	givemon SPECIES_CHARMANDER, 5
+	setvar VAR_TEMP_9, 1
 	setvar VAR_STARTER_MON, 1
+	call Common_EventScript_SaveGameSR
+	goto UnknownIsland_EventScript_GiveCharmander
+	end
+
+UnknownIsland_EventScript_GiveCharmander::
+	givemon SPECIES_CHARMANDER, 5
 	call UnknownIsland_EventScript_NicknameMon
 	end
 
@@ -153,8 +191,14 @@ UnknownIsland_EventScript_StarterWaterKanto::
 	bufferspeciesname 0, SPECIES_SQUIRTLE
 	msgbox UnknownIsland_Text_StarterConfirm, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, 0, UnknownIsland_EventScript_StarterChoiceReturn
-	givemon SPECIES_SQUIRTLE, 5
+	setvar VAR_TEMP_9, 1
 	setvar VAR_STARTER_MON, 2
+	call Common_EventScript_SaveGameSR
+	goto UnknownIsland_EventScript_GiveSquirtle
+	end
+
+UnknownIsland_EventScript_GiveSquirtle::
+	givemon SPECIES_SQUIRTLE, 5
 	call UnknownIsland_EventScript_NicknameMon
 	end
 
@@ -162,8 +206,14 @@ UnknownIsland_EventScript_StarterGrassKanto::
 	bufferspeciesname 0, SPECIES_BULBASAUR
 	msgbox UnknownIsland_Text_StarterConfirm, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, 0, UnknownIsland_EventScript_StarterChoiceReturn
-	givemon SPECIES_BULBASAUR, 5
+	setvar VAR_TEMP_9, 1
 	setvar VAR_STARTER_MON, 0
+	call Common_EventScript_SaveGameSR
+	goto UnknownIsland_EventScript_GiveBulbasaur
+	end
+
+UnknownIsland_EventScript_GiveBulbasaur::
+	givemon SPECIES_BULBASAUR, 5
 	call UnknownIsland_EventScript_NicknameMon
 	end
 
@@ -171,8 +221,14 @@ UnknownIsland_EventScript_StarterNormalKanto::
 	bufferspeciesname 0, SPECIES_PORYGON
 	msgbox UnknownIsland_Text_StarterConfirm, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, 0, UnknownIsland_EventScript_StarterChoiceReturn
-	givemon SPECIES_PORYGON, 5, move1=MOVE_TACKLE, move2=MOVE_CONVERSION, move3=MOVE_PECK, move4=MOVE_SPARK
 	setvar VAR_STARTER_MON, 3
+	setvar VAR_TEMP_9, 1
+	call Common_EventScript_SaveGameSR
+	goto UnknownIsland_EventScript_GivePorygon
+	end
+
+UnknownIsland_EventScript_GivePorygon::
+	givemon SPECIES_PORYGON, 5, move1=MOVE_TACKLE, move2=MOVE_CONVERSION, move3=MOVE_PECK, move4=MOVE_SPARK
 	call UnknownIsland_EventScript_NicknameMon
 	end
 
@@ -180,8 +236,14 @@ UnknownIsland_EventScript_StarterGroundKanto::
 	bufferspeciesname 0, SPECIES_CUBONE
 	msgbox UnknownIsland_Text_StarterConfirm, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, 0, UnknownIsland_EventScript_StarterChoiceReturn
-	givemon SPECIES_CUBONE, 5, move1=MOVE_TACKLE, move2=MOVE_GROWL, move3=MOVE_TAIL_WHIP, move4=MOVE_ANCIENT_POWER
+	setvar VAR_TEMP_9, 1
 	setvar VAR_STARTER_MON, 4
+	call Common_EventScript_SaveGameSR
+	goto UnknownIsland_EventScript_GiveCubone
+	end
+
+UnknownIsland_EventScript_GiveCubone::
+	givemon SPECIES_CUBONE, 5, move1=MOVE_TACKLE, move2=MOVE_GROWL, move3=MOVE_TAIL_WHIP, move4=MOVE_ANCIENT_POWER
 	call UnknownIsland_EventScript_NicknameMon
 	end
 
@@ -189,8 +251,14 @@ UnknownIsland_EventScript_StarterFireJohto::
 	bufferspeciesname 0, SPECIES_CYNDAQUIL
 	msgbox UnknownIsland_Text_StarterConfirm, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, 0, UnknownIsland_EventScript_StarterChoiceReturn
-	givemon SPECIES_CYNDAQUIL, 5
 	setvar VAR_STARTER_MON, 1
+	setvar VAR_TEMP_9, 1
+	call Common_EventScript_SaveGameSR
+	goto UnknownIsland_EventScript_GiveCyndaquil
+	end
+
+UnknownIsland_EventScript_GiveCyndaquil::
+	givemon SPECIES_CYNDAQUIL, 5
 	call UnknownIsland_EventScript_NicknameMon
 	end
 
@@ -198,8 +266,14 @@ UnknownIsland_EventScript_StarterWaterJohto::
 	bufferspeciesname 0, SPECIES_TOTODILE
 	msgbox UnknownIsland_Text_StarterConfirm, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, 0, UnknownIsland_EventScript_StarterChoiceReturn
-	givemon SPECIES_TOTODILE, 5
+	setvar VAR_TEMP_9, 1
 	setvar VAR_STARTER_MON, 2
+	call Common_EventScript_SaveGameSR
+	goto UnknownIsland_EventScript_GiveTotodile
+	end
+
+UnknownIsland_EventScript_GiveTotodile::
+	givemon SPECIES_TOTODILE, 5
 	call UnknownIsland_EventScript_NicknameMon
 	end
 
@@ -207,8 +281,14 @@ UnknownIsland_EventScript_StarterGrassJohto::
 	bufferspeciesname 0, SPECIES_CHIKORITA
 	msgbox UnknownIsland_Text_StarterConfirm, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, 0, UnknownIsland_EventScript_StarterChoiceReturn
-	givemon SPECIES_CHIKORITA, 5
 	setvar VAR_STARTER_MON, 0
+	setvar VAR_TEMP_9, 1
+	call Common_EventScript_SaveGameSR
+	goto UnknownIsland_EventScript_GiveChikorita
+	end
+
+UnknownIsland_EventScript_GiveChikorita::
+	givemon SPECIES_CHIKORITA, 5
 	call UnknownIsland_EventScript_NicknameMon
 	end
 
@@ -216,8 +296,14 @@ UnknownIsland_EventScript_StarterNormalJohto::
 	bufferspeciesname 0, SPECIES_TEDDIURSA
 	msgbox UnknownIsland_Text_StarterConfirm, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, 0, UnknownIsland_EventScript_StarterChoiceReturn
-	givemon SPECIES_TEDDIURSA, 5, move1=MOVE_LICK, move2=MOVE_COVET, move3=MOVE_SCRATCH, move4=MOVE_CRUNCH
 	setvar VAR_STARTER_MON, 3
+	setvar VAR_TEMP_9, 1
+	call Common_EventScript_SaveGameSR
+	goto UnknownIsland_EventScript_GiveTeddiursa
+	end
+
+UnknownIsland_EventScript_GiveTeddiursa::
+	givemon SPECIES_TEDDIURSA, 5, move1=MOVE_LICK, move2=MOVE_COVET, move3=MOVE_SCRATCH, move4=MOVE_CRUNCH
 	call UnknownIsland_EventScript_NicknameMon
 	end
 
@@ -225,8 +311,14 @@ UnknownIsland_EventScript_StarterGroundJohto::
 	bufferspeciesname 0, SPECIES_GLIGAR
 	msgbox UnknownIsland_Text_StarterConfirm, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, 0, UnknownIsland_EventScript_StarterChoiceReturn
-	givemon SPECIES_GLIGAR, 5, move1=MOVE_POISON_STING, move2=MOVE_SCRATCH, move3=MOVE_SAND_ATTACK, move4=MOVE_WING_ATTACK
 	setvar VAR_STARTER_MON, 4
+	setvar VAR_TEMP_9, 1
+	call Common_EventScript_SaveGameSR
+	goto UnknownIsland_EventScript_GiveGligar
+	end
+
+UnknownIsland_EventScript_GiveGligar::
+	givemon SPECIES_GLIGAR, 5, move1=MOVE_POISON_STING, move2=MOVE_SCRATCH, move3=MOVE_SAND_ATTACK, move4=MOVE_WING_ATTACK
 	call UnknownIsland_EventScript_NicknameMon
 	end
 
@@ -234,8 +326,14 @@ UnknownIsland_EventScript_StarterFireHoenn::
 	bufferspeciesname 0, SPECIES_TORCHIC
 	msgbox UnknownIsland_Text_StarterConfirm, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, 0, UnknownIsland_EventScript_StarterChoiceReturn
-	givemon SPECIES_TORCHIC, 5
 	setvar VAR_STARTER_MON, 1
+	setvar VAR_TEMP_9, 1
+	call Common_EventScript_SaveGameSR
+	goto UnknownIsland_EventScript_GiveTorchic
+	end
+
+UnknownIsland_EventScript_GiveTorchic::
+	givemon SPECIES_TORCHIC, 5
 	call UnknownIsland_EventScript_NicknameMon
 	end
 
@@ -243,8 +341,14 @@ UnknownIsland_EventScript_StarterWaterHoenn::
 	bufferspeciesname 0, SPECIES_MUDKIP
 	msgbox UnknownIsland_Text_StarterConfirm, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, 0, UnknownIsland_EventScript_StarterChoiceReturn
-	givemon SPECIES_MUDKIP, 5
 	setvar VAR_STARTER_MON, 2
+	setvar VAR_TEMP_9, 1
+	call Common_EventScript_SaveGameSR
+	goto UnknownIsland_EventScript_GiveMudkip
+	end
+
+UnknownIsland_EventScript_GiveMudkip::
+	givemon SPECIES_MUDKIP, 5
 	call UnknownIsland_EventScript_NicknameMon
 	end
 
@@ -252,8 +356,14 @@ UnknownIsland_EventScript_StarterGrassHoenn::
 	bufferspeciesname 0, SPECIES_TREECKO
 	msgbox UnknownIsland_Text_StarterConfirm, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, 0, UnknownIsland_EventScript_StarterChoiceReturn
-	givemon SPECIES_TREECKO, 5
 	setvar VAR_STARTER_MON, 0
+	setvar VAR_TEMP_9, 1
+	call Common_EventScript_SaveGameSR
+	goto UnknownIsland_EventScript_GiveTreecko
+	end
+
+UnknownIsland_EventScript_GiveTreecko::
+	givemon SPECIES_TREECKO, 5
 	call UnknownIsland_EventScript_NicknameMon
 	end
 
@@ -261,8 +371,14 @@ UnknownIsland_EventScript_StarterNormalHoenn::
 	bufferspeciesname 0, SPECIES_ZANGOOSE
 	msgbox UnknownIsland_Text_StarterConfirm, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, 0, UnknownIsland_EventScript_StarterChoiceReturn
-	givemon SPECIES_ZANGOOSE, 5, move1=MOVE_SCRATCH, move2=MOVE_LEER, move3=MOVE_QUICK_ATTACK
 	setvar VAR_STARTER_MON, 3
+	setvar VAR_TEMP_9, 1
+	call Common_EventScript_SaveGameSR
+	goto UnknownIsland_EventScript_GiveZangoose
+	end
+
+UnknownIsland_EventScript_GiveZangoose::
+	givemon SPECIES_ZANGOOSE, 5, move1=MOVE_SCRATCH, move2=MOVE_LEER, move3=MOVE_QUICK_ATTACK
 	call UnknownIsland_EventScript_NicknameMon
 	end
 
@@ -270,8 +386,14 @@ UnknownIsland_EventScript_StarterGroundHoenn::
 	bufferspeciesname 0, SPECIES_TRAPINCH
 	msgbox UnknownIsland_Text_StarterConfirm, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, 0, UnknownIsland_EventScript_StarterChoiceReturn
-	givemon SPECIES_TRAPINCH, 5, move1=MOVE_ASTONISH, move2=MOVE_SAND_ATTACK, move3=MOVE_GUST, move4=MOVE_QUICK_ATTACK
 	setvar VAR_STARTER_MON, 4
+	setvar VAR_TEMP_9, 1
+	call Common_EventScript_SaveGameSR
+	goto UnknownIsland_EventScript_GiveTrapinch
+	end
+
+UnknownIsland_EventScript_GiveTrapinch::
+	givemon SPECIES_TRAPINCH, 5, move1=MOVE_ASTONISH, move2=MOVE_SAND_ATTACK, move3=MOVE_GUST, move4=MOVE_QUICK_ATTACK
 	call UnknownIsland_EventScript_NicknameMon
 	end
 
@@ -284,15 +406,17 @@ UnknownIsland_EventScript_NicknameMon::
 	msgbox UnknownIsland_Text_YouRemembered, MSGBOX_DEFAULT
 	waitfanfare
 	setvar VAR_TEMP_5, 1
+	setvar VAR_TEMP_9, 0
 	closemessage
+	clearflag FLAG_QUALIFYING_GIFT
 	delay 16
 	msgbox UnknownIsland_Text_FragmentAwaken, MSGBOX_DEFAULT
 	closemessage
 	return
 
 UnknownIsland_Movement_WalkDown::
-walk_down
-step_end
+	walk_down
+	step_end
 
 UnknownIsland_Text_GreetingPart1:
 	.string "Hello, fellow fragment.\p"
