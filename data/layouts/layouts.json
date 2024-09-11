@@ -4470,6 +4470,26 @@
       "secondary_tileset": "gTileset_Rustboro",
       "border_filepath": "data/layouts/GloomyGrotto_Outside/border.bin",
       "blockdata_filepath": "data/layouts/GloomyGrotto_Outside/map.bin"
+    },
+    {
+      "id": "LAYOUT_GLOOMY_GROTTO_INTERIOR_1F",
+      "name": "GloomyGrotto_Interior_1F_Layout",
+      "width": 45,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/GloomyGrotto_Interior_1F/border.bin",
+      "blockdata_filepath": "data/layouts/GloomyGrotto_Interior_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_GLOOMY_GROTTO_Interior_B1F",
+      "name": "GloomyGrotto_Interior_B1F_Layout",
+      "width": 33,
+      "height": 19,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/GloomyGrotto_Interior_B1F/border.bin",
+      "blockdata_filepath": "data/layouts/GloomyGrotto_Interior_B1F/map.bin"
     }
   ]
 }

@@ -1088,3 +1088,7 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/DragonVillage/scripts.inc"
 
 	.include "data/maps/GloomyGrotto_Outside/scripts.inc"
+
+	.include "data/maps/GloomyGrotto_Interior_1F/scripts.inc"
+
+	.include "data/maps/GloomyGrotto_Interior_B1F/scripts.inc"
