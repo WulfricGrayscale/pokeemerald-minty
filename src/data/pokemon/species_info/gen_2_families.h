@@ -6618,7 +6618,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .palette = gMonPalette_Smeargle,
         .shinyPalette = gMonShinyPalette_Smeargle,
         .iconSprite = gMonIcon_Smeargle,
-        .iconPalIndex = 1,
+        .iconPalIndex = 2,
         FOOTPRINT(Smeargle)
         OVERWORLD(
             sPicTable_Smeargle,

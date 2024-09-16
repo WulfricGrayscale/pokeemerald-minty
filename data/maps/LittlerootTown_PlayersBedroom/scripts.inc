@@ -82,6 +82,14 @@ LittlerootTown_PlayersBedroom_EventScript_GameCube::
 	msgbox LittlerootTown_PlayersBedroom_Text_GameCube, MSGBOX_SIGN
 	end
 
+LittlerootTown_PlayersBedroom_EventScript_Journal::
+	msgbox LittlerootTown_PlayersBedroom_Text_Journal, MSGBOX_SIGN
+	end
+
+LittlerootTown_PlayersBedroom_EventScript_TV::
+	msgbox LittlerootTown_PlayersBedroom_Text_TV, MSGBOX_SIGN
+	end
+
 LittlerootTown_PlayersBedroom_Text_BetterRest:
 	.string "Feeling kinda tired…\p"
 	.string "Better take a quick nap!$"
@@ -129,3 +137,13 @@ LittlerootTown_PlayersBedroom_Text_GameCube:
 	.string "It's a Nintendo GameCube.\p"
 	.string "What a fun retro console.\n"
 	.string "Better get going!$"
+
+LittlerootTown_PlayersBedroom_Text_Journal:
+	.string "It looks like a to-do list. The first\n"
+	.string "unchecked box reads “End Demo at\l"
+	.string "Rustboro City.”$"
+
+LittlerootTown_PlayersBedroom_Text_TV:
+	.string "An advertisement is playing on the\n"
+	.string "television screen, claiming that you\l"
+	.string "could get connected for free…$"

@@ -961,6 +961,10 @@ RustboroCity_EventScript_BattleBrendanMudkip::
 	goto RustboroCity_EventScript_BrendanBrineyHint
 	end
 
+RustboroCity_EventScript_DemoEnd::
+	msgbox RustboroCity_Text_ConvincingFake, MSGBOX_AUTOCLOSE
+	end
+
 RustboroCity_Movement_RivalApproachPlayer0:
 	walk_down
 	walk_left
@@ -1297,3 +1301,7 @@ RustboroCity_Text_YouCanHave2On2Battle:
 	.string "they'll both challenge you.\p"
 	.string "Don't you think it'd be cool if you\n"
 	.string "could beat two TRAINERS by yourself?$"
+
+RustboroCity_Text_ConvincingFake:
+	.string "It looks like a Rock Smash rock…\p"
+	.string "…but it's really just a convincing fake.$"
