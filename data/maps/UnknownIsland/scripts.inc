@@ -419,21 +419,27 @@ UnknownIsland_Movement_WalkDown::
 	step_end
 
 UnknownIsland_Text_GreetingPart1:
-	.string "Hello, fellow fragment.\p"
-	.string "Oh, apologies. I know.\n"
-	.string "Your name is {PLAYER}.\p"
-	.string "A borrowed name, a given name,\n"
-	.string "a chosen name… all are important.\p"
-	.string "This world is born of memory.\p"
-	.string "Built of moments, like grains of sand…$"
+	.string "I'm sure you could tell by how strange\n"
+	.string "it seems, but this island doesn't really\l"
+	.string "exist.\p"
+	.string "It's born of memories, fragments and\n"
+	.string "pieces… just like you and me!\p"
+	.string "Just fragments of something larger out\n"
+	.string "there, looking to put itself back\l"
+	.string "together.\p"
+	.string "Your name is {PLAYER}, just like mine.\p"
+	.string "A borrowed name, a given name, a chosen\n"
+	.string "name… all are important, don't you\l"
+	.string "think?$"
 
 UnknownIsland_Text_GreetingPart2:
-	.string "I would like to ask you a question.\p"
-	.string "You have a friend beside you.\n"
-	.string "You cannot see them, because you\l"
-	.string "do not remember their name.\p"
-	.string "This friend of yours… what region\n"
-	.string "are they from?$"
+	.string "I'd like to ask you a question.\p"
+	.string "Rather, I need to tell you something:\n"
+	.string "you have a friend beside you, but you\l"
+	.string "cannot see them because you do not\l"
+	.string "remember their name.\p"
+	.string "Put together some pieces for me… what\n"
+	.string "region is your friend from?$"
 
 UnknownIsland_Text_ChoseKanto:
 	.string "So your friend is from Kanto?$"
@@ -463,10 +469,10 @@ UnknownIsland_Text_InThatCase:
 	.string "are they from?$"
 
 UnknownIsland_Text_FragmentAwaken:
-	.string "Restless dreamer, your time to\n"
-	.string "awaken is upon us.\p"
-	.string "Carry this island with you in\n"
-	.string "your heart, lest you let it fade.$"
+	.string "Restless dreamer, it is your turn to\n"
+	.string "awaken.\p"
+	.string "Please, carry this island in your heart,\n"
+	.string "or else you'll let it fade.$"
 
 UnknownIsland_Text_YouRemembered:
 	.string "You remembered {STR_VAR_1}!$"
