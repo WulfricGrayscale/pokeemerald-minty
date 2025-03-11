@@ -557,3 +557,4 @@ gSpecials::
 	def_special CheckPartyForMon
 	def_special ChooseMonDepositPartyFull
 	def_special AssignPokemonName
+	def_special UseBlankMessageToCancelPokemonPic
