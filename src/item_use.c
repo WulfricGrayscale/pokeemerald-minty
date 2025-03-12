@@ -1545,8 +1545,6 @@ void ItemUseOutOfBattle_PokeBall(u8 taskId)
     Task_FadeAndCloseBagMenu(taskId);
 }
 
-#undef tUsingRegisteredKeyItem
-
 static void Task_DisplayPokeFluteMessage(u8 taskId)
 {
     if (WaitFanfare(FALSE))
