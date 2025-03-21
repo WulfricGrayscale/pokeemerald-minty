@@ -108,5 +108,6 @@ void MoveDeleterChooseMoveToForget(void);
 void ItemUseCB_PokeBall(u8 taskId, TaskFunc task);
 void CB2_ReturnToPartyMenuFromSummaryScreen(void);
 bool32 IsItemFlute(u16 item);
+void InitPartyMenu(u8 menuType, u8 layout, u8 partyAction, bool8 keepCursorPos, u8 messageId, TaskFunc task, MainCallback callback);
 
 #endif // GUARD_PARTY_MENU_H
