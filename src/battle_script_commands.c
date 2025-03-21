@@ -5156,7 +5156,7 @@ static void Cmd_getexp(void)
 
                     ApplyExperienceMultipliers(&gBattleStruct->battlerExpReward, *expMonId, gBattlerFainted);
 
-                    if (B_EXP_CAP_TYPE == EXP_CAP_HARD && gBattleStruct->battlerExpReward != 0)
+                    if ((B_EXP_CAP_TYPE == EXP_CAP_HARD && gBattleStruct->battlerExpReward != 0) || (VAR_EXP_LEVEL_CAP_TYPE == 1 && gBattleStruct->battlerExpReward != 0))
                     {
                         u32 growthRate = gSpeciesInfo[GetMonData(&gPlayerParty[*expMonId], MON_DATA_SPECIES)].growthRate;
                         u32 currentExp = GetMonData(&gPlayerParty[*expMonId], MON_DATA_EXP);
@@ -5166,6 +5166,11 @@ static void Cmd_getexp(void)
                             gBattleStruct->battlerExpReward = 0;
                         else if (gExperienceTables[growthRate][levelCap] < currentExp + gBattleStruct->battlerExpReward)
                             gBattleStruct->battlerExpReward = gExperienceTables[growthRate][levelCap] - currentExp;
+                    }
+                    
+                    if (FLAG_EXP_DISABLED != 0)
+                    {
+                        gBattleStruct->battlerExpReward = 0;
                     }
 
                     if (IsTradedMon(&gPlayerParty[*expMonId]))
@@ -8569,18 +8574,26 @@ static u32 GetTrainerMoneyToGive(u16 trainerId)
     }
     else
     {
-        const struct TrainerMon *party = GetTrainerPartyFromId(trainerId);
-        if (party == NULL)
-            return 20;
-        lastMonLevel = party[GetTrainerPartySizeFromId(trainerId) - 1].lvl;
-        trainerMoney = gTrainerClasses[GetTrainerClassFromId(trainerId)].money ?: 5;
+        if (FLAG_MONEY_DISABLED != 0)
+        {
+            moneyReward = 0;
+        }
 
-        if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
-            moneyReward = 4 * lastMonLevel * gBattleStruct->moneyMultiplier * trainerMoney;
-        else if (IsDoubleBattle())
-            moneyReward = 4 * lastMonLevel * gBattleStruct->moneyMultiplier * 2 * trainerMoney;
         else
-            moneyReward = 4 * lastMonLevel * gBattleStruct->moneyMultiplier * trainerMoney;
+        {
+            const struct TrainerMon *party = GetTrainerPartyFromId(trainerId);
+         if (party == NULL)
+                return 20;
+            lastMonLevel = party[GetTrainerPartySizeFromId(trainerId) - 1].lvl;
+            trainerMoney = gTrainerClasses[GetTrainerClassFromId(trainerId)].money ?: 5;
+
+            if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+                moneyReward = 4 * lastMonLevel * gBattleStruct->moneyMultiplier * trainerMoney;
+            else if (IsDoubleBattle())
+                moneyReward = 4 * lastMonLevel * gBattleStruct->moneyMultiplier * 2 * trainerMoney;
+            else
+                moneyReward = 4 * lastMonLevel * gBattleStruct->moneyMultiplier * trainerMoney;
+        }
     }
 
     return moneyReward;

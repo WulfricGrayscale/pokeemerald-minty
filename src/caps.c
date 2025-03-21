@@ -9,8 +9,8 @@ u32 GetCurrentLevelCap(void)
 {
     static const u32 sLevelCapFlagMap[][2] =
     {
-        {FLAG_BADGE01_GET, 15},
-        {FLAG_BADGE02_GET, 19},
+        {FLAG_BADGE01_GET, 12},
+        {FLAG_BADGE02_GET, 16},
         {FLAG_BADGE03_GET, 24},
         {FLAG_BADGE04_GET, 29},
         {FLAG_BADGE05_GET, 31},
@@ -22,11 +22,12 @@ u32 GetCurrentLevelCap(void)
 
     u32 i;
 
-    if (B_LEVEL_CAP_TYPE == LEVEL_CAP_FLAG_LIST)
+    if (B_LEVEL_CAP_TYPE == LEVEL_CAP_FLAG_LIST || VAR_EXP_LEVEL_CAP_TYPE == 1)
     {
         for (i = 0; i < ARRAY_COUNT(sLevelCapFlagMap); i++)
         {
             if (!FlagGet(sLevelCapFlagMap[i][0]))
+                VarSet (VAR_CURRENT_LEVEL_CAP, sLevelCapFlagMap[i][1]);
                 return sLevelCapFlagMap[i][1];
         }
     }

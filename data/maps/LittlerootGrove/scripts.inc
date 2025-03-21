@@ -366,7 +366,7 @@ LittlerootGrove_Text_WeevilWinStreakBroken:
 	.string "Losses - 1, to {PLAYER}$"
 
 LittlerootGrove_Text_Test:
-	.string "TESTER: Huh?\p"
+	.string "Berry Boy: Huh?\p"
 	.string "Oh, hello!\n"
 	.string "Sorry, you caught me off guard.\p"
 	.string "I'm just here as a test NPC.$"
@@ -442,7 +442,8 @@ LittlerootGrove_Text_WeevilThisIsOver:
 
 LittlerootGrove_Text_WeevilDefeated:
 	.string "What? How could you…?! No, it's my\n"
-	.string "fault. I let the Bug Boys down.$"
+	.string "fault.\p"
+	.string "I let the Bug Boys down.$"
 
 LittlerootGrove_Text_WhatWasYourName:
 	.string "What'd you say your name was?\p"
@@ -451,7 +452,7 @@ LittlerootGrove_Text_WhatWasYourName:
 
 LittlerootGrove_Text_ChangedTheSign:
 	.string "Like a Beedril, this is a sting\n"
-	.string "that I'll never forget\p"
+	.string "that I'll never forget.\p"
 	.string "I changed the sign to make sure\n"
 	.string "of that.$"
 

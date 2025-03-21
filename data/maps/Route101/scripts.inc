@@ -7,11 +7,29 @@ Route101_MapScripts::
 	.byte 0
 
 Route101_EventScript_Youngster::
-	msgbox Route101_Text_TakeTiredPokemonToPokeCenter, MSGBOX_NPC
+	goto_if_eq VAR_TEMP_6, 2, Route101_EventScript_Youngster1
+	goto_if_eq VAR_TEMP_6, 1, Route101_EventScript_Youngster1
+	goto_if_eq VAR_TEMP_6, 0, Route101_EventScript_Youngster1
+	msgbox Route101_Text_JeezYourePersistant, MSGBOX_NPC
+	end
+
+Route101_EventScript_Youngster1::
+	addvar VAR_TEMP_6, 1
+	msgbox Route101_Text_WontSayAnything, MSGBOX_NPC
+	end
+
+Route101_EventScript_Youngster2::
+	addvar VAR_TEMP_6, 1
+	msgbox Route101_Text_Nothing, MSGBOX_NPC
+	end
+
+Route101_EventScript_Youngster3::
+	addvar VAR_TEMP_6, 1
+	msgbox Route101_Text_MoreNothing, MSGBOX_NPC
 	end
 
 Route101_EventScript_Boy::
-	msgbox Route101_Text_WildPokemonInTallGrass, MSGBOX_NPC
+	msgbox Route101_Text_ShinyOdds, MSGBOX_NPC
 	end
 
 Route101_EventScript_RouteSign::
@@ -150,7 +168,7 @@ Route101_EventScript_BrendanEncounter::
 	msgbox Route101_Text_BrendanStop, MSGBOX_DEFAULT
 	closemessage
 	addobject LOCALID_RIVAL
-	setobjectxy LOCALID_RIVAL, 16, 10
+	setobjectxy LOCALID_RIVAL, 18, 8
 	call_if_eq VAR_TEMP_4, 0, Route101_EventScript_BrendanMoveAll
 	msgbox Route101_Text_BrendanCatchAnyMon, MSGBOX_DEFAULT
 	getpartysize
@@ -347,13 +365,9 @@ Route101_Movement_BrendanMove1:
 	walk_up
 	walk_up
 	walk_up
-	walk_left
-	walk_left
 	walk_up
-	walk_left
-	walk_left
-	walk_left
 	walk_up
+	walk_right
 	walk_up
 	step_end
 
@@ -361,13 +375,7 @@ Route101_Movement_BrendanMove2:
 	walk_up
 	walk_up
 	walk_up
-	walk_left
-	walk_left
 	walk_up
-	walk_left
-	walk_left
-	walk_left
-	walk_left
 	walk_up
 	walk_up
 	step_end
@@ -376,15 +384,9 @@ Route101_Movement_BrendanMove3:
 	walk_up
 	walk_up
 	walk_up
-	walk_left
-	walk_left
+	walk_up
 	walk_up
 	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_up
 	walk_up
 	step_end
 
@@ -393,15 +395,9 @@ Route101_Movement_BrendanMove4:
 	walk_up
 	walk_up
 	walk_left
-	walk_left
+	walk_up
 	walk_up
 	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_up
 	walk_up
 	step_end
 
@@ -433,18 +429,21 @@ Route101_Text_TakeTiredPokemonToPokeCenter:
 	.string "There's a POKéMON CENTER in OLDALE\n"
 	.string "TOWN right close by.$"
 
-Route101_Text_WildPokemonInTallGrass:
-	.string "Wild POKéMON will jump out at you in\n"
-	.string "tall grass.\p"
-	.string "If you want to catch POKéMON, you have\n"
-	.string "to go into the tall grass and search.$"
+Route101_Text_ShinyOdds:
+	.string "I may look like I'm wandering around\n"
+	.string "aimlessly in this grass, but the truth\l"
+	.string "is I'm actually trying to find a\l"
+	.string "differently-colored Pokémon.\p"
+	.string "I've heard that they're pretty rare,\n"
+	.string "but the exact rate depends on if you\l"
+	.string "listen to modern or historical studies.$"
 
 Route101_Text_RouteSign:
-	.string "ROUTE 101\n"
-	.string "{UP_ARROW} OLDALE TOWN$"
+	.string "Route 101\n"
+	.string "{UP_ARROW} Oldale Town$"
 
 Route101_Text_YouCannotEnter:
-	.string "BEETLE: Hey!\p"
+	.string "Beetle: Hey!\p"
 	.string "I've never seen you around here,\n"
 	.string "so who do you think you are coming\l"
 	.string "onto the turf of the Bug Boys?\p"
@@ -524,3 +523,17 @@ Route101_Text_BrendanGoodJob:
 	.string "I'm gonna go on ahead. You should\n"
 	.string "probably be on the road to Petalburg.\p"
 	.string "Be seeing you!$"
+
+Route101_Text_JeezYourePersistant:
+	.string "Jeez, you're persistent! I already said\n"
+	.string "I don't have anything to say!$"
+
+Route101_Text_WontSayAnything:
+	.string "Everyone else has so much to say, but\n"
+	.string "not me. In fact, I won't say anything!$"
+
+Route101_Text_Nothing:
+	.string "…$"
+
+Route101_Text_MoreNothing:
+	.string "…?$"

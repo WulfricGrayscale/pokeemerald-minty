@@ -27,7 +27,7 @@ LittlerootTown_EventScript_SetExitedHouseAfterLatiSSTicketEvent::
 	return
 
 LittlerootTown_EventScript_FatMan::
-	msgbox LittlerootTown_Text_TechnologyIsBoring, MSGBOX_NPC
+	msgbox LittlerootTown_Text_TechnologyIsAstounding, MSGBOX_NPC
 	end
 
 LittlerootTown_EventScript_Boy::
@@ -37,13 +37,7 @@ LittlerootTown_EventScript_Boy::
 LittlerootTown_EventScript_Twin::
 	lock
 	faceplayer
-	goto_if_set FLAG_ADVENTURE_STARTED, LittlerootTown_EventScript_GoodLuck
-	msgbox LittlerootTown_Text_IfYouGoInGrassPokemonWillJumpOut, MSGBOX_DEFAULT
-	release
-	end
-
-LittlerootTown_EventScript_GoodLuck::
-	msgbox LittlerootTown_Text_GoodLuckCatchingPokemon, MSGBOX_DEFAULT
+	msgbox LittlerootTown_Text_StrawberryFields, MSGBOX_DEFAULT
 	release
 	end
 
@@ -71,36 +65,30 @@ LittlerootTown_EventScript_PlayersHouseSign::
 	msgbox LittlerootTown_Text_PlayersHouse, MSGBOX_SIGN
 	end
 
-LittlerootTown_Text_TechnologyIsBoring:
-	.string "The power of technology is incredible!\p"
-	.string "…Well, that's what I used to think.\p"
-	.string "Nowadays, I find myself more entranced\n"
-	.string "by things like magic and witchcraft.\p"
-	.string "Do you think there's any such thing?$"
+LittlerootTown_Text_TechnologyIsAstounding:
+	.string "The power of technology is astounding!\n"
+	.string "Thanks to the internet, I can find\l"
+	.string "information about anything I dream of.\p"
+	.string "Unfortunately, my default search\n"
+	.string "engine is becoming less and less\l"
+	.string "reliable, so it almost feels like we're\l"
+	.string "back at square one.$"
 
 LittlerootTown_Text_LittlerootGrove:
-	.string "How's Littleroot treating you? There's\n"
-	.string "not much to do here if you're not\l"
-	.string "checking out Birch's lab…\p"
-	.string "But the grove off of Route 101\n"
-	.string "is quite scenic!$"
+	.string "Have you checked out Littleroot Grove?\p"
+	.string "I heard that some pretty unique\n"
+	.string "Pokémon can be found there, but a\l"
+	.string "group of kids who call themselves the\l"
+	.string "Bug Boys wouldn't let me in.$"
 
-LittlerootTown_Text_IfYouGoInGrassPokemonWillJumpOut:
-	.string "Um, um, um!\p"
-	.string "If you go outside and go in the grass,\n"
-	.string "wild Pokémon will jump out!$"
-
-LittlerootTown_Text_DangerousIfYouDontHavePokemon:
-	.string "It's dangerous if you don't have\n"
-	.string "your own POKéMON.$"
-
-LittlerootTown_Text_YouSavedBirch:
-	.string "You saved PROF. BIRCH!\n"
-	.string "I'm so glad!$"
-
-LittlerootTown_Text_GoodLuckCatchingPokemon:
-	.string "Are you going to catch Pokémon?\n"
-	.string "Good luck!$"
+LittlerootTown_Text_StrawberryFields:
+	.string "A lot of cool new places have been\n"
+	.string "showing up around Hoenn over the\l"
+	.string "years, but they're all scary or yucky\l"
+	.string "and full of bugs and ghosts.\p"
+	.string "I really wish someone would find a field\n"
+	.string "that's always full of strawberries\l"
+	.string "instead.$"
 
 LittlerootTown_Text_TownSign:
 	.string "Littleroot Town\n"
@@ -121,16 +109,4 @@ LittlerootTown_Text_NormansHouse:
 LittlerootTown_Text_ForSaleSign:
 	.string "A sign that once said FOR SALE now only\n"
 	.string "reads SOLD.\p"
-	.string "You've lived here for a month now.$"
-
-LittlerootTown_Text_BirchSomethingToShowYouAtLab:
-	.string "PROF. BIRCH: Well, well, {PLAYER}{KUN}!\n"
-	.string "That was good work out there!\p"
-	.string "I knew there was something special\n"
-	.string "about you when I first saw you,\l"
-	.string "but I never expected this.\p"
-	.string "Oh, yes. Do you still have the POKéDEX\n"
-	.string "I gave you?\p"
-	.string "I have something to show you.\n"
-	.string "Let's go to my LAB.$"
-
+	.string "You've lived here for a month.$"

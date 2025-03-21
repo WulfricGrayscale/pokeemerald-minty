@@ -105,14 +105,13 @@ LittlerootTown_ProfessorBirchsLab_EventScript_BrendanGivePokeBalls::
 	return
 
 LittlerootTown_ProfessorBirchsLab_EventScript_ReceivePokedex::
-	playfanfare MUS_OBTAIN_ITEM
-	msgbox LittlerootTown_ProfessorBirchsLab_Text_ReceivedPokedex, MSGBOX_DEFAULT
-	waitfanfare
-	closemessage
 	setflag FLAG_SYS_POKEDEX_GET
 	special SetUnlockedPokedexFlags
 	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
-	setvar VAR_CABLE_CLUB_TUTORIAL_STATE, 1
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_ReceivedPokedex, MSGBOX_DEFAULT
+	playfanfare MUS_OBTAIN_ITEM
+	waitfanfare
+	closemessage
 	return
 
 LittlerootTown_ProfessorBirchsLab_EventScript_PokemonAwait::
@@ -138,7 +137,6 @@ LittlerootTown_ProfessorBirchsLab_EventScript_Rival::
 	faceplayer
 	goto_if_eq VAR_BIRCH_LAB_STATE, 0, LittlerootTown_ProfessorBirchsLab_EventScript_DadsNotHere
 	goto_if_eq VAR_BIRCH_LAB_STATE, 1, LittlerootTown_ProfessorBirchsLab_EventScript_HowsYourMon
-	goto_if_eq VAR_BIRCH_LAB_STATE, 2, LittlerootTown_ProfessorBirchsLab_EventScript_GoodLuck
 	release
 	end
 
@@ -151,10 +149,6 @@ LittlerootTown_ProfessorBirchsLab_EventScript_HowsYourMon::
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_HowsYourMon, MSGBOX_DEFAULT
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_CantGetDistracted, MSGBOX_NPC
 	closemessage
-	end
-
-LittlerootTown_ProfessorBirchsLab_EventScript_GoodLuck::
-	msgbox LittlerootTown_Text_GoodLuckCatchingPokemon, MSGBOX_NPC
 	end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_BrendanWhereShouldIGoNext::

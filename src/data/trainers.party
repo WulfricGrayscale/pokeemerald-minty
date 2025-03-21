@@ -11527,3 +11527,87 @@ Adamant Nature
 IVs: 5 HP / 5 Atk / 5 Def / 5 SpA / 5 SpD / 5 Spe
 - Tackle
 - Leer
+
+=== TRAINER_EXP_MASTER ===
+Name: Corvin
+Class: Exp. Master
+Pic: Pokemon Breeder M
+Gender: Male
+Music: Male
+Double Battle: No
+
+Blissey (F)
+Level: 100
+- Memento
+
+=== TRAINER_HP_MASTER ===
+Name: Ursula
+Class: Stat Master
+Pic: Cooltrainer F
+Gender: Female
+Music: Male
+Double Battle: No
+
+Clefable (F)
+Level: 15
+- Memento
+
+=== TRAINER_ATK_MASTER ===
+Name: Percival
+Class: Stat Master
+Pic: Black Belt
+Gender: Male
+Music: Male
+Double Battle: No
+
+Machamp (M)
+Level: 15
+- Memento
+
+=== TRAINER_DEF_MASTER===
+Name: Boreas
+Class: Stat Master
+Pic: Hiker
+Gender: Male
+Music: Male
+Double Battle: No
+
+Golem (M)
+Level: 15
+- Memento
+
+=== TRAINER_SP_ATK_MASTER ===
+Name: Kasandra
+Class: Stat Master
+Pic: Psychic F
+Gender: Female
+Music: Male
+Double Battle: No
+
+Gardevoir (F)
+Level: 15
+- Memento
+
+=== TRAINER_SP_DEF_MASTER ===
+Name: Godfrey
+Class: Stat Master
+Pic: Bug Maniac
+Gender: Male
+Music: Male
+Double Battle: No
+
+Dustox (M)
+Level: 15
+- Memento
+
+=== TRAINER_SPEED_MASTER ===
+Name: Nim
+Class: Stat Master
+Pic: Aroma Lady
+Gender: Female
+Music: Male
+Double Battle: No
+
+Jumpluff (F)
+Level: 15
+- Memento
