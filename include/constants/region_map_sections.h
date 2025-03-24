@@ -222,7 +222,8 @@
 #define MAPSEC_PLACEHOLDER_1                0xDA
 #define MAPSEC_PLACEHOLDER_2                0xDB
 #define MAPSEC_UNKNOWN_ISLAND               0xDC
-#define MAPSEC_NONE                         0xDD
+#define MAPSEC_TRAINING_CENTER              0xDD
+#define MAPSEC_NONE                         0xDE
 
 #define METLOC_SPECIAL_EGG                  0xFD
 #define METLOC_IN_GAME_TRADE                0xFE

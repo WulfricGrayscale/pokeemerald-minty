@@ -1,5 +1,9 @@
+.set LOCALID_TEALA, 1
+
 CableClub_OnTransition:
+	clearflag FLAG_SYS_TRAINING_MODE
 	call CableClub_EventScript_HideOrShowMysteryGiftMan
+	call CableClub_EventScript_MoveTeala
 	end
 
 CableClub_EventScript_HideOrShowMysteryGiftMan::
@@ -196,13 +200,11 @@ CableClub_EventScript_ExitUnionRoom::
 	end
 
 CableClub_EventScript_PlayerExitUnionRoom::
-	setvar VAR_CABLE_CLUB_STATE, 0
-	goto_if_eq VAR_0x8007, 0, CableClub_EventScript_PlayerExitLinkRoom
 	applymovement OBJ_EVENT_ID_PLAYER, Movement_PlayerFaceAttendantRight
 	waitmovement 0
 	applymovement VAR_0x8007, Movement_AttendantFaceLeft
 	waitmovement 0
-	call CableClub_EventScript_TrainerCardDataOverwritten
+	call CableClub_EventScript_HopeToSeeYouAgain
 	return
 
 CableClub_EventScript_TrainerCardDataOverwritten::
@@ -210,6 +212,15 @@ CableClub_EventScript_TrainerCardDataOverwritten::
 	waitmessage
 	playse SE_PIN
 	delay 60
+	message CableClub_Text_HopeToSeeYouAgain
+	waitmessage
+	applymovement OBJ_EVENT_ID_PLAYER, Movement_PlayerExitLinkRoom
+	waitmovement 0
+	applymovement VAR_0x8007, Movement_AttendantFaceDown
+	waitmovement 0
+	return
+
+CableClub_EventScript_HopeToSeeYouAgain::
 	message CableClub_Text_HopeToSeeYouAgain
 	waitmessage
 	applymovement OBJ_EVENT_ID_PLAYER, Movement_PlayerExitLinkRoom
@@ -595,6 +606,11 @@ CableClub_EventScript_WirelessClubAdjustements::
 	release
 	end
 
+CableClub_EventScript_TrainingCenterConstruction::
+	msgbox gText_SorryTrainingCenterConstruction, MSGBOX_DEFAULT
+	release
+	end
+
 CableClub_EventScript_NotReadyYet::
 	msgbox gText_UndergoingAdjustments, MSGBOX_DEFAULT
 	releaseall
@@ -607,6 +623,12 @@ Movement_AttendantFaceDown:
 @ Unused
 Movement_AttendantFaceRight:
 	face_right
+	step_end
+
+Movement_AttendantMoveRight:
+	walk_up
+	walk_right
+	face_down
 	step_end
 
 Movement_AttendantFaceLeft:
@@ -848,19 +870,29 @@ EventScript_DoLinkRoomExit::
 	waitstate
 	end
 
-CableClub_EventScript_UnionRoomAttendant::
+CableClub_EventScript_TrainingCenterAttendant::
 	lock
 	faceplayer
-	setvar VAR_FRONTIER_FACILITY, FACILITY_UNION_ROOM
-	goto_if_unset FLAG_SYS_POKEDEX_GET, CableClub_EventScript_WirelessClubAdjustements
-	specialvar VAR_RESULT, IsBadEggInParty
-	goto_if_eq VAR_RESULT, TRUE, CableClub_EventScript_AbortLinkPlayerHasBadEgg
-	copyvar VAR_0x8007, VAR_LAST_TALKED
-	specialvar VAR_RESULT, IsWirelessAdapterConnected
-	goto_if_eq VAR_RESULT, FALSE, CableClub_EventScript_UnionRoomAdapterNotConnected
-	message CableClub_Text_WelcomeUnionRoomEnter
-	waitmessage
-	goto CableClub_EventScript_UnionRoomSelect
+	goto_if_unset FLAG_SYS_POKEDEX_GET, CableClub_EventScript_TrainingCenterConstruction
+	goto_if_eq VAR_CABLE_CLUB_STATE, USING_TRAINING_CENTER, CableClub_EventScript_EnjoyTrainingCenter
+	msgbox CableClub_Text_WelcomeTrainingCenterEnter, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, TRUE, CableClub_EventScript_EnterTrainingCenter
+	call CableClub_EventScript_AbortLink
+	end
+
+CableClub_EventScript_EnterTrainingCenter::
+	msgbox CableClub_Text_EnjoyTrainingCenter, MSGBOX_DEFAULT
+	closemessage
+	setvar VAR_0x8004, USING_TRAINING_CENTER
+	copyvar VAR_CABLE_CLUB_STATE, VAR_0x8004
+	applymovement VAR_LAST_TALKED, Movement_AttendantMoveRight
+	waitmovement 0
+	release
+	end
+
+CableClub_EventScript_EnjoyTrainingCenter::
+	msgbox CableClub_Text_EnjoyTrainingCenter, MSGBOX_NPC
+	applymovement VAR_LAST_TALKED, Movement_AttendantFaceDown
 	end
 
 CableClub_EventScript_UnionRoomSelect::
@@ -1242,6 +1274,14 @@ CableClub_EventScript_OpenDirectCornerBarrier::
 CableClub_EventScript_CloseDirectCornerBarrier::
 	setmetatile 9, 2, METATILE_PokemonCenter_Floor_ShadowTop, TRUE
 	setmetatile 9, 3, METATILE_PokemonCenter_CounterBarrier, TRUE
+	return
+
+CableClub_EventScript_MoveTeala::
+	call_if_eq VAR_CABLE_CLUB_STATE, USING_TRAINING_CENTER, CableClub_EventScript_SetTealaPosition
+	return
+
+CableClub_EventScript_SetTealaPosition::
+	setobjectxyperm LOCALID_TEALA, 6, 2
 	return
 
 EventScript_OpenMossdeepGameCornerBarrier::

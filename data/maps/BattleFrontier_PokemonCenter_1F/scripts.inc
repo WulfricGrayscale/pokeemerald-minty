@@ -7,6 +7,7 @@ BattleFrontier_PokemonCenter_1F_MapScripts::
 
 BattleFrontier_PokemonCenter_1F_OnTransition:
 	setrespawn HEAL_LOCATION_BATTLE_FRONTIER_OUTSIDE_EAST
+	setvar VAR_CABLE_CLUB_STATE, 0
 	end
 
 BattleFrontier_PokemonCenter_1F_EventScript_Nurse::

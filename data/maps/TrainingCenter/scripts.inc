@@ -6,7 +6,12 @@
 .set LOCALID_SP_DEFENSE_MASTER, 6
 
 TrainingCenter_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, TrainingCenter_OnTransition
 	.byte 0
+
+TrainingCenter_OnTransition::
+	setflag FLAG_SYS_TRAINING_MODE
+	end
 
 TrainingCenter_EventScript_EVResetter::
 	call_if_unset FLAG_VISITED_TRAINING_CENTER, TrainingCenter_EventScript_FirstTime
@@ -24,7 +29,18 @@ TrainingCenter_EventScript_BPClerk::
 
 TrainingCenter_EventScript_ExpMaster::
 	setvar VAR_EXP_LEVEL_CAP_TYPE, 1
-	msgbox TrainingCenter_Text_CurrentLevelCap, MSGBOX_NPC
+	call TrainingCenter_EventScript_CapCheck
+	setflag FLAG_MONEY_DISABLED
+	msgbox TrainingCenter_Text_ExpTrainerIntro, MSGBOX_DEFAULT
+	waitmessage
+	msgbox TrainingCenter_Text_CurrentLevelCap, MSGBOX_DEFAULT
+	waitmessage
+	msgbox TrainingCenter_Text_ExpTrainerBattle, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, 0, TrainingCenter_EventScript_LetsTrainSoon
+	trainerbattle_no_intro TRAINER_EXP_MASTER, TrainingCenter_Text_Defeated
+	call TrainingCenter_EventScript_CheckCard
+	call TrainingCenter_EventScript_ClearFlags
+	msgbox TrainingCenter_Text_TrainAgainSoon, MSGBOX_NPC
 	end
 
 TrainingCenter_EventScript_HPMaster::
@@ -111,6 +127,8 @@ TrainingCenter_EventScript_SetFlags::
 TrainingCenter_EventScript_ClearFlags::
 	clearflag FLAG_EXP_DISABLED
 	clearflag FLAG_MONEY_DISABLED
+	special HealPlayerParty
+	setvar VAR_EXP_LEVEL_CAP_TYPE, 0
 	return
 
 TrainingCenter_EventScript_CheckCardClerk::
@@ -133,16 +151,25 @@ TrainingCenter_EventScript_NoCard::
 TrainingCenter_EventScript_BronzeCard::
 	bufferstring STR_VAR_1, TrainingCenter_Text_Bronze
 	msgbox TrainingCenter_Text_CurrentCard, MSGBOX_DEFAULT
+	closemessage
+	bpmart TrainingCenter_Bronze_Mart, FALSE
+	msgbox TrainingCenter_Text_ThankYouBP MSGBOX_AUTOCLOSE
 	end
 
 TrainingCenter_EventScript_SilverCard::
 	bufferstring STR_VAR_1, TrainingCenter_Text_Silver
 	msgbox TrainingCenter_Text_CurrentCard, MSGBOX_DEFAULT
+	closemessage
+	bpmart TrainingCenter_Silver_Mart, FALSE
+	msgbox TrainingCenter_Text_ThankYouBP MSGBOX_AUTOCLOSE
 	end
 
 TrainingCenter_EventScript_GoldCard::
 	bufferstring STR_VAR_1, TrainingCenter_Text_Gold
 	msgbox TrainingCenter_Text_CurrentCard, MSGBOX_DEFAULT
+	closemessage
+	bpmart TrainingCenter_Gold_Mart, FALSE
+	msgbox TrainingCenter_Text_ThankYouBP MSGBOX_AUTOCLOSE
 	end
 
 TrainingCenter_EventScript_BronzeCardAward::
@@ -183,6 +210,56 @@ TrainingCenter_EventScript_HasMochi::
 	msgbox TrainingCenter_Text_YouHaveMochi, MSGBOX_NPC
 	end
 
+TrainingCenter_EventScript_CapCheck::
+	buffernumberstring STR_VAR_1, 100
+	switch VAR_CURRENT_LEVEL_CAP
+	callcase 0, TrainingCenter_EventScript_LevelCapNoBadge
+	callcase 1, TrainingCenter_EventScript_LevelCapOneBadge
+	callcase 2, TrainingCenter_EventScript_LevelCapTwoBadge
+	callcase 3, TrainingCenter_EventScript_LevelCapThreeBadge
+	callcase 4, TrainingCenter_EventScript_LevelCapFourBadge
+	callcase 5, TrainingCenter_EventScript_LevelCapFiveBadge
+	callcase 6, TrainingCenter_EventScript_LevelCapSixBadge
+	callcase 7, TrainingCenter_EventScript_LevelCapSevenBadge
+	callcase 8, TrainingCenter_EventScript_LevelCapAllBadge
+	return
+
+TrainingCenter_EventScript_LevelCapNoBadge::
+	buffernumberstring STR_VAR_1, 12
+	return
+
+TrainingCenter_EventScript_LevelCapOneBadge::
+	buffernumberstring STR_VAR_1, 16
+	return
+
+TrainingCenter_EventScript_LevelCapTwoBadge::
+	buffernumberstring STR_VAR_1, 24
+	return
+
+TrainingCenter_EventScript_LevelCapThreeBadge::
+	buffernumberstring STR_VAR_1, 29
+	return
+
+TrainingCenter_EventScript_LevelCapFourBadge::
+	buffernumberstring STR_VAR_1, 31
+	return
+
+TrainingCenter_EventScript_LevelCapFiveBadge::
+	buffernumberstring STR_VAR_1, 33
+	return
+
+TrainingCenter_EventScript_LevelCapSixBadge::
+	buffernumberstring STR_VAR_1, 42
+	return
+
+TrainingCenter_EventScript_LevelCapSevenBadge::
+	buffernumberstring STR_VAR_1, 46
+	return
+
+TrainingCenter_EventScript_LevelCapAllBadge::
+	buffernumberstring STR_VAR_1, 58
+	return
+
 TrainingCenter_Text_BattleStart:
 	.string "I'm the master of {STR_VAR_1}!\p" 
 	.string "Are you ready to train?$"
@@ -218,8 +295,19 @@ TrainingCenter_Text_ReceivePoints:
 	.string "{PLAYER} obtained\n"
 	.string "{STR_VAR_1} Battle Point(s).$"
 
+TrainingCenter_Text_ExpTrainerIntro:
+	.string "I can help you train your Pokémon!\p"
+	.string "However, you will be limited depending\n"
+	.string "on the number of gym badges that you\l"
+	.string "currently have obtained.$"
+
 TrainingCenter_Text_CurrentLevelCap:
-	.string "The level cap is {STR_VAR_1}."
+	.string "Let's see...\p"
+	.string "Right now, in the Training Center, you\n"
+	.string "can train your Pokémon to be {STR_VAR_1}.$"
+
+TrainingCenter_Text_ExpTrainerBattle:
+	.string "Would you like to start training?$"
 
 TrainingCenter_Text_FirstTime:
 	.string "Thank you for coming to the Effort\n"
@@ -263,3 +351,39 @@ TrainingCenter_Text_Silver:
 
 TrainingCenter_Text_Gold:
 	.string "Gold$"
+
+TrainingCenter_Text_ThankYouBP:
+	.string "Please come again when you have more BP\n"
+	.string "to spend.$"
+
+	.align 2
+TrainingCenter_Bronze_Mart:
+	.2byte ITEM_PROTEIN
+	.2byte ITEM_CALCIUM
+	.2byte ITEM_IRON
+	.2byte ITEM_ZINC
+	.2byte ITEM_CARBOS
+	.2byte ITEM_HP_UP
+	.2byte ITEM_NONE
+
+	.align 2
+TrainingCenter_Silver_Mart:
+	.2byte ITEM_PROTEIN
+	.2byte ITEM_CALCIUM
+	.2byte ITEM_IRON
+	.2byte ITEM_ZINC
+	.2byte ITEM_CARBOS
+	.2byte ITEM_HP_UP
+	.2byte ITEM_FULL_HEAL
+	.2byte ITEM_NONE
+
+	.align 2
+TrainingCenter_Gold_Mart:
+	.2byte ITEM_PROTEIN
+	.2byte ITEM_CALCIUM
+	.2byte ITEM_IRON
+	.2byte ITEM_ZINC
+	.2byte ITEM_CARBOS
+	.2byte ITEM_HP_UP
+	.2byte ITEM_MAX_POTION
+	.2byte ITEM_NONE

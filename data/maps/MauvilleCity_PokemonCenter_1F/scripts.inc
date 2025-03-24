@@ -9,6 +9,7 @@ MauvilleCity_PokemonCenter_1F_OnTransition:
 	setrespawn HEAL_LOCATION_MAUVILLE_CITY
 	call Common_EventScript_UpdateBrineyLocation
 	goto MauvilleCity_PokemonCenter_1F_EventScript_SetMauvilleOldManGfx
+	setvar VAR_CABLE_CLUB_STATE, 0
 	end
 
 MauvilleCity_PokemonCenter_1F_EventScript_SetMauvilleOldManGfx::

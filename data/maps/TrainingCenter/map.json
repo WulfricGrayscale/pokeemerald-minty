@@ -3,7 +3,7 @@
   "name": "TrainingCenter",
   "layout": "LAYOUT_TRAINING_CENTER",
   "music": "MUS_EVER_GRANDE",
-  "region_map_section": "MAPSEC_DYNAMIC",
+  "region_map_section": "MAPSEC_TRAINING_CENTER",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",

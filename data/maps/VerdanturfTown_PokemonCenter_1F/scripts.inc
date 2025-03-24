@@ -8,6 +8,7 @@ VerdanturfTown_PokemonCenter_1F_MapScripts::
 VerdanturfTown_PokemonCenter_1F_OnTransition:
 	setrespawn HEAL_LOCATION_VERDANTURF_TOWN
 	call Common_EventScript_UpdateBrineyLocation
+	setvar VAR_CABLE_CLUB_STATE, 0
 	end
 
 VerdanturfTown_PokemonCenter_1F_EventScript_Nurse::

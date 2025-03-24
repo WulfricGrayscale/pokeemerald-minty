@@ -7,6 +7,7 @@ SootopolisCity_PokemonCenter_1F_MapScripts::
 
 SootopolisCity_PokemonCenter_1F_OnTransition:
 	setrespawn HEAL_LOCATION_SOOTOPOLIS_CITY
+	setvar VAR_CABLE_CLUB_STATE, 0
 	end
 
 SootopolisCity_PokemonCenter_1F_EventScript_Nurse::

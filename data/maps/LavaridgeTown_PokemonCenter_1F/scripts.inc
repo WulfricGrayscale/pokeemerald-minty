@@ -8,6 +8,7 @@ LavaridgeTown_PokemonCenter_1F_MapScripts::
 LavaridgeTown_PokemonCenter_1F_OnTransition:
 	setrespawn HEAL_LOCATION_LAVARIDGE_TOWN
 	call Common_EventScript_UpdateBrineyLocation
+	setvar VAR_CABLE_CLUB_STATE, 0
 	end
 
 LavaridgeTown_PokemonCenter_1F_EventScript_Nurse::

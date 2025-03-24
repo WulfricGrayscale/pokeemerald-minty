@@ -1751,6 +1751,14 @@
       "y": 1,
       "width": 1,
       "height": 2
+    },
+    {
+      "map_section": "MAPSEC_TRAINING_CENTER",
+      "name": "",
+      "x": 0,
+      "y": 1,
+      "width": 1,
+      "height": 1
     }
   ]
 }

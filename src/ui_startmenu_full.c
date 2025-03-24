@@ -1525,7 +1525,7 @@ static void Task_StartMenuFullMain(u8 taskId)
                 }
                 break;
             case START_MENU_MAP:
-                if(FlagGet(FLAG_SYS_POKENAV_GET))
+                if((FlagGet(FLAG_SYS_POKENAV_GET)) && (!FlagGet(FLAG_SYS_TRAINING_MODE)))
                 {
                     PlaySE(SE_SELECT);
                     BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);

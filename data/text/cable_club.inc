@@ -485,3 +485,14 @@ CableClub_Text_ExplainWirelessClub:
 CableClub_Text_HopeYouEnjoyWirelessSystem:
 	.string "I hope you enjoy the Wireless\n"
 	.string "Communication System.$"
+
+CableClub_Text_WelcomeTrainingCenterEnter:
+	.string "Welcome to the Effort Value Training\n"
+	.string "Center.\p"
+	.string "You may train your Pokémon to their\n"
+	.string "full potential here and earn some\l"
+	.string "prizes as well.\p"
+	.string "Would you like to enter the room?$"
+
+CableClub_Text_EnjoyTrainingCenter:
+	.string "Enjoy your time in the Training Center!$"

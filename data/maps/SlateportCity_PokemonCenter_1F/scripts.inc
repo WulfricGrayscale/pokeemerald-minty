@@ -8,6 +8,7 @@ SlateportCity_PokemonCenter_1F_MapScripts::
 SlateportCity_PokemonCenter_1F_OnTransition:
 	setrespawn HEAL_LOCATION_SLATEPORT_CITY
 	call Common_EventScript_UpdateBrineyLocation
+	setvar VAR_CABLE_CLUB_STATE, 0
 	end
 
 SlateportCity_PokemonCenter_1F_EventScript_Nurse::

@@ -9,6 +9,7 @@ FallarborTown_PokemonCenter_1F_MapScripts::
 FallarborTown_PokemonCenter_1F_OnTransition:
 	setrespawn HEAL_LOCATION_FALLARBOR_TOWN
 	call Common_EventScript_UpdateBrineyLocation
+	setvar VAR_CABLE_CLUB_STATE, 0
 	end
 
 FallarborTown_PokemonCenter_1F_EventScript_Nurse::

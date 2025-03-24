@@ -2178,6 +2178,11 @@
 	goto_if_eq \dest
 	.endm
 
+	.macro callcase condition:req, dest:req
+	compare VAR_0x8000, \condition
+	call_if_eq \dest
+	.endm
+
 	@ Message box types
 	MSGBOX_NPC = 2
 	MSGBOX_SIGN = 3

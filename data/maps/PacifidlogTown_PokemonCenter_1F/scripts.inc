@@ -7,6 +7,7 @@ PacifidlogTown_PokemonCenter_1F_MapScripts::
 
 PacifidlogTown_PokemonCenter_1F_OnTransition:
 	setrespawn HEAL_LOCATION_PACIFIDLOG_TOWN
+	setvar VAR_CABLE_CLUB_STATE, 0
 	end
 
 PacifidlogTown_PokemonCenter_1F_EventScript_Nurse::

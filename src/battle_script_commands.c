@@ -5120,7 +5120,7 @@ static void Cmd_getexp(void)
                 gBattleStruct->battlerExpReward = 0;
             }
             else if ((gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER && *expMonId >= 3)
-                  || GetMonData(&gPlayerParty[*expMonId], MON_DATA_LEVEL) == MAX_LEVEL)
+                  || GetMonData(&gPlayerParty[*expMonId], MON_DATA_LEVEL) == MAX_LEVEL || (FlagGet(FLAG_EXP_DISABLED)))
             {
                 gBattleScripting.getexpState = 5;
                 gBattleStruct->battlerExpReward = 0;
@@ -5156,7 +5156,7 @@ static void Cmd_getexp(void)
 
                     ApplyExperienceMultipliers(&gBattleStruct->battlerExpReward, *expMonId, gBattlerFainted);
 
-                    if ((B_EXP_CAP_TYPE == EXP_CAP_HARD && gBattleStruct->battlerExpReward != 0) || (VAR_EXP_LEVEL_CAP_TYPE == 1 && gBattleStruct->battlerExpReward != 0))
+                    if ((B_EXP_CAP_TYPE == EXP_CAP_HARD && gBattleStruct->battlerExpReward != 0) || (VarGet(VAR_EXP_LEVEL_CAP_TYPE) == 1 && gBattleStruct->battlerExpReward != 0))
                     {
                         u32 growthRate = gSpeciesInfo[GetMonData(&gPlayerParty[*expMonId], MON_DATA_SPECIES)].growthRate;
                         u32 currentExp = GetMonData(&gPlayerParty[*expMonId], MON_DATA_EXP);
@@ -5166,11 +5166,6 @@ static void Cmd_getexp(void)
                             gBattleStruct->battlerExpReward = 0;
                         else if (gExperienceTables[growthRate][levelCap] < currentExp + gBattleStruct->battlerExpReward)
                             gBattleStruct->battlerExpReward = gExperienceTables[growthRate][levelCap] - currentExp;
-                    }
-                    
-                    if (FLAG_EXP_DISABLED != 0)
-                    {
-                        gBattleStruct->battlerExpReward = 0;
                     }
 
                     if (IsTradedMon(&gPlayerParty[*expMonId]))
@@ -8574,7 +8569,7 @@ static u32 GetTrainerMoneyToGive(u16 trainerId)
     }
     else
     {
-        if (FLAG_MONEY_DISABLED != 0)
+        if (FlagGet(FLAG_MONEY_DISABLED))
         {
             moneyReward = 0;
         }

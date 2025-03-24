@@ -9,6 +9,7 @@ EverGrandeCity_PokemonCenter_1F_MapScripts::
 EverGrandeCity_PokemonCenter_1F_OnTransition:
 	setrespawn HEAL_LOCATION_EVER_GRANDE_CITY
 	call_if_unset FLAG_MET_SCOTT_IN_EVERGRANDE, EverGrandeCity_PokemonCenter_1F_EventScript_TryShowScott
+	setvar VAR_CABLE_CLUB_STATE, 0
 	end
 
 EverGrandeCity_PokemonCenter_1F_EventScript_TryShowScott::

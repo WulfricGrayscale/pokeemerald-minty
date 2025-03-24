@@ -1614,6 +1614,8 @@ u8 *GetMapNameGeneric(u8 *dest, u16 mapSecId)
         return StringCopy(dest, gText_Ferry);
     case MAPSEC_SECRET_BASE:
         return StringCopy(dest, gText_SecretBase);
+    case MAPSEC_TRAINING_CENTER:
+        return StringCopy(dest, gText_TrainingCenter);    
     default:
         return GetMapName(dest, mapSecId, 0);
     }

@@ -8,6 +8,7 @@ LilycoveCity_PokemonCenter_1F_MapScripts::
 LilycoveCity_PokemonCenter_1F_OnTransition:
 	setrespawn HEAL_LOCATION_LILYCOVE_CITY
 	goto LilycoveCity_PokemonCenter_1F_EventScript_SetLilycoveLadyGfx
+	setvar VAR_CABLE_CLUB_STATE, 0
 	end
 
 @ SetLilycoveLadyGfx returns TRUE if its the Contest Lady

@@ -22,12 +22,11 @@ u32 GetCurrentLevelCap(void)
 
     u32 i;
 
-    if (B_LEVEL_CAP_TYPE == LEVEL_CAP_FLAG_LIST || VAR_EXP_LEVEL_CAP_TYPE == 1)
+    if ((B_LEVEL_CAP_TYPE == LEVEL_CAP_FLAG_LIST) || (VarGet(VAR_EXP_LEVEL_CAP_TYPE) == 1))
     {
         for (i = 0; i < ARRAY_COUNT(sLevelCapFlagMap); i++)
         {
             if (!FlagGet(sLevelCapFlagMap[i][0]))
-                VarSet (VAR_CURRENT_LEVEL_CAP, sLevelCapFlagMap[i][1]);
                 return sLevelCapFlagMap[i][1];
         }
     }

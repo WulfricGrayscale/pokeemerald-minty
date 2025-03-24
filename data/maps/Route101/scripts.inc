@@ -175,7 +175,7 @@ Route101_EventScript_BrendanEncounter::
 	call_if_gt VAR_RESULT, 1, Route101_EventScript_BrendanCaughtMon
 	call_if_eq VAR_RESULT, 1, Route101_EventScript_BrendanHaventCaughtAny
 	closemessage
-	delay 30
+	delay 60
 	bufferleadmonspeciesname 0
 	special HealPlayerParty
 	msgbox Route101_Text_BrendanLetsBattle, MSGBOX_DEFAULT
@@ -497,7 +497,7 @@ Route101_Text_BrendanCatchAnyMon:
 	.string "Pokémon?$"
 
 Route101_Text_BrendanHaventCaughtAny:
-	.string "Huhn? You haven't caught a single one?\p"
+	.string "Huh? You haven't caught a single one?\p"
 	.string "Well, that's no big deal. But I think\n"
 	.string "you should check out Littleroot Grove\l"
 	.string "and see if anything there catches your\l"

@@ -1004,6 +1004,11 @@ gText_SorryWirelessClubAdjustments::
 	.string "The POKéMON WIRELESS CLUB is\l"
 	.string "undergoing adjustments now.$"
 
+gText_SorryTrainingCenterConstruction::
+	.string "I'm terribly sorry.\n"
+	.string "The Training center is still under\l"
+	.string "construction right now.$"
+
 gText_UndergoingAdjustments::
 	.string "It appears to be undergoing\n"
 	.string "adjustments…$"
@@ -1065,7 +1070,7 @@ EventScript_CableClub_SetVarResult0::
 	return
 
 Common_EventScript_UnionRoomAttendant::
-	call CableClub_EventScript_UnionRoomAttendant
+	call CableClub_EventScript_TrainingCenterAttendant
 	end
 
 Common_EventScript_WirelessClubAttendant::
